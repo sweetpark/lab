@@ -1,16 +1,16 @@
 package com.example.application.fileInputOutput.service;
 
-import application.file.config.StorageProperties;
-import application.file.entity.FileStore;
-import application.file.entity.repository.StoreRepository;
-import application.file.exception.StorageException;
-import application.file.exception.StorageFileNotFoundException;
+import com.example.application.fileInputOutput.config.StorageProperties;
+import com.example.application.fileInputOutput.entity.repository.StoreRepository;
+import com.example.application.fileInputOutput.exception.StorageException;
+import com.example.application.fileInputOutput.exception.StorageFileNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileSystemUtils;
 import org.springframework.web.multipart.MultipartFile;
+import com.example.application.fileInputOutput.entity.FileStore;
 
 import java.io.IOException;
 import java.io.InputStream;

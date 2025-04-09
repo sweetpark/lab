@@ -1,0 +1,106 @@
+package com.example.application.cache;
+
+import com.example.application.cache.entity.Member;
+import com.example.application.cache.entity.Terms;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.cache.CacheManager;
+import org.springframework.context.annotation.Import;
+import java.time.LocalDateTime;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+
+@SpringBootTest
+@Import(TestRepoConfig.class)
+class CacheServiceTest {
+    @Autowired
+    private CacheService cacheService;
+
+    @Autowired
+    private CacheManager cacheManager;
+
+    @Autowired
+    private Repository repository;
+
+    private final Member member = new Member("john", 30, "Seoul");
+    private final Terms terms = new Terms("privacy", true, LocalDateTime.now(), LocalDateTime.now());
+
+    @BeforeEach
+    void setup() {
+        // clear caches before each test
+        cacheManager.getCache("member").clear();
+        cacheManager.getCache("terms").clear();
+    }
+
+    @Test
+    void testMemberIsCached() {
+        given(repository.getMember("john")).willReturn(member);
+
+        // 1st call: should hit repository and cache the result
+        Member m1 = cacheService.getMember("john");
+        assertThat(m1).isEqualTo(member);
+        verify(repository, times(1)).getMember("john");
+
+        // 2nd call: should hit the cache, not repository
+        Member m2 = cacheService.getMember("john");
+        assertThat(m2).isEqualTo(member);
+        verify(repository, times(1)).getMember("john"); // still 1 time
+    }
+
+    @Test
+    void testTermsIsCached() {
+        given(repository.getTerms("privacy")).willReturn(terms);
+
+        Terms t1 = cacheService.getTerms("privacy");
+        Terms t2 = cacheService.getTerms("privacy");
+
+        assertThat(t1).isEqualTo(terms);
+        assertThat(t2).isEqualTo(terms);
+        verify(repository, times(1)).getTerms("privacy");
+    }
+
+    @Test
+    void testUpdateMemberCachePut() {
+        given(repository.getMember("john")).willReturn(member);
+
+        Member updated = new Member("john", 35, "Busan");
+        Member result = cacheService.updateMember(updated);
+
+        assertThat(result.getAge()).isEqualTo(35);
+        assertThat(result.getAddr()).isEqualTo("Busan");
+
+        // 캐시에서도 확인
+        Member cached = cacheManager.getCache("member").get("john", Member.class);
+        assertThat(cached).isNotNull();
+        assertThat(cached.getAge()).isEqualTo(35);
+    }
+
+    @Test
+    void testRemoveMemberEvictsCache() {
+        given(repository.getMember("john")).willReturn(member);
+        cacheService.getMember("john"); // 캐시에 저장
+
+        cacheService.removeMember("john");
+
+        // 캐시에서 제거되었는지 확인
+        assertThat(cacheManager.getCache("member").get("john")).isNull();
+    }
+
+    @Test
+    void testClearAllMembersEvictsAll() {
+        given(repository.getMember("john")).willReturn(member);
+        given(repository.getMember("paul")).willReturn(new Member("paul", 28, "Daegu"));
+
+        cacheService.getMember("john");
+        cacheService.getMember("paul");
+
+        cacheService.clearAllMembers();
+
+        assertThat(cacheManager.getCache("member").get("john")).isNull();
+        assertThat(cacheManager.getCache("member").get("paul")).isNull();
+    }
+}

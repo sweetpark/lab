@@ -1,7 +1,8 @@
 package com.example.application.fileInputOutput.controller;
 
-import application.file.exception.StorageFileNotFoundException;
-import application.file.service.StorageService;
+
+import com.example.application.fileInputOutput.exception.StorageFileNotFoundException;
+import com.example.application.fileInputOutput.service.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
