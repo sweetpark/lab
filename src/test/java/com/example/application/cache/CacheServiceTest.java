@@ -31,7 +31,7 @@ class CacheServiceTest {
 
     @BeforeEach
     void setup() {
-        // clear caches before each test
+        // 캐시 비우기
         cacheManager.getCache("member").clear();
         cacheManager.getCache("terms").clear();
     }
@@ -40,15 +40,15 @@ class CacheServiceTest {
     void testMemberIsCached() {
         given(repository.getMember("john")).willReturn(member);
 
-        // 1st call: should hit repository and cache the result
+        // 메서드 call
         Member m1 = cacheService.getMember("john");
         assertThat(m1).isEqualTo(member);
         verify(repository, times(1)).getMember("john");
 
-        // 2nd call: should hit the cache, not repository
+        // 캐시 hit
         Member m2 = cacheService.getMember("john");
         assertThat(m2).isEqualTo(member);
-        verify(repository, times(1)).getMember("john"); // still 1 time
+        verify(repository, times(1)).getMember("john"); // getMember 한번만 호출 (나머지 한번은 캐싱)
     }
 
     @Test
