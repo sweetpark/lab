@@ -36,6 +36,9 @@ dependencies {
 	//cache
 	implementation 'org.springframework.boot:spring-boot-starter-cache'
 	implementation 'com.github.ben-manes.caffeine:caffeine:3.1.7'
+
+	//crolling
+	implementation 'org.seleniumhq.selenium:selenium-java:4.31.0'
 }
 
 tasks.named('test') {
