@@ -24,8 +24,8 @@ public class Service1Impl implements Handler{
     @Autowired
     private TransportationRepository transportationRepository;
 
-//    @CustomTransaction
-    @Transactional(rollbackFor = Exception.class)
+//    @Transactional(rollbackFor = Exception.class)
+    @CustomTransaction
     @Override
     public Object run() {
         Map<String, Object> returnMap = new HashMap<>();
@@ -40,23 +40,28 @@ public class Service1Impl implements Handler{
             bus.setBusType("type1");
             bus.setLowFloor(true);
 
-            save(transportation,bus);
+//            save(transportation,bus);
+            transportationRepository.save(transportation);
+            busRepository.saveBus(bus);
 
             returnMap.put("code", "1");
 
         }catch(Exception e){
             log.error("Service1 Error : {}",e);
-            returnMap.put("code","9999");
+            throw new RuntimeException("Service1 Error", e);
         }
 
         return returnMap;
     }
 
+    /*
     @Transactional
     public void save(Transportation transportation, Bus bus){
         transportationRepository.save(transportation);
         busRepository.saveBus(bus);
     }
+
+     */
 
 
 }
