@@ -21,7 +21,7 @@ public class NotiController {
     public void notification(
             HttpServletRequest request,
             @RequestHeader Map<String, String> headers,
-            @RequestBody(required = false) String body)  throws IOException {
+            @RequestBody(required = false) String body)  {
 
 
         log.info("========== [HEADERS] ==========");
