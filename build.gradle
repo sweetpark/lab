@@ -13,6 +13,11 @@ java {
 	}
 }
 
+test {
+	useJUnitPlatform()
+}
+
+
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
@@ -39,8 +44,4 @@ dependencies {
 
 	//crolling
 	implementation 'org.seleniumhq.selenium:selenium-java:4.31.0'
-}
-
-tasks.named('test') {
-	useJUnitPlatform()
 }
