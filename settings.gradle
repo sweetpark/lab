@@ -1,3 +1,10 @@
 rootProject.name = 'practice'
 
 include 'playground-aop'
+include 'playground-cache'
+include 'playground-crolling'
+include 'playground-exception'
+include 'playground-fileIO'
+include 'playground-exteriorConfig'
+include 'playground-paging'
+include 'playground-notiCheck'
