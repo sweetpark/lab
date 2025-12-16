@@ -1,5 +1,6 @@
 rootProject.name = 'practice'
-
+include 'Application'
+include 'core'
 include 'playground-aop'
 include 'playground-cache'
 include 'playground-crolling'

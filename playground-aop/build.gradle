@@ -5,6 +5,9 @@ plugins {
 }
 
 dependencies {
+    // core 기능 삽입
+    implementation project(':core')
+
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-aop'
 

@@ -1,6 +1,6 @@
 package com.example.playground.cache;
 
-import com.example.playground.cache.src.Repository;
+import com.example.playground.cache.source.Repository;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;

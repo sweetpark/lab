@@ -1,6 +1,6 @@
 package com.example.playground.notiCheck;
 
-import com.example.playground.noti.src.NotiController;
+import com.example.playground.noti.source.NotiController;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

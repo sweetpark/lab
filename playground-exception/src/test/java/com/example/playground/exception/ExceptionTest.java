@@ -1,8 +1,8 @@
 package com.example.playground.exception;
 
-import com.example.playground.exception.src.CustomException;
-import com.example.playground.exception.src.CustomValidException;
-import com.example.playground.exception.src.ExceptionController;
+import com.example.playground.exception.source.CustomException;
+import com.example.playground.exception.source.CustomValidException;
+import com.example.playground.exception.source.ExceptionController;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

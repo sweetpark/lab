@@ -1,10 +1,10 @@
 package com.example.playground.cache;
 
 
-import com.example.playground.cache.src.CacheService;
-import com.example.playground.cache.src.Repository;
-import com.example.playground.cache.src.entity.Member;
-import com.example.playground.cache.src.entity.Terms;
+import com.example.playground.cache.source.CacheService;
+import com.example.playground.cache.source.Repository;
+import com.example.playground.cache.source.entity.Member;
+import com.example.playground.cache.source.entity.Terms;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

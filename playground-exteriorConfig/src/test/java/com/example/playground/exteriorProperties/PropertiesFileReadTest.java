@@ -1,6 +1,6 @@
 package com.example.playground.exteriorProperties;
 
-import com.example.playground.exterior.src.PropertiesRead;
+import com.example.playground.exterior.source.PropertiesRead;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
