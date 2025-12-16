@@ -1,4 +1,4 @@
-package com.example.application.aop.selfCall;
+package com.example.project.aop.src.selfCall;
 
 public interface Handler {
     Object run();

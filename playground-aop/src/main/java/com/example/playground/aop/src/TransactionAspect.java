@@ -1,4 +1,4 @@
-package com.example.application.aop;
+package com.example.playground.aop;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -24,7 +24,7 @@ public class TransactionAspect {
         this.transactionManager = transactionManager;
     }
 
-    @Around("@annotation(CustomTransaction)")
+    @Around("@annotation(com.example.project.aop.src.CustomTransaction)")
     public Object around(ProceedingJoinPoint joinPoint){
 
 

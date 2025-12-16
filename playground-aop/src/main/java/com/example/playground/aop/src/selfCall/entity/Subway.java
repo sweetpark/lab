@@ -1,4 +1,4 @@
-package com.example.application.aop.selfCall.entity;
+package com.example.playground.aop.src.selfCall.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -6,21 +6,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
 
-import java.time.LocalDateTime;
-
 @Entity
 @Data
-public class Transportation {
-
+public class Subway {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private String routeNumber;
-    private Integer capacity;
-    private LocalDateTime regDnt;
+    private String lineName;
+    private Integer numberOfCars;
 
-    public Transportation(){}
-
-
+    public Subway(){}
 }

@@ -1,6 +1,6 @@
-package com.example.application.aop;
+package com.example.playground.aop;
 
-import com.example.application.aop.selfCall.Handler;
+import com.example.project.aop.src.selfCall.Handler;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;

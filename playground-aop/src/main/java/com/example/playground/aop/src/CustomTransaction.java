@@ -1,4 +1,4 @@
-package com.example.application.aop;
+package com.example.playground.aop;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

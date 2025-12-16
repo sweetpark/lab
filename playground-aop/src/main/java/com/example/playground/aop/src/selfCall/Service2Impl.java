@@ -1,11 +1,11 @@
-package com.example.application.aop.selfCall;
+package com.example.playground.aop.src.selfCall;
 
-import com.example.application.aop.CustomTransaction;
-import com.example.application.aop.selfCall.entity.Bus;
-import com.example.application.aop.selfCall.entity.Subway;
-import com.example.application.aop.selfCall.entity.Transportation;
-import com.example.application.aop.selfCall.repository.SubwayRepository;
-import com.example.application.aop.selfCall.repository.TransportationRepository;
+
+import com.example.playground.aop.CustomTransaction;
+import com.example.playground.aop.src.selfCall.entity.Subway;
+import com.example.playground.aop.src.selfCall.entity.Transportation;
+import com.example.playground.aop.src.selfCall.repository.SubwayRepository;
+import com.example.playground.aop.src.selfCall.repository.TransportationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service("Service2")
-public class Service2Impl implements Handler{
+public class Service2Impl implements com.example.project.aop.src.selfCall.Handler {
 
     @Autowired
     private SubwayRepository subwayRepository;

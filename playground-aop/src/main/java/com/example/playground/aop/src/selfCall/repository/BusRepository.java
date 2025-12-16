@@ -1,6 +1,7 @@
-package com.example.application.aop.selfCall.repository;
+package com.example.playground.aop.src.selfCall.repository;
 
-import com.example.application.aop.selfCall.entity.Bus;
+
+import com.example.playground.aop.src.selfCall.entity.Bus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

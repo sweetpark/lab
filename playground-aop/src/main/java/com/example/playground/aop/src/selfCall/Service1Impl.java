@@ -1,15 +1,13 @@
-package com.example.application.aop.selfCall;
+package com.example.playground.aop.src.selfCall;
 
-import com.example.application.aop.CustomTransaction;
-import com.example.application.aop.selfCall.entity.Bus;
-import com.example.application.aop.selfCall.entity.Transportation;
-import com.example.application.aop.selfCall.repository.BusRepository;
-import com.example.application.aop.selfCall.repository.SubwayRepository;
-import com.example.application.aop.selfCall.repository.TransportationRepository;
+import com.example.playground.aop.CustomTransaction;
+import com.example.playground.aop.src.selfCall.entity.Bus;
+import com.example.playground.aop.src.selfCall.entity.Transportation;
+import com.example.playground.aop.src.selfCall.repository.BusRepository;
+import com.example.playground.aop.src.selfCall.repository.TransportationRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -17,7 +15,7 @@ import java.util.Map;
 
 @Slf4j
 @Service("Service1")
-public class Service1Impl implements Handler{
+public class Service1Impl implements com.example.project.aop.src.selfCall.Handler {
 
     @Autowired
     private BusRepository busRepository;

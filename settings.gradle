@@ -1,1 +1,3 @@
-rootProject.name = 'application'
+rootProject.name = 'practice'
+
+include 'playground-aop'
