@@ -13,7 +13,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 //        "com.example.playground.exterior",
         "com.example.playground.fileIO",
         "com.example.playground.noti",
-        "com.example.playground.page"
+        "com.example.playground.page",
+        "com.example.playground.jdbc",
+        "com.example.playground.validation"
 })
 public class AppApplication {
 
