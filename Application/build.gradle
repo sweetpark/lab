@@ -15,6 +15,7 @@ dependencies {
     implementation project(':playground-fileIO')
     implementation project(':playground-notiCheck')
     implementation project(':playground-paging')
+    implementation project(':playground-batch')
 
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
