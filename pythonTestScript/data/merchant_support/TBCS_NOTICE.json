@@ -1,0 +1,18 @@
+{
+  "table": "TBCS_NOTICE",
+  "rows": [
+    {
+      "INFO_TYPE": { "value": "01" },
+      "NOTI_ST_CD": { "value": "1" },
+      "REG_DNT": { "value": "CUR_YYMMDDHHIISS" },
+      "NOTI_CD": { "value": "2" },
+      "TITLE": { "value": "테스트 공지사항" },
+      "BODY": { "value": "<p>테스트 공지사항입니다.</p>" },
+      "NOTI_TRG_CD": { "value": "00" },
+      "REG_DT": { "value": "CUR_YYMMDD" },
+      "WORKER": { "value": "admin" },
+      "FR_DT": { "value": "20260126" },
+      "TO_DT": { "value": "20260126" }
+    }
+  ]
+}

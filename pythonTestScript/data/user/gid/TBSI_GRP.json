@@ -1,0 +1,32 @@
+{
+  "table": "TBSI_GRP",
+  "rows": [
+    {
+      "GID": { "value": "wzonTest0g" },
+      "G_NM": { "value": "위지온테스트그룹1" },
+      "CO_NO": { "value": "1232332124" },
+      "BANK_CD": { "value": "090" },
+      "ACNT_NO": { "value": "333******3333" },
+      "ACNT_NO_ENC": { "value": "04980ff61564097bbd968f294b6a2d9bba" },
+      "ACNT_NO_HASH": { "value": "d94ead0c8bcdbf2042ff8cc1d0b56ff0a6831b48286e770faf0a309f23060fff" },
+      "ACNT_NM": { "value": "위*온" },
+      "ACNT_NM_ENC": { "value": "047a1363891c7e70e7eb1e6b7ff6967c75" },
+      "ACNT_NM_HASH": { "value": "13f938e10bce18055d00ccd0b7e9b10c082ab100347c35afc0d6e71383289e3e" },
+      "REG_DT": { "value": "CUR_YYMMDD" },
+      "TAX_EMAIL": { "value": "wypark@wiezon.com" },
+      "ID_USE_ST_CD": { "value": "0" },
+      "EMP1_NM": { "value": "위*온" },
+      "EMP1_NM_ENC": { "value": "047a1363891c7e70e7eb1e6b7ff6967c75" },
+      "EMP1_NM_HASH": { "value": "13f938e10bce18055d00ccd0b7e9b10c082ab100347c35afc0d6e71383289e3e" },
+      "EMP1_TEL": { "value": "01099999999" },
+      "EMP1_HP": { "value": "010****9999" },
+      "EMP1_HP_ENC": { "value": "040a861e20e381c72fc87ce92062663e10" },
+      "EMP1_HP_HASH": { "value": "5ce7480da9abbb367f37ede1f4389a06231c2ad1015625f13f341f0dce3e006f" },
+      "EMP1_EMAIL": { "value": "wy****@wiezon.com" },
+      "EMP1_EMAIL_ENC": { "value": "049d51030aeb7dd767ea15b65ce90572248f926f04b33d2d28329a40cf99529c06" },
+      "EMP1_EMAIL_HASH": { "value": "287be60cdbfff2eba1f7e44c7385c40205d5ea4f9ddf098ee3be7007adf69db5" },
+      "REG_DNT": { "value": "CUR_YYMMDDHHIISS" },
+      "WORKER": { "value": "admin" }
+    }
+  ]
+}

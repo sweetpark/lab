@@ -1,0 +1,27 @@
+{
+  "table": "TBSI_USR",
+  "rows": [
+    {
+      "UID": { "value": "wzonTest0a" },
+      "VID": { "value": "wzonTest0a" },
+      "USR_TYPE": { "value": "3" },
+      "USR_NM": { "value": "위지온" },
+      "USR_NM_ENC": { "value": null },
+      "USR_NM_HASH": { "value": null },
+      "PW": { "value": "Mq1zKcrMbQZzqyyrclUYc1dgRal+8RpN7UIMaapNX+E4d4Hhz/XGjfMZXtQLtz9qArvjjvDoVpoaFelHP0ZnuQ==" },
+      "ID_USE_ST_CD": { "value": "0" },
+      "OTP_KEY": { "value": "NI3TCWTGG4SWQWT2NBACMRDGKJMGQNBE" },
+      "EMAIL": { "value": "wy****@wiezon.com" },
+      "EMAIL_ENC": { "value": "049d51030aeb7dd767ea15b65ce90572248f926f04b33d2d28329a40cf99529c06" },
+      "EMAIL_HASH": { "value": "287be60cdbfff2eba1f7e44c7385c40205d5ea4f9ddf098ee3be7007adf69db5" },
+      "HP_NO": { "value": "010****9999" },
+      "HP_NO_ENC": { "value": "040a861e20e381c72fc87ce92062663e10" },
+      "HP_NO_HASH": { "value": "5ce7480da9abbb367f37ede1f4389a06231c2ad1015625f13f341f0dce3e006f" },
+      "REG_DT": { "value": "20260126" },
+      "REG_DNT": { "value": "20260126164837" },
+      "CRYPT_FLG": { "value": "1" },
+      "WORKER": { "value": "admin" },
+      "LOGIN_OTP_TYPE": { "value": "0" }
+    }
+  ]
+}

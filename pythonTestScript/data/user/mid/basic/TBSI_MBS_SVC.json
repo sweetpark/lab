@@ -1,0 +1,11 @@
+{
+  "table": "TBSI_MBS_SVC",
+  "rows": [
+    {
+      "MID": { "value": "wzonTest0m" },
+      "PM_CD": { "value": "04" },
+      "SPM_CD": { "value": "01" },
+      "USE_FLG": { "value": "1" }
+    }
+  ]
+}

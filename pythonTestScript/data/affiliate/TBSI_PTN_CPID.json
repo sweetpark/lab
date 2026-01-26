@@ -1,0 +1,69 @@
+{
+  "table": "TBSI_PTN_CPID",
+  "rows": [
+    {
+      "PTN_CD": { "value": "13" },
+      "PTN_CPID": { "value": "certification_cpid" },
+      "PTN_TYPE": { "value": "00" },
+      "PM_CD": { "value": "01" },
+      "SPM_CD": { "value": "01" },
+      "CURRENCY_TYPE": { "value": null },
+      "KEY_TYPE": { "value": "01" },
+      "DELIMITER": { "value": "-XW5vv2mdMG_" },
+      "DESC": { "value": null },
+      "DATA": { "value": "/home/bld/cardPg/galaxia/config/config.ini" },
+      "MEMO": { "value": "인증CPID" },
+      "REG_DT": { "value": "CUR_YYMMDD" },
+      "WORKER": { "value": "admin" },
+      "REG_DNT": { "value": "CUR_YYMMDDHHIISS" }
+    },
+    {
+      "PTN_CD": { "value": "13" },
+      "PTN_CPID": { "value": "old_cert_cpid" },
+      "PTN_TYPE": { "value": "00" },
+      "PM_CD": { "value": "01" },
+      "SPM_CD": { "value": "02" },
+      "CURRENCY_TYPE": { "value": null },
+      "KEY_TYPE": { "value": "01" },
+      "DELIMITER": { "value": "_h#-Tjafdpc_" },
+      "DESC": { "value": null },
+      "DATA": { "value": "/home/bld/cardPg/galaxia/config/config.ini" },
+      "MEMO": { "value": "구인증CPID" },
+      "REG_DT": { "value": "CUR_YYMMDD" },
+      "WORKER": { "value": "admin" },
+      "REG_DNT": { "value": "CUR_YYMMDDHHIISS" }
+    },
+    {
+      "PTN_CD": { "value": "13" },
+      "PTN_CPID": { "value": "no_cert_cpid" },
+      "PTN_TYPE": { "value": "00" },
+      "PM_CD": { "value": "01" },
+      "SPM_CD": { "value": "05" },
+      "CURRENCY_TYPE": { "value": null },
+      "KEY_TYPE": { "value": "01" },
+      "DELIMITER": { "value": "-G8IHa4xPw0_" },
+      "DESC": { "value": null },
+      "DATA": { "value": "" },
+      "MEMO": { "value": "비인증CPID" },
+      "REG_DT": { "value": "CUR_YYMMDD" },
+      "WORKER": { "value": "admin" },
+      "REG_DNT": { "value": "CUR_YYMMDDHHIISS" }
+    },
+    {
+      "PTN_CD": { "value": "13" },
+      "PTN_CPID": { "value": "offline_cpid" },
+      "PTN_TYPE": { "value": "00" },
+      "PM_CD": { "value": "01" },
+      "SPM_CD": { "value": "03" },
+      "CURRENCY_TYPE": { "value": null },
+      "KEY_TYPE": { "value": "01" },
+      "DELIMITER": { "value": "_R8_rW1#giV_" },
+      "DESC": { "value": null },
+      "DATA": { "value": "" },
+      "MEMO": { "value": "offlineCPID" },
+      "REG_DT": { "value": "CUR_YYMMDD" },
+      "WORKER": { "value": "admin" },
+      "REG_DNT": { "value": "CUR_YYMMDDHHIISS" }
+    }
+  ]
+}

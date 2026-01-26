@@ -1,0 +1,89 @@
+{
+  "table": "TBSI_STMT_SVC",
+  "rows": [
+    {
+      "ID": { "value": "wzonTest0m" },
+      "ID_CD": { "value": "1" },
+      "PM_CD": { "value": "00" },
+      "SPM_CD": { "value": "00" },
+      "STMT_SVC_CD": { "value": "0003" },
+      "STMT_SVC_VALUE": { "value": "01" },
+      "FR_DT": { "value": "CUR_YYMMDD" },
+      "TO_DT": { "value": "99999999" },
+      "REG_DT": { "value": "CUR_YYMMDD" },
+      "USE_ST_TYPE": { "value": "0" },
+      "WORKER": { "value": "admin" },
+      "REG_DNT": { "value": "CUR_YYMMDDHHIISS" }
+    },
+    {
+      "ID": { "value": "wzonTest0m" },
+      "ID_CD": { "value": "1" },
+      "PM_CD": { "value": "00" },
+      "SPM_CD": { "value": "00" },
+      "STMT_SVC_CD": { "value": "0005" },
+      "STMT_SVC_VALUE": { "value": "01" },
+      "FR_DT": { "value": "CUR_YYMMDD" },
+      "TO_DT": { "value": "99999999" },
+      "REG_DT": { "value": "CUR_YYMMDD" },
+      "USE_ST_TYPE": { "value": "0" },
+      "WORKER": { "value": "admin" },
+      "REG_DNT": { "value": "CUR_YYMMDDHHIISS" }
+    },
+    {
+      "ID": { "value": "wzonTest0m" },
+      "ID_CD": { "value": "1" },
+      "PM_CD": { "value": "00" },
+      "SPM_CD": { "value": "00" },
+      "STMT_SVC_CD": { "value": "0006" },
+      "STMT_SVC_VALUE": { "value": "KRW" },
+      "FR_DT": { "value": "CUR_YYMMDD" },
+      "TO_DT": { "value": "99999999" },
+      "REG_DT": { "value": "CUR_YYMMDD" },
+      "USE_ST_TYPE": { "value": "0" },
+      "WORKER": { "value": "admin" },
+      "REG_DNT": { "value": "CUR_YYMMDDHHIISS" }
+    },
+    {
+      "ID": { "value": "wzonTest0m" },
+      "ID_CD": { "value": "1" },
+      "PM_CD": { "value": "00" },
+      "SPM_CD": { "value": "00" },
+      "STMT_SVC_CD": { "value": "0004" },
+      "STMT_SVC_VALUE": { "value": "00" },
+      "FR_DT": { "value": "20260126" },
+      "TO_DT": { "value": "99999999" },
+      "REG_DT": { "value": "CUR_YYMMDD" },
+      "USE_ST_TYPE": { "value": "0" },
+      "WORKER": { "value": "admin" },
+      "REG_DNT": { "value": "CUR_YYMMDDHHIISS" }
+    },
+    {
+      "ID": { "value": "wzonTest0m" },
+      "ID_CD": { "value": "1" },
+      "PM_CD": { "value": "00" },
+      "SPM_CD": { "value": "00" },
+      "STMT_SVC_CD": { "value": "0009" },
+      "STMT_SVC_VALUE": { "value": "01" },
+      "FR_DT": { "value": "20260126" },
+      "TO_DT": { "value": "99999999" },
+      "REG_DT": { "value": "CUR_YYMMDD" },
+      "USE_ST_TYPE": { "value": "0" },
+      "WORKER": { "value": "admin" },
+      "REG_DNT": { "value": "CUR_YYMMDDHHIISS" }
+    },
+    {
+      "ID": { "value": "wzonTest0m" },
+      "ID_CD": { "value": "1" },
+      "PM_CD": { "value": "00" },
+      "SPM_CD": { "value": "00" },
+      "STMT_SVC_CD": { "value": "0001" },
+      "STMT_SVC_VALUE": { "value": "00" },
+      "FR_DT": { "value": "20260126" },
+      "TO_DT": { "value": "99999999" },
+      "REG_DT": { "value": "CUR_YYMMDD" },
+      "USE_ST_TYPE": { "value": "0" },
+      "WORKER": { "value": "admin" },
+      "REG_DNT": { "value": "CUR_YYMMDDHHIISS" }
+    }
+  ]
+}
