@@ -11,6 +11,8 @@ import org.apache.commons.codec.binary.Base32;
 public class EncUtil {
 
     final static CryptUtils cryptUtils = new CryptUtils();
+
+
     // PW 생성
     public static String createEncPw(String password){
         return encodedSHA512(Base64EncodedMD5(password));
@@ -85,7 +87,6 @@ public class EncUtil {
             throw new RuntimeException("Hash 실패 (sha-256)", e);
         }
     }
-
 
     private static String makeRandomPw(){
         // 패스워드에 사용될 문자 배열
