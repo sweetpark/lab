@@ -1,0 +1,166 @@
+{
+  "table": "TBSI_MBS",
+  "rows": [
+    {
+      "MID": {
+        "value": "wzonTest0m"
+      },
+      "SIGN_NM": {
+        "value": "위지온테스트매장1"
+      },
+      "CO_NO": {
+        "value": "1232332124"
+      },
+      "CO_NM": {
+        "value": "위지온테스트"
+      },
+      "GID": {
+        "value": "wzonTest0g"
+      },
+      "VID": {
+        "value": "wzonTest0a"
+      },
+      "MBS_GRADE": {
+        "value": "A"
+      },
+      "MID_URL": {
+        "value": "localhost:9999"
+      },
+      "MID_USE_TYPE_CD": {
+        "value": "1"
+      },
+      "TEL_NO": {
+        "value": "01099999999"
+      },
+      "FAX_NO": {
+        "value": "01099999999"
+      },
+      "REP_NM": {
+        "value": "위지온대표1 * 2명",
+        "crypto": "ENC_HASH"
+      },
+      "CONT_EMP_NM": {
+        "value": "위*온",
+        "crypto": "ENC_HASH"
+      },
+      "CONT_EMP_TEL": {
+        "value": "01099999999"
+      },
+      "CONT_EMP_HP": {
+        "value": "010****9999",
+        "crypto": "ENC_HASH"
+      },
+      "CONT_EMP_EMAIL": {
+        "value": "wy****@wiezon.com",
+        "crypto": "ENC_HASH"
+      },
+      "STMT_EMP_NM": {
+        "value": "위지*2",
+        "crypto": "ENC_HASH"
+      },
+      "STMT_EMP_TEL": {
+        "value": "01099999999"
+      },
+      "STMT_EMP_HP": {
+        "value": "010****9999",
+        "crypto": "ENC_HASH"
+      },
+      "STMT_EMP_EMAIL": {
+        "value": "wy****@wiezon.com",
+        "crypto": "ENC_HASH"
+      },
+      "TECH_EMP_NM": {
+        "value": "위지*3",
+        "crypto": "ENC_HASH"
+      },
+      "TECH_EMP_TEL": {
+        "value": "01099999999"
+      },
+      "TECH_EMP_HP": {
+        "value": "010****9999",
+        "crypto": "ENC_HASH"
+      },
+      "TECH_EMP_EMAIL": {
+        "value": "wy****@wiezon.com",
+        "crypto": "ENC_HASH"
+      },
+      "EMAIL": {
+        "value": "wy****@wiezon.com",
+        "crypto": "ENC_HASH"
+      },
+      "CONT_EMP_NO": {
+        "value": "987654321"
+      },
+      "MGR1_EMP_NO": {
+        "value": "987654321"
+      },
+      "MBS_TYPE_CD": {
+        "value": "1"
+      },
+      "CONT_DT": {
+        "value": "20260126"
+      },
+      "BS_KIND_CD": {
+        "value": "9999:0000"
+      },
+      "RECV_CH_CD": {
+        "value": "0001"
+      },
+      "WORKER": {
+        "value": "admin"
+      },
+      "ACNT_RISK_GRADE": {
+        "value": null
+      },
+      "L1_VID": {
+        "value": "wzonTest0a"
+      },
+      "L2_VID": {
+        "value": ""
+      },
+      "L3_VID": {
+        "value": ""
+      },
+      "L4_VID": {
+        "value": ""
+      },
+      "L5_VID": {
+        "value": ""
+      },
+      "REG_DT": {
+        "value": "CUR_YYMMDD"
+      },
+      "REG_DNT": {
+        "value": "CUR_YYMMDDHHIISS"
+      },
+      "POST_NO": {
+        "value": "08391"
+      },
+      "ADDR_NO1": {
+        "value": "서울 구로구 도림천로 477"
+      },
+      "ADDR_NO2": {
+        "value": "1번출구"
+      },
+      "RPOST_NO": {
+        "value": "08391"
+      },
+      "RADDR_NO1": {
+        "value": "서울 구로구 도림천로 477"
+      },
+      "RADDR_NO2": {
+        "value": "1번출구"
+      },
+      "CRCT_CULT_FLG": {
+        "value": null
+      },
+      "MALL_TYPE_CD": {
+        "value": "0"
+      },
+      "ACNT_NO": {
+        "value": "",
+        "crypto": "ENC_HASH"
+      }
+    }
+  ]
+}

@@ -1,0 +1,168 @@
+{
+  "table": "TBSI_VGRP",
+  "rows": [
+    {
+      "VID": {
+        "value": "wzonTest0a"
+      },
+      "VGRP_NM": {
+        "value": "위지온영업점1"
+      },
+      "CO_NO": {
+        "value": "1232332124"
+      },
+      "REP_NM": {
+        "value": "위지온대*1",
+        "crypto": "ENC_HASH"
+      },
+      "GD_KIND": {
+        "value": "정보통신"
+      },
+      "BS_KIND": {
+        "value": "IT"
+      },
+      "BANK_CD": {
+        "value": ""
+      },
+      "ACNT_NO": {
+        "value": "",
+        "crypto": "ENC_HASH"
+      },
+      "ACNT_NM": {
+        "value": "",
+        "crypto": "ENC_HASH"
+      },
+      "EMAIL": {
+        "value": "wy****@wiezon.com",
+        "crypto": "ENC_HASH"
+      },
+      "ID_USE_ST_CD": {
+        "value": "0"
+      },
+      "POST_NO": {
+        "value": "08391",
+        "crypto": "ENC_HASH"
+      },
+      "ADDR_NO1": {
+        "value": "서울 구로구 도림천로 477",
+        "crypto": "ENC_HASH"
+      },
+      "ADDR_NO2": {
+        "value": "1번출구",
+        "crypto": "ENC_HASH"
+      },
+      "STMT_CYCLE_CD": {
+        "value": "C115"
+      },
+      "SHARE_RATE": {
+        "value": "0"
+      },
+      "REG_DNT": {
+        "value": "CUR_YYMMDDHHIISS"
+      },
+      "VGRP_TYPE": {
+        "value": "3"
+      },
+      "L1_VID": {
+        "value": "wzonTest0a"
+      },
+      "L2_VID": {
+        "value": ""
+      },
+      "L3_VID": {
+        "value": ""
+      },
+      "L4_VID": {
+        "value": ""
+      },
+      "L5_VID": {
+        "value": ""
+      },
+      "WORKER": {
+        "value": "admin"
+      },
+      "AGENT_TYPE": {
+        "value": "01"
+      },
+      "ERP_MAPPING_CD": {
+        "value": null
+      },
+      "CONT_DT": {
+        "value": "20260126"
+      },
+      "REP_BIRTH_DT": {
+        "value": "1990****",
+        "crypto": "ENC_HASH"
+      },
+      "TEL_NO": {
+        "value": "01099999999"
+      },
+      "RPOST_NO": {
+        "value": "08391",
+        "crypto": "ENC_HASH"
+      },
+      "RADDR_NO1": {
+        "value": "서울 구로구 도림천로 477",
+        "crypto": "ENC_HASH"
+      },
+      "RADDR_NO2": {
+        "value": "1번출구",
+        "crypto": "ENC_HASH"
+      },
+      "TAX_EMAIL": {
+        "value": "wypark@wiezon.com"
+      },
+      "CONT_NM": {
+        "value": "위*온",
+        "crypto": "ENC_HASH"
+      },
+      "CONT_TEL": {
+        "value": "01099999999"
+      },
+      "CONT_HP": {
+        "value": "010****9999",
+        "crypto": "ENC_HASH"
+      },
+      "CONT_EMAIL": {
+        "value": "wy****@wiezon.com",
+        "crypto": "ENC_HASH"
+      },
+      "STMT_NM": {
+        "value": "위지*2",
+        "crypto": "ENC_HASH"
+      },
+      "STMT_TEL": {
+        "value": "01099999999"
+      },
+      "STMT_HP": {
+        "value": "010****9999",
+        "crypto": "ENC_HASH"
+      },
+      "STMT_EMAIL": {
+        "value": "wy****@wiezon.com",
+        "crypto": "ENC_HASH"
+      },
+      "TECH_NM": {
+        "value": "위지*3",
+        "crypto": "ENC_HASH"
+      },
+      "TECH_TEL": {
+        "value": "01099999999"
+      },
+      "TECH_HP": {
+        "value": "010****9999",
+        "crypto": "ENC_HASH"
+      },
+      "TECH_EMAIL": {
+        "value": "wy****@wiezon.com",
+        "crypto": "ENC_HASH"
+      },
+      "CONT_EMP_NO": {
+        "value": "987654321"
+      },
+      "MGR1_EMP_NO": {
+        "value": "987654321"
+      }
+    }
+  ]
+}

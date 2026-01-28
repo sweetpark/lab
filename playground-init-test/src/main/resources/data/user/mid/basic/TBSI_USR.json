@@ -1,0 +1,58 @@
+{
+  "table": "TBSI_USR",
+  "rows": [
+    {
+      "UID": {
+        "value": "wzonTest0m"
+      },
+      "MID": {
+        "value": "wzonTest0m"
+      },
+      "GID": {
+        "value": "wzonTest0g"
+      },
+      "VID": {
+        "value": "wzonTest0a"
+      },
+      "USR_TYPE": {
+        "value": "1"
+      },
+      "USR_NM": {
+        "value": "위*온",
+        "crypto": "ENC_HASH"
+      },
+      "PW": {
+        "value": "4E1OHWtZlFbIMiDv/9wcstCuwNiNIWb0ckQG42s8mTyne4qv5Eq4Qhdiqlkq9dM3yvhNxJ9CGgWD0aQ+LECUWQ=="
+      },
+      "ID_USE_ST_CD": {
+        "value": "0"
+      },
+      "OTP_KEY": {
+        "value": "JFLWETCDKRMHC4TVPBAEA23NLJUDQ4DV"
+      },
+      "EMAIL": {
+        "value": "wy****@wiezon.com",
+        "crypto": "ENC_HASH"
+      },
+      "HP_NO": {
+        "value": "010****9999",
+        "crypto": "ENC_HASH"
+      },
+      "REG_DT": {
+        "value": "20260126"
+      },
+      "REG_DNT": {
+        "value": "20260126165123"
+      },
+      "CRYPT_FLG": {
+        "value": "1"
+      },
+      "WORKER": {
+        "value": "admin"
+      },
+      "LOGIN_OTP_TYPE": {
+        "value": "0"
+      }
+    }
+  ]
+}

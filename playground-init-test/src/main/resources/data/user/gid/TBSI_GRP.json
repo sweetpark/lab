@@ -1,0 +1,57 @@
+{
+  "table": "TBSI_GRP",
+  "rows": [
+    {
+      "GID": {
+        "value": "wzonTest0g"
+      },
+      "G_NM": {
+        "value": "위지온테스트그룹1"
+      },
+      "CO_NO": {
+        "value": "1232332124"
+      },
+      "BANK_CD": {
+        "value": "090"
+      },
+      "ACNT_NO": {
+        "value": "333******3333",
+        "crypto": "ENC_HASH"
+      },
+      "ACNT_NM": {
+        "value": "위*온",
+        "crypto": "ENC_HASH"
+      },
+      "REG_DT": {
+        "value": "CUR_YYMMDD"
+      },
+      "TAX_EMAIL": {
+        "value": "wypark@wiezon.com"
+      },
+      "ID_USE_ST_CD": {
+        "value": "0"
+      },
+      "EMP1_NM": {
+        "value": "위*온",
+        "crypto": "ENC_HASH"
+      },
+      "EMP1_TEL": {
+        "value": "01099999999"
+      },
+      "EMP1_HP": {
+        "value": "010****9999",
+        "crypto": "ENC_HASH"
+      },
+      "EMP1_EMAIL": {
+        "value": "wy****@wiezon.com",
+        "crypto": "ENC_HASH"
+      },
+      "REG_DNT": {
+        "value": "CUR_YYMMDDHHIISS"
+      },
+      "WORKER": {
+        "value": "admin"
+      }
+    }
+  ]
+}
