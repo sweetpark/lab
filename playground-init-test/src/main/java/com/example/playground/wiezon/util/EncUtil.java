@@ -1,4 +1,4 @@
-package com.example.playground.wiezon;
+package com.example.playground.wiezon.util;
 
 import kms.wiezon.com.crypt.CryptUtils;
 
