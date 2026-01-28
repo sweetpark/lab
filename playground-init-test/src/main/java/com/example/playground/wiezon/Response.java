@@ -1,4 +1,4 @@
-package com.example.playground.kms;
+package com.example.playground.wiezon;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
