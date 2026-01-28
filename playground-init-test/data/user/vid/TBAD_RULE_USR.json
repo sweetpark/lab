@@ -1,0 +1,11 @@
+{
+  "table": "TBAD_RULE_USR",
+  "rows": [
+    {
+      "UID": { "value": "wzonTest0a" },
+      "RULE_ID": { "value": "SL1" },
+      "REG_DT": { "value": "20260126" },
+      "WORKER": { "value": "admin" }
+    }
+  ]
+}

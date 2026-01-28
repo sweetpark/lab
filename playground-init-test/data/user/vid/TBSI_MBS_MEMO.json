@@ -1,0 +1,14 @@
+{
+  "table": "TBSI_MBS_MEMO",
+  "rows": [
+    {
+      "ID_CD": { "value": "3" },
+      "ID": { "value": "wzonTest0a" },
+      "REG_DT": { "value": "CUR_YYMMDD" },
+      "REG_TM": { "value": "CUR_HHIISS" },
+      "MEMO": { "value": "판매자등록" },
+      "WORKER": { "value": "admin" },
+      "REG_DNT": { "value": "CUR_YYMMDDHHIISS" }
+    }
+  ]
+}

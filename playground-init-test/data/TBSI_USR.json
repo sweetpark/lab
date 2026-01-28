@@ -1,0 +1,47 @@
+{
+  "table": "TBSI_USR",
+  "rows": [
+    {
+      "UID": { "value": "testUser" },
+      "MID": { "value": "testMID01m" },
+      "GID": { "value": "testGID01g" },
+      "VID": { "value": "testVID01v" },
+      "USR_NM": { "value": "사용자이름" },
+
+      "PW": {
+        "value": "wiezon1!",
+        "crypto": "PASSWORD"
+      },
+
+      "OTP_KEY":{
+        "value" : "",
+        "crypto" : "OTP"
+      },
+
+      "ID_USE_ST_CD": { "value": "0" },
+      "USR_TYPE": { "value": "1" },
+      "MEMO": { "value": "MID생성" },
+
+      "CHG_DT": { "value": "CUR_YYMMDD" },
+      "UNSC_CNT": { "value": 0 },
+      "TEMP_PW_FLG": { "value": 0 },
+
+      "EMAIL": {
+        "value": "si@wiezon.com",
+        "crypto": "ENC_HASH"
+      },
+      "HP_NO": {
+        "value": "01022223333",
+        "crypto": "ENC_HASH"
+      },
+
+      "PAGE_ROW_CNT": { "value": 30 },
+      "LOGIN_OTP_TYPE": { "value": "0" },
+
+      "REG_DT": { "value": "CUR_YYMMDD" },
+      "REG_DNT": { "value": "CUR_YYMMDDHHIISS" },
+
+      "WORKER": { "value": "TEST" }
+    }
+  ]
+}

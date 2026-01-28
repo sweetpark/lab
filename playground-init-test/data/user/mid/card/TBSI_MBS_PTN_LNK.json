@@ -1,0 +1,47 @@
+{
+  "table": "TBSI_MBS_PTN_LNK",
+  "rows": [
+    {
+      "MID": { "value": "wzonTest0m" },
+      "CO_NO": { "value": "1232332124" },
+      "PTN_CD": { "value": "13" },
+      "PTN_CPID": { "value": "old_cert_cpid" },
+      "EZP_AUTH_CD": { "value": null },
+      "FR_DT": { "value": "CUR_YYMMDD" },
+      "TO_DT": { "value": "99999999" },
+      "PM_CD": { "value": "01" },
+      "SPM_CD": { "value": "02" },
+      "REG_DT": { "value": "CUR_YYMMDD" },
+      "WORKER": { "value": "admin" },
+      "REG_DNT": { "value": "CUR_YYMMDDHHIISS" }
+    },
+    {
+      "MID": { "value": "wzonTest0m" },
+      "CO_NO": { "value": "1232332124" },
+      "PTN_CD": { "value": "13" },
+      "PTN_CPID": { "value": "offline_cpid" },
+      "EZP_AUTH_CD": { "value": null },
+      "FR_DT": { "value": "CUR_YYMMDD" },
+      "TO_DT": { "value": "99999999" },
+      "PM_CD": { "value": "01" },
+      "SPM_CD": { "value": "03" },
+      "REG_DT": { "value": "CUR_YYMMDD" },
+      "WORKER": { "value": "admin" },
+      "REG_DNT": { "value": "CUR_YYMMDDHHIISS" }
+    },
+    {
+      "MID": { "value": "wzonTest0m" },
+      "CO_NO": { "value": "1232332124" },
+      "PTN_CD": { "value": "13" },
+      "PTN_CPID": { "value": "no_cert_cpid" },
+      "EZP_AUTH_CD": { "value": null },
+      "FR_DT": { "value": "CUR_YYMMDD" },
+      "TO_DT": { "value": "99999999" },
+      "PM_CD": { "value": "01" },
+      "SPM_CD": { "value": "05" },
+      "REG_DT": { "value": "CUR_YYMMDD" },
+      "WORKER": { "value": "admin" },
+      "REG_DNT": { "value": "CUR_YYMMDDHHIISS" }
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "table": "TBSI_ADDSVC_FEE",
+  "rows": [
+    {
+      "ID": { "value": "wzonTest0m" },
+      "ID_CD": { "value": "1" },
+      "ADDSVC_TYPE": { "value": "SMS" },
+      "FR_DT": { "value": "20260126" },
+      "TO_DT": { "value": "99999999" },
+      "FEE_TYPE_CD": { "value": "3" },
+      "FEE": { "value": "10" },
+      "USE_ST_TYPE": { "value": "1" },
+      "WORKER": { "value": "admin" },
+      "REG_DNT": { "value": "CUR_YYMMDDHHIISS" }
+    }
+  ]
+}
