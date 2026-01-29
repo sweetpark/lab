@@ -21,10 +21,10 @@ public class DBConfig {
 
     @Bean
     public DataSource dataSource(){
-        DataSource dataSource = new HikariDataSource();
-        ((HikariDataSource) dataSource).setJdbcUrl(url);
-        ((HikariDataSource) dataSource).setUsername(username);
-        ((HikariDataSource) dataSource).setPassword(password);
+        HikariDataSource dataSource = new HikariDataSource();
+        dataSource.setJdbcUrl(url);
+        dataSource.setUsername(username);
+        dataSource.setPassword(password);
 
         return dataSource;
     }

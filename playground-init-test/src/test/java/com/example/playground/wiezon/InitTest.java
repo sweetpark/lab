@@ -81,10 +81,10 @@ public class InitTest {
 
                 BufferedReader br = new BufferedReader(new InputStreamReader(read));
                 MetaData metaData = gson.fromJson(br, MetaData.class);
-                Assertions.assertEquals(metaData.getTable(), "TEST_TABLE");
+                Assertions.assertEquals("TEST_TABLE", metaData.getTable());
                 if(!metaData.getRows().isEmpty()){
                     Map<String, Map<String, Object>> first = metaData.getRows().getFirst();
-                    Assertions.assertEquals(first.get("ID").get("value"), "data");
+                    Assertions.assertEquals("data", first.get("ID").get("value"));
                 }
             }
         } catch (IOException e) {
