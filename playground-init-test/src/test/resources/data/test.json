@@ -1,6 +1,22 @@
 {
-  "table" :  "table",
+  "table" :  "TEST_TABLE",
   "rows" :  [
-    {"value" :  "data", "crypto" :  "ENC_HASH"}
+    {
+      "ID" :{
+        "value" : "data",
+        "crypto" : "ENC_HASH"
+      },
+      "PW": {
+        "value" : "data",
+        "crypto" : "PASSWORD"
+      },
+      "OTP": {
+        "crypto": "OTP"
+      },
+      "DATE": {
+          "value" : "CUR_YYMMDD"
+      }
+
+    }
   ]
 }
