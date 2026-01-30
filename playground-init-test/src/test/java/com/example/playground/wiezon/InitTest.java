@@ -12,6 +12,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.ResourcePatternResolver;
@@ -28,10 +29,7 @@ import java.nio.file.StandardOpenOption;
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @SpringBootTest
@@ -42,6 +40,11 @@ public class InitTest {
     @Autowired
     public DataSource dataSource;
     public CryptUtils cryptUtils;
+
+    @Value("${mid}")
+    private String prefixMidName;
+    @Value("${cono}")
+    private String companyNumber;
 
     @BeforeEach
     public void init(){
@@ -61,6 +64,7 @@ public class InitTest {
     @DisplayName("암호화 성공 테스트")
     public void encSuccessTest() throws Exception {
         try{
+            System.out.println(EncUtil.createEnc("1000000"));
             Assertions.assertInstanceOf(String.class,EncUtil.createEnc("data"));
         }catch(Exception e){
             Assertions.fail("암호화 실패");
@@ -142,6 +146,44 @@ public class InitTest {
 
     }
 
+    @Test
+    @DisplayName("매장ID 생성로직")
+    void mid_create_test(){
+        int number = 10;
+
+        List<String> midList  = new ArrayList<>();
+        for(int i = 0; i < number; i++){
+            String sb = prefixMidName +
+                    String.format("%03d", i) +
+                    "m";
+
+            midList.add(sb);
+        }
+
+        Assertions.assertTrue(midList.contains("sitest001m"));
+
+    }
+
+    @Test
+    @DisplayName("사업자번호 생성 로직")
+    void create_co_no() {
+        int length = 10;
+        List<String> coNoNum = new ArrayList<>();
+        Random random = new Random();
+
+        while (coNoNum.size() != 10) {
+            for (int i = 0; i < length; i++) {
+                coNoNum.add(String.valueOf(random.nextInt(10)));
+            }
+            if (!validateCoNo(coNoNum)) {
+                coNoNum.clear();
+            }
+        }
+
+        System.out.println("Generated Business Number: " + String.join("", coNoNum));
+        Assertions.assertEquals(10, coNoNum.size());
+    }
+
     private static void dbInsert(MetaData metaData, Connection con) {
         String table = metaData.getTable();
 
@@ -172,7 +214,6 @@ public class InitTest {
 
         }
     }
-
     private void preprocessMetaData(MetaData metaData, LocalDateTime now) {
         metaData.getRows().forEach(row -> preprocessRow(row, now));
     }
@@ -231,6 +272,27 @@ public class InitTest {
         );
         return json;
     }
+    private boolean validateCoNo(List<String> coNoNum) {
+        if (coNoNum.size() != 10) {
+            return false;
+        }
 
+        int[] digits = new int[10];
+        for (int i = 0; i < 10; i++) {
+            digits[i] = Integer.parseInt(coNoNum.get(i));
+        }
+
+        int[] weights = {1, 3, 7, 1, 3, 7, 1, 3, 5};
+        int sum = 0;
+        for (int i = 0; i < 8; i++) {
+            sum += digits[i] * weights[i];
+        }
+
+        int lastWeightDigit = digits[8] * weights[8];
+        sum += (lastWeightDigit / 10) + (lastWeightDigit % 10);
+
+        int checkDigit = (10 - (sum % 10)) % 10;
+        return checkDigit == digits[9];
+    }
 
 }
