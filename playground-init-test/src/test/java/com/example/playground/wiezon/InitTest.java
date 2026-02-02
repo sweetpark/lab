@@ -14,8 +14,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.core.env.Environment;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.ResourcePatternResolver;
+import org.springframework.test.context.ActiveProfiles;
 
 import javax.sql.DataSource;
 import java.io.BufferedReader;
@@ -33,10 +35,14 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @SpringBootTest
+@ActiveProfiles("test")
 public class InitTest {
 
     @Autowired
     public ResourcePatternResolver resolver;
+    @Autowired
+    Environment environment;
+
     @Autowired
     public DataSource dataSource;
     public CryptUtils cryptUtils;
@@ -182,6 +188,79 @@ public class InitTest {
 
         System.out.println("Generated Business Number: " + String.join("", coNoNum));
         Assertions.assertEquals(10, coNoNum.size());
+    }
+
+    @Test
+    @DisplayName("제휴사 코드 변경")
+    void create_cpid() throws IOException {
+        Resource[] resources = resolver.getResources("classpath:/data/**/*.json");
+
+        Arrays.stream(resources).forEach(resource -> {
+                MetaData template = parse(resource);
+                int index = 0;
+                while(true){
+                    String ptnCd = environment.getProperty(String.format("cpids[%d].ptnCd", index));
+                    if(ptnCd == null){
+                        break;
+                    }
+                    String keyType = environment.getProperty(String.format("cpids[%d].keyType", index));
+                    String key = environment.getProperty(String.format("cpids[%d].key", index));
+
+
+                    List<Map<String, Map<String, Object>>> newRows = template.getRows().stream()
+                            .map(templateRow -> {
+
+                                Map<String, Map<String, Object>> deepRow = new HashMap<>();
+
+                                // 깊은 복사
+                                for (String _key : templateRow.keySet()) {
+                                    Map<String, Object> innerMap = templateRow.get(_key);
+                                    deepRow.put(_key, new HashMap<>(innerMap));
+                                }
+
+                                if (isTemplateMatched(deepRow, "PTN_CD", "${PTN_CD}")
+                                        && isTemplateMatched(deepRow, "KEY_TYPE", "${KEY_TYPE}")
+                                        && isTemplateMatched(deepRow, "DATA", "${KEY}"))
+                                {
+                                    deepRow.put("PTN_CD", valueMap(ptnCd));
+                                    deepRow.put("KEY_TYPE", valueMap(keyType));
+                                    String delimiter = deepRow.get("DELIMITER").get("value").toString();
+                                    Assertions.assertNotNull(key);
+                                    String[] keys = key.split(",");
+
+                                    StringBuilder sb = new StringBuilder();
+                                    for (int i = 0; i < keys.length; i++) {
+                                        if(i == keys.length -1){
+                                            sb.append(keys[i]);
+                                        }else{
+                                            sb.append(keys[i]).append(delimiter);
+                                        }
+                                    }
+
+                                    deepRow.put("DATA", valueMap(sb.toString()));
+                                }else if(isTemplateMatched(deepRow, "PTN_CD", "${PTN_CD}")){
+                                    deepRow.put("PTN_CD", valueMap(ptnCd));
+                                }
+
+                                return deepRow;
+                            })
+                            .collect(Collectors.toList());
+
+
+                    MetaData newMetaData = new MetaData(template.getTable(), newRows);
+                    Assertions.assertFalse(newMetaData.getRows().isEmpty());
+                    System.out.println(newMetaData.getRows());
+
+                    index++;
+                }
+        });
+    }
+
+    private boolean isTemplateMatched(Map<String, Map<String, Object>> row, String colKey, String templateStr) {
+        if (!row.containsKey(colKey) || row.get(colKey) == null) return false;
+
+        Object valueObj = row.get(colKey).get("value");
+        return valueObj != null && valueObj.equals(templateStr);
     }
 
     private static void dbInsert(MetaData metaData, Connection con) {
