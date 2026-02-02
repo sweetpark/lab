@@ -28,6 +28,11 @@ public class MetaData {
         return this.table;
     }
 
+    public MetaData(String table, List<Map<String, Map<String,Object>>> rows){
+        this.table = table;
+        this.rows = rows;
+    }
+
     public List<Map<String,Map<String,Object>>> getRows() {
         return this.rows;
     }

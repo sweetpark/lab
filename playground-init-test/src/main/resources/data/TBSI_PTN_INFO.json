@@ -1,0 +1,53 @@
+{
+  "table": "TBSI_PTN_INFO",
+  "rows": [
+    { "PTN_CD" :  "13",
+      "PTN_NM" : "갤럭시아",
+      "PTN_TYPE" : "PG",
+      "PM_CD" : "01",
+      "SPM_CD" : "01",
+      "WORKER" : "TEST",
+      "REG_DNT" : "CUR_YYMMDDHHIISS"
+    },
+    { "PTN_CD" :  "13",
+      "PTN_NM" : "갤럭시아",
+      "PTN_TYPE" : "PG",
+      "PM_CD" : "01",
+      "SPM_CD" : "02",
+      "WORKER" : "TEST",
+      "REG_DNT" : "CUR_YYMMDDHHIISS"
+    },
+    { "PTN_CD" :  "13",
+      "PTN_NM" : "갤럭시아",
+      "PTN_TYPE" : "PG",
+      "PM_CD" : "01",
+      "SPM_CD" : "05",
+      "WORKER" : "TEST",
+      "REG_DNT" : "CUR_YYMMDDHHIISS"
+    },
+    { "PTN_CD" :  "28",
+      "PTN_NM" : "더즌",
+      "PTN_TYPE" : "00",
+      "PM_CD" : "00",
+      "SPM_CD" : "00",
+      "WORKER" : "TEST",
+      "REG_DNT" : "CUR_YYMMDDHHIISS"
+    },
+    { "PTN_CD" :  "PAYQ",
+      "PTN_NM" : "페이큐",
+      "PTN_TYPE" : "00",
+      "PM_CD" : "61",
+      "SPM_CD" : "01",
+      "WORKER" : "TEST",
+      "REG_DNT" : "CUR_YYMMDDHHIISS"
+    },
+    { "PTN_CD" :  "PAYQ",
+      "PTN_NM" : "페이큐",
+      "PTN_TYPE" : "00",
+      "PM_CD" : "61",
+      "SPM_CD" : "02",
+      "WORKER" : "TEST",
+      "REG_DNT" : "CUR_YYMMDDHHIISS"
+    }
+  ]
+}
