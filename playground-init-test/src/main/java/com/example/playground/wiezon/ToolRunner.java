@@ -2,13 +2,9 @@ package com.example.playground.wiezon;
 
 import com.example.playground.wiezon.dto.InitData;
 import com.example.playground.wiezon.dto.MetaData;
-import com.example.playground.wiezon.service.DBProcessService;
-import com.example.playground.wiezon.service.DataProcService;
 import com.example.playground.wiezon.service.FileReadService;
 import com.example.playground.wiezon.service.InitDataAssembler;
-import com.example.playground.wiezon.util.CryptoUtil;
-import kms.wiezon.com.crypt.CryptUtils;
-import org.bouncycastle.util.Properties;
+import com.example.playground.wiezon.startegy.MetaDataProcessStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -33,13 +29,11 @@ public class ToolRunner implements ApplicationRunner {
     private ResourcePatternResolver resolver;
 
     @Autowired
-    private DataProcService dataProcService;
-    @Autowired
     private FileReadService fileReadService;
     @Autowired
-    private DBProcessService dbProcessService;
-    @Autowired
     private InitDataAssembler assembler;
+    @Autowired
+    private List<MetaDataProcessStrategy> strategies;
 
     @Transactional
     @Override
@@ -58,16 +52,15 @@ public class ToolRunner implements ApplicationRunner {
                     // 1. file read
                     MetaData metaData = fileReadService.parseJson(is);
 
-                    // 2. data preprocess (제휴사)
-                    dataProcService.affiliateProcess(metaData, propertiesData).forEach(
-                            processedMetaData ->
-                            {
-                                // data preprocess (파일 read)
-                                fileReadService.dataPreProcess(processedMetaData);
-                                // DB Insert
-                                dbProcessService.save(processedMetaData);
-                            }
-                    );
+
+                    // 2. 전략 선택 & 실행
+                    strategies.stream()
+                            .filter(s -> s.supports(metaData))
+                            .findFirst()
+                            .orElseThrow(() ->
+                                    new IllegalStateException("처리 전략이 없습니다.")
+                            )
+                            .process(metaData, propertiesData);
 
 
                 } catch (IOException e) {

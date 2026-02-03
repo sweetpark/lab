@@ -1,9 +1,7 @@
 package com.example.playground.wiezon;
 
 
-import com.example.playground.wiezon.dto.CpidMap;
 import com.example.playground.wiezon.dto.InitData;
-import com.example.playground.wiezon.dto.MidInitData;
 import com.example.playground.wiezon.dto.MetaData;
 import com.example.playground.wiezon.service.InitDataAssembler;
 import com.example.playground.wiezon.util.CryptoType;
