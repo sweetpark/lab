@@ -7,7 +7,7 @@
       "CTGR": { "value": "00" },
       "TITLE": { "value": "FAQ테스트등록" },
       "BODY": { "value": "<p>FAQ테스트 등록입니다.</p>" },
-      "WORKER": { "value": "admin" },
+      "WORKER": { "value": "TEST" },
       "NOTI_TYPE": { "value": "0" },
       "DEL_FLG": { "value": "0" },
       "REG_DT": { "value": "CUR_YYMMDD" }

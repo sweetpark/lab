@@ -11,6 +11,8 @@ import org.springframework.stereotype.Component;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static com.example.playground.wiezon.util.CommonUtil.createNewRow;
+
 
 @Component
 public class AffiliateProcessStrategy implements MetaDataProcessStrategy{
@@ -56,13 +58,7 @@ public class AffiliateProcessStrategy implements MetaDataProcessStrategy{
             List<Map<String, Map<String, Object>>> newRows = template.getRows().stream()
                     .map(templateRow -> {
 
-                        Map<String, Map<String, Object>> deepRow = new HashMap<>();
-
-                        // 깊은 복사
-                        for (String _key : templateRow.keySet()) {
-                            Map<String, Object> innerMap = templateRow.get(_key);
-                            deepRow.put(_key, new HashMap<>(innerMap));
-                        }
+                        Map<String, Map<String, Object>> deepRow = createNewRow(templateRow);
 
                         if (isTemplateMatched(deepRow, "PTN_CD", "${PTN_CD}")) {
                             deepRow.put("PTN_CD", Map.of("value", ptnCd));

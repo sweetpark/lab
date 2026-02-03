@@ -4,9 +4,9 @@
   "rows": [
     {
       "RECV_DT": { "value": "20260126" },
-      "CO_NO": { "value": "1232332124" },
+      "CO_NO": { "value": "${CO_NO}" },
       "CO_NM": { "value": "위지온테스트" },
-      "REG_DNT": { "value": "CUR_YYMMDDHHIISS" },
+      "REG_DNT": { "value": "YESTER_YYMMDDHHIISS" },
       "REP_HP": { "value": "01088889999", "crypto": "ENC_HASH" },
       "CO_CL_CD": { "value": "2" },
       "BS_KIND": { "value": "IT" },

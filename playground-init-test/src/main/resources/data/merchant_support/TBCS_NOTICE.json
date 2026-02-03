@@ -11,7 +11,7 @@
       "BODY": { "value": "<p>테스트 공지사항입니다.</p>" },
       "NOTI_TRG_CD": { "value": "00" },
       "REG_DT": { "value": "CUR_YYMMDD" },
-      "WORKER": { "value": "admin" },
+      "WORKER": { "value": "TEST" },
       "FR_DT": { "value": "20260126" },
       "TO_DT": { "value": "20260126" }
     }

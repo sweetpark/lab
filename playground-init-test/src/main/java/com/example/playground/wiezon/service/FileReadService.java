@@ -4,7 +4,6 @@ import com.example.playground.wiezon.dto.MetaData;
 import com.example.playground.wiezon.util.CryptoType;
 import com.example.playground.wiezon.util.EncUtil;
 import com.google.gson.Gson;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
@@ -12,6 +11,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
+
+import static com.example.playground.wiezon.util.CommonUtil.valueMap;
 
 @Service
 public class FileReadService {
@@ -62,12 +63,10 @@ public class FileReadService {
             switch (entry.getValue().get("value").toString()){
                 case "CUR_YYMMDD" -> entry.setValue(valueMap(now.format(DateTimeFormatter.ofPattern("yyyyMMdd"))));
                 case "CUR_YYMMDDHHIISS" -> entry.setValue(valueMap(now.format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"))));
+                case "YESTER_YYMMDD" -> entry.setValue(valueMap(now.minusDays(1).format(DateTimeFormatter.ofPattern("yyyyMMdd"))));
+                case "YESTER_YYMMDDHHIISS" -> entry.setValue(valueMap(now.minusDays(1).format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"))));
             }
         }
     }
-    private static @NonNull Map<String, Object> valueMap(String now) {
-        Map<String, Object> newDate = new HashMap<>();
-        newDate.put("value", now);
-        return newDate;
-    }
+
 }

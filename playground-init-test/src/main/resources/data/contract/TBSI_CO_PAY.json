@@ -4,23 +4,23 @@
   "rows": [
     {
       "ID_CD": { "value": "0" },
-      "ID": { "value": "1232332124" },
+      "ID": { "value": "${CO_NO}" },
       "PAY_CD": { "value": "1" },
       "REQ_AMT": { "value": "50000" },
       "PAY_ST_TYPE": { "value": "9" },
       "EXP_FLG": { "value": "0" },
       "REG_DT": { "value": "CUR_YYMMDD" },
-      "WORKER": { "value": "admin" }
+      "WORKER": { "value": "TEST" }
     },
     {
       "ID_CD": { "value": "0" },
-      "ID": { "value": "1232332124" },
+      "ID": { "value": "${CO_NO}" },
       "PAY_CD": { "value": "2" },
       "REQ_AMT": { "value": "100000" },
       "PAY_ST_TYPE": { "value": "9" },
       "EXP_FLG": { "value": "0" },
       "REG_DT": { "value": "CUR_YYMMDD" },
-      "WORKER": { "value": "admin" }
+      "WORKER": { "value": "TEST" }
     }
   ]
 }
