@@ -1,7 +1,11 @@
 package com.example.playground.wiezon;
 
 
+import com.example.playground.wiezon.dto.CpidMap;
+import com.example.playground.wiezon.dto.InitData;
+import com.example.playground.wiezon.dto.MidInitData;
 import com.example.playground.wiezon.dto.MetaData;
+import com.example.playground.wiezon.service.InitDataAssembler;
 import com.example.playground.wiezon.util.CryptoType;
 import com.example.playground.wiezon.util.EncUtil;
 import com.google.gson.Gson;
@@ -42,6 +46,8 @@ public class InitTest {
     public ResourcePatternResolver resolver;
     @Autowired
     Environment environment;
+    @Autowired
+    InitDataAssembler assembler;
 
     @Autowired
     public DataSource dataSource;
@@ -49,8 +55,8 @@ public class InitTest {
 
     @Value("${mid}")
     private String prefixMidName;
-    @Value("${cono}")
-    private String companyNumber;
+
+
 
     @BeforeEach
     public void init(){
@@ -83,9 +89,11 @@ public class InitTest {
     public void fileRead(){
 
         try {
-            Resource[] resources = resolver.getResources("classpath:/data/**/*.json");
+            Resource[] resources = resolver.getResources("classpath:/data/test/*.json");
 
             for(Resource resource : resources){
+                System.out.println(resource.getURI());
+
                 InputStream read = resource.getInputStream();
                 Gson gson = new Gson();
 
@@ -256,13 +264,37 @@ public class InitTest {
         });
     }
 
+
+
+    @Test
+    @DisplayName("영세 사업자 번호 가져오기")
+    void getCoNo(){
+
+        String coNo = getCoNo(dataSource);
+
+        Assertions.assertNotNull(coNo);
+        Assertions.assertEquals(10, coNo.length());
+        System.out.println("CO_NO : " + coNo);
+    }
+
+    @Test
+    @DisplayName("초기 데이터 셋팅")
+    void initData(){
+
+        InitData initData = assembler.assemble();
+
+        Assertions.assertEquals(2, initData.getCpidList().size());
+        Assertions.assertEquals(2, initData.getMidList().size());
+        initData.getCpidList().forEach(System.out::println);
+        initData.getMidList().forEach(System.out::println);
+    }
+
     private boolean isTemplateMatched(Map<String, Map<String, Object>> row, String colKey, String templateStr) {
         if (!row.containsKey(colKey) || row.get(colKey) == null) return false;
 
         Object valueObj = row.get(colKey).get("value");
         return valueObj != null && valueObj.equals(templateStr);
     }
-
     private static void dbInsert(MetaData metaData, Connection con) {
         String table = metaData.getTable();
 
@@ -373,5 +405,32 @@ public class InitTest {
         int checkDigit = (10 - (sum % 10)) % 10;
         return checkDigit == digits[9];
     }
+    private static String getCoNo(DataSource dataSource) {
+        String sql =
+                "SELECT tmma.CO_NO " +
+                        "FROM TBSI_MS_MBS_ALL tmma " +
+                        "LEFT JOIN TBSI_CO tsc ON tmma.CO_NO = tsc.CO_NO " +
+                        "WHERE tmma.SM_MBS_CD = ? " +
+                        "AND tsc.CO_NO IS NULL " +
+                        "ORDER BY tmma.TO_DT DESC " +
+                        "LIMIT 1";
 
+        try(Connection connection = dataSource.getConnection();
+            PreparedStatement pstmt = connection.prepareStatement(sql)) {
+
+            pstmt.setString(1, "A1");
+
+            try(ResultSet rs = pstmt.executeQuery()){
+                if(rs.next()){
+                    return rs.getString("CO_NO");
+                }else{
+                    throw new RuntimeException("영세를 가진 사업자번호가 존재하지 않습니다.");
+                }
+            }
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
