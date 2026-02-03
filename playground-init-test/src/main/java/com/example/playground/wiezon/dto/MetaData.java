@@ -6,6 +6,7 @@ import java.util.Set;
 
 public class MetaData {
 
+    private String division;
     private String table;
     private List<Map<String, Map<String, Object>>> rows;
     private static final Set<String> ALLOWED_TABLES =
@@ -20,6 +21,15 @@ public class MetaData {
                     "TBSI_ADDSVC_FEE",
                     "TBSI_MBS_MEMO"
             );
+
+
+
+    public String getDivision(){
+        if(this.division == null){
+            throw new RuntimeException("Invalid division: " + this);
+        }
+        return this.division;
+    }
 
     public String getTable() {
         if(!isAllowedTable()){
