@@ -1,5 +1,5 @@
 {
-  "division" : "user",
+  "division" : "mid",
   "table": "TBSI_CHG_HIST",
   "rows": [
     { "ID_CD": { "value": "1" }, "ID": { "value": "wzonTest0m" }, "TB_NM": { "value": "TBSI_MBS_SVC" }, "BEFORE_VALUE": { "value": "{\"selUseCl0101\":\"0\"}" }, "AFTER_VALUE": { "value": "{\"selUseCl0101\":\"1\"}" }, "WORK_IP": { "value": "0:0:0:0:0:0:0:1" }, "CHG_DT": { "value": "CUR_YYMMDD" }, "CHG_TM": { "value": "CUR_HHIISS" }, "WORKER": { "value": "admin" }, "REG_DNT": { "value": "CUR_YYMMDDHHIISS" } },
