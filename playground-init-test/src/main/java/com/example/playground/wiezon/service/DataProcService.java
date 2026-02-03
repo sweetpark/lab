@@ -1,5 +1,7 @@
 package com.example.playground.wiezon.service;
 
+import com.example.playground.wiezon.dto.CpidMap;
+import com.example.playground.wiezon.dto.InitData;
 import com.example.playground.wiezon.dto.MetaData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -11,29 +13,23 @@ import java.util.stream.Collectors;
 @Service
 public class DataProcService {
 
-    @Autowired
-    private Environment environment;
-    private final static Set<String> tableChk = Set.of("TBSI_PTN_CPID", "TBSI_PTN_FEE");
+    private final static Set<String> affiliateChk = Set.of("TBSI_PTN_CPID", "TBSI_PTN_FEE");
 
 
     // 제휴사 관련 전처리
-    public List<MetaData> affiliateProcess(MetaData template){
+    public List<MetaData> affiliateProcess(MetaData template, InitData propertiesData){
 
         List<MetaData> resultList = new ArrayList<>();
 
-        if(tableChk.contains(template.getTable())){
+        if(affiliateChk.contains(template.getTable())){
+                for(CpidMap cpidMap : propertiesData.getCpidList() ){
 
-                int index = 0;
+                    //CPID properties 값 load
+                    String ptnCd = cpidMap.getPtnCd();
+                    String keyType = cpidMap.getKeyType();
+                    String key = cpidMap.getKey();
 
-                while(true){
-                    String ptnCd = environment.getProperty(String.format("cpids[%d].ptnCd", index));
-                    if(ptnCd == null){
-                        break;
-                    }
-                    String keyType = environment.getProperty(String.format("cpids[%d].keyType", index));
-                    String key = environment.getProperty(String.format("cpids[%d].key", index));
-
-
+                    // template 에서 해당 값 바꿔치기
                     List<Map<String, Map<String, Object>>> newRows = template.getRows().stream()
                             .map(templateRow -> {
 
@@ -60,9 +56,10 @@ public class DataProcService {
 
 
                     resultList.add(new MetaData(template.getTable(), newRows));
-                    index++;
                 }
+
         }else{
+            // 제휴사 테이블이 아닐경우, 그대로 넘김
             resultList.add(template);
         }
 
