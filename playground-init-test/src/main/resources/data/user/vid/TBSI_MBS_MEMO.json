@@ -4,11 +4,11 @@
     {
       "ID_CD": { "value": "3" },
       "ID": { "value": "wzonTest0a" },
-      "REG_DT": { "value": "CUR_YYMMDD" },
-      "REG_TM": { "value": "CUR_HHIISS" },
+      "REG_DT": { "value": "YESTER_YYMMDD" },
+      "REG_TM": { "value": "YESTER_HHIISS" },
       "MEMO": { "value": "판매자등록" },
-      "WORKER": { "value": "admin" },
-      "REG_DNT": { "value": "CUR_YYMMDDHHIISS" }
+      "WORKER": { "value": "TEST" },
+      "REG_DNT": { "value": "YESTER_YYMMDDHHIISS" }
     }
   ]
 }

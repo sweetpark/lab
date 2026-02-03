@@ -4,8 +4,8 @@
     {
       "UID": { "value": "wzonTest0a" },
       "RULE_ID": { "value": "SL1" },
-      "REG_DT": { "value": "20260126" },
-      "WORKER": { "value": "admin" }
+      "REG_DT": { "value": "YESTER_YYMMDD" },
+      "WORKER": { "value": "TEST" }
     }
   ]
 }

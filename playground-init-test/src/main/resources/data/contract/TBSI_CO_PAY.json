@@ -9,7 +9,7 @@
       "REQ_AMT": { "value": "50000" },
       "PAY_ST_TYPE": { "value": "9" },
       "EXP_FLG": { "value": "0" },
-      "REG_DT": { "value": "CUR_YYMMDD" },
+      "REG_DT": { "value": "YESTER_YYMMDD" },
       "WORKER": { "value": "TEST" }
     },
     {
@@ -19,7 +19,7 @@
       "REQ_AMT": { "value": "100000" },
       "PAY_ST_TYPE": { "value": "9" },
       "EXP_FLG": { "value": "0" },
-      "REG_DT": { "value": "CUR_YYMMDD" },
+      "REG_DT": { "value": "YESTER_YYMMDD" },
       "WORKER": { "value": "TEST" }
     }
   ]

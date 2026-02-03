@@ -13,37 +13,38 @@
         "value": "2"
       },
       "USR_NM": {
-        "value": "위*온",
+        "value": "위지온",
         "crypto": "ENC_HASH"
       },
       "PW": {
-        "value": "VIZ4FHanhclSY94ewuOq5brlSkqQ1u+jq9ACRLT8x1ulhnuO9JrOslJziZVqq6fs90Q/wuKMmc9jX8HBocH2pw=="
+        "value": "wiezon1!",
+        "crypto" : "PASSWORD"
       },
       "ID_USE_ST_CD": {
         "value": "0"
       },
       "OTP_KEY": {
-        "value": "IQ2UOXSBEFYWYI3QHAYUKTBXLFBUIRC6"
+        "value": "MFZWIZDBONSGC5TDMN5HQY32PBRXU6DD"
       },
       "EMAIL": {
-        "value": "wy****@wiezon.com",
+        "value": "wypark@wiezon.com",
         "crypto": "ENC_HASH"
       },
       "HP_NO": {
-        "value": "010****9999",
+        "value": "01099999999",
         "crypto": "ENC_HASH"
       },
       "REG_DT": {
-        "value": "20260126"
+        "value": "YESTER_YYMMDD"
       },
       "REG_DNT": {
-        "value": "20260126164537"
+        "value": "YESTER_YYMMDDHHIISS"
       },
       "CRYPT_FLG": {
         "value": "1"
       },
       "WORKER": {
-        "value": "admin"
+        "value": "TEST"
       },
       "LOGIN_OTP_TYPE": {
         "value": "0"

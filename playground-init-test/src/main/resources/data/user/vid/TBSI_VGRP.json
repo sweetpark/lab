@@ -9,10 +9,10 @@
         "value": "위지온영업점1"
       },
       "CO_NO": {
-        "value": "1232332124"
+        "value": "${CO_NO}"
       },
       "REP_NM": {
-        "value": "위지온대*1",
+        "value": "위지온대표1",
         "crypto": "ENC_HASH"
       },
       "GD_KIND": {
@@ -33,7 +33,7 @@
         "crypto": "ENC_HASH"
       },
       "EMAIL": {
-        "value": "wy****@wiezon.com",
+        "value": "wypark@wiezon.com",
         "crypto": "ENC_HASH"
       },
       "ID_USE_ST_CD": {
@@ -58,7 +58,7 @@
         "value": "0"
       },
       "REG_DNT": {
-        "value": "CUR_YYMMDDHHIISS"
+        "value": "YESTER_YYMMDDHHIISS"
       },
       "VGRP_TYPE": {
         "value": "3"
@@ -79,7 +79,7 @@
         "value": ""
       },
       "WORKER": {
-        "value": "admin"
+        "value": "TEST"
       },
       "AGENT_TYPE": {
         "value": "01"
@@ -88,10 +88,10 @@
         "value": null
       },
       "CONT_DT": {
-        "value": "20260126"
+        "value": "YESTER_YYMMDD"
       },
       "REP_BIRTH_DT": {
-        "value": "1990****",
+        "value": "19901010",
         "crypto": "ENC_HASH"
       },
       "TEL_NO": {
@@ -113,55 +113,55 @@
         "value": "wypark@wiezon.com"
       },
       "CONT_NM": {
-        "value": "위*온",
+        "value": "위지온",
         "crypto": "ENC_HASH"
       },
       "CONT_TEL": {
         "value": "01099999999"
       },
       "CONT_HP": {
-        "value": "010****9999",
+        "value": "01099999999",
         "crypto": "ENC_HASH"
       },
       "CONT_EMAIL": {
-        "value": "wy****@wiezon.com",
+        "value": "wypark@wiezon.com",
         "crypto": "ENC_HASH"
       },
       "STMT_NM": {
-        "value": "위지*2",
+        "value": "위지온2",
         "crypto": "ENC_HASH"
       },
       "STMT_TEL": {
         "value": "01099999999"
       },
       "STMT_HP": {
-        "value": "010****9999",
+        "value": "01099999999",
         "crypto": "ENC_HASH"
       },
       "STMT_EMAIL": {
-        "value": "wy****@wiezon.com",
+        "value": "wypark@wiezon.com",
         "crypto": "ENC_HASH"
       },
       "TECH_NM": {
-        "value": "위지*3",
+        "value": "위지온3",
         "crypto": "ENC_HASH"
       },
       "TECH_TEL": {
         "value": "01099999999"
       },
       "TECH_HP": {
-        "value": "010****9999",
+        "value": "01099999999",
         "crypto": "ENC_HASH"
       },
       "TECH_EMAIL": {
-        "value": "wy****@wiezon.com",
+        "value": "wypark@wiezon.com",
         "crypto": "ENC_HASH"
       },
       "CONT_EMP_NO": {
-        "value": "987654321"
+        "value": "admin"
       },
       "MGR1_EMP_NO": {
-        "value": "987654321"
+        "value": "admin"
       }
     }
   ]

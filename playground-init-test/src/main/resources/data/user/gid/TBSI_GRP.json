@@ -10,21 +10,21 @@
         "value": "위지온테스트그룹1"
       },
       "CO_NO": {
-        "value": "1232332124"
+        "value": "${CO_NO}"
       },
       "BANK_CD": {
         "value": "090"
       },
       "ACNT_NO": {
-        "value": "333******3333",
+        "value": "3333333333333",
         "crypto": "ENC_HASH"
       },
       "ACNT_NM": {
-        "value": "위*온",
+        "value": "위지온",
         "crypto": "ENC_HASH"
       },
       "REG_DT": {
-        "value": "CUR_YYMMDD"
+        "value": "YESTER_YYMMDD"
       },
       "TAX_EMAIL": {
         "value": "wypark@wiezon.com"
@@ -33,25 +33,25 @@
         "value": "0"
       },
       "EMP1_NM": {
-        "value": "위*온",
+        "value": "위지온",
         "crypto": "ENC_HASH"
       },
       "EMP1_TEL": {
         "value": "01099999999"
       },
       "EMP1_HP": {
-        "value": "010****9999",
+        "value": "01099999999",
         "crypto": "ENC_HASH"
       },
       "EMP1_EMAIL": {
-        "value": "wy****@wiezon.com",
+        "value": "wypark@wiezon.com",
         "crypto": "ENC_HASH"
       },
       "REG_DNT": {
         "value": "CUR_YYMMDDHHIISS"
       },
       "WORKER": {
-        "value": "admin"
+        "value": "TEST"
       }
     }
   ]
