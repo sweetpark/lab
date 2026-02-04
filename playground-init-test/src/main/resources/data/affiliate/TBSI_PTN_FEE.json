@@ -3,8 +3,8 @@
   "table": "TBSI_PTN_FEE",
   "rows": [
     {
-      "PTN_CD": { "value": "${PTN_CD}" },
-      "PTN_CPID": { "value": "certification_cpid" },
+      "PTN_CD": { "value": "${CERT_PTN_CD}" },
+      "PTN_CPID": { "value": "${CERTIFICATION_CPID}" },
       "PM_CD": { "value": "01" },
       "SPM_CD": { "value": "01" },
       "CP_CD": { "value": "*" },
@@ -27,8 +27,8 @@
       "REG_DNT": { "value": "CUR_YYMMDDHHIISS" }
     },
     {
-      "PTN_CD": { "value": "${PTN_CD}" },
-      "PTN_CPID": { "value": "certification_cpid" },
+      "PTN_CD": { "value": "${CERT_PTN_CD}" },
+      "PTN_CPID": { "value": "${CERTIFICATION_CPID}" },
       "PM_CD": { "value": "01" },
       "SPM_CD": { "value": "01" },
       "CP_CD": { "value": "*" },
@@ -51,8 +51,8 @@
       "REG_DNT": { "value": "CUR_YYMMDDHHIISS" }
     },
     {
-      "PTN_CD": { "value": "${PTN_CD}" },
-      "PTN_CPID": { "value": "certification_cpid" },
+      "PTN_CD": { "value": "${CERT_PTN_CD}" },
+      "PTN_CPID": { "value": "${CERTIFICATION_CPID}" },
       "PM_CD": { "value": "01" },
       "SPM_CD": { "value": "01" },
       "CP_CD": { "value": "*" },
@@ -75,8 +75,8 @@
       "REG_DNT": { "value": "CUR_YYMMDDHHIISS" }
     },
     {
-      "PTN_CD": { "value": "${PTN_CD}" },
-      "PTN_CPID": { "value": "certification_cpid" },
+      "PTN_CD": { "value": "${CERT_PTN_CD}" },
+      "PTN_CPID": { "value": "${CERTIFICATION_CPID}" },
       "PM_CD": { "value": "01" },
       "SPM_CD": { "value": "01" },
       "CP_CD": { "value": "*" },
@@ -99,8 +99,8 @@
       "REG_DNT": { "value": "CUR_YYMMDDHHIISS" }
     },
     {
-      "PTN_CD": { "value": "${PTN_CD}" },
-      "PTN_CPID": { "value": "certification_cpid" },
+      "PTN_CD": { "value": "${CERT_PTN_CD}" },
+      "PTN_CPID": { "value": "${CERTIFICATION_CPID}" },
       "PM_CD": { "value": "01" },
       "SPM_CD": { "value": "01" },
       "CP_CD": { "value": "*" },
@@ -123,8 +123,8 @@
       "REG_DNT": { "value": "CUR_YYMMDDHHIISS" }
     },
     {
-      "PTN_CD": { "value": "${PTN_CD}" },
-      "PTN_CPID": { "value": "old_cert_cpid" },
+      "PTN_CD": { "value": "${OLD_PTN_CD}" },
+      "PTN_CPID": { "value": "${OLD_CERT_CPID}" },
       "PM_CD": { "value": "01" },
       "SPM_CD": { "value": "02" },
       "CP_CD": { "value": "*" },
@@ -147,8 +147,8 @@
       "REG_DNT": { "value": "CUR_YYMMDDHHIISS" }
     },
     {
-      "PTN_CD": { "value": "${PTN_CD}" },
-      "PTN_CPID": { "value": "old_cert_cpid" },
+      "PTN_CD": { "value": "${OLD_PTN_CD}" },
+      "PTN_CPID": { "value": "${OLD_CERT_CPID}" },
       "PM_CD": { "value": "01" },
       "SPM_CD": { "value": "02" },
       "CP_CD": { "value": "*" },
@@ -171,8 +171,8 @@
       "REG_DNT": { "value": "CUR_YYMMDDHHIISS" }
     },
     {
-      "PTN_CD": { "value": "${PTN_CD}" },
-      "PTN_CPID": { "value": "old_cert_cpid" },
+      "PTN_CD": { "value": "${OLD_PTN_CD}" },
+      "PTN_CPID": { "value": "${OLD_CERT_CPID}" },
       "PM_CD": { "value": "01" },
       "SPM_CD": { "value": "02" },
       "CP_CD": { "value": "*" },
@@ -195,8 +195,8 @@
       "REG_DNT": { "value": "CUR_YYMMDDHHIISS" }
     },
     {
-      "PTN_CD": { "value": "${PTN_CD}" },
-      "PTN_CPID": { "value": "old_cert_cpid" },
+      "PTN_CD": { "value": "${OLD_PTN_CD}" },
+      "PTN_CPID": { "value": "${OLD_CERT_CPID}" },
       "PM_CD": { "value": "01" },
       "SPM_CD": { "value": "02" },
       "CP_CD": { "value": "*" },
@@ -219,8 +219,8 @@
       "REG_DNT": { "value": "CUR_YYMMDDHHIISS" }
     },
     {
-      "PTN_CD": { "value": "${PTN_CD}" },
-      "PTN_CPID": { "value": "old_cert_cpid" },
+      "PTN_CD": { "value": "${OLD_PTN_CD}" },
+      "PTN_CPID": { "value": "${OLD_CERT_CPID}" },
       "PM_CD": { "value": "01" },
       "SPM_CD": { "value": "02" },
       "CP_CD": { "value": "*" },
@@ -243,8 +243,8 @@
       "REG_DNT": { "value": "CUR_YYMMDDHHIISS" }
     },
     {
-      "PTN_CD": { "value": "${PTN_CD}" },
-      "PTN_CPID": { "value": "no_cert_cpid" },
+      "PTN_CD": { "value": "${NO_CERT_PTN_CD}" },
+      "PTN_CPID": { "value": "${NO_CERT_CPID}" },
       "PM_CD": { "value": "01" },
       "SPM_CD": { "value": "05" },
       "CP_CD": { "value": "*" },
@@ -267,8 +267,8 @@
       "REG_DNT": { "value": "CUR_YYMMDDHHIISS" }
     },
     {
-      "PTN_CD": { "value": "${PTN_CD}" },
-      "PTN_CPID": { "value": "no_cert_cpid" },
+      "PTN_CD": { "value": "${NO_CERT_PTN_CD}" },
+      "PTN_CPID": { "value": "${NO_CERT_CPID}" },
       "PM_CD": { "value": "01" },
       "SPM_CD": { "value": "05" },
       "CP_CD": { "value": "*" },
@@ -291,8 +291,8 @@
       "REG_DNT": { "value": "CUR_YYMMDDHHIISS" }
     },
     {
-      "PTN_CD": { "value": "${PTN_CD}" },
-      "PTN_CPID": { "value": "no_cert_cpid" },
+      "PTN_CD": { "value": "${NO_CERT_PTN_CD}" },
+      "PTN_CPID": { "value": "${NO_CERT_CPID}" },
       "PM_CD": { "value": "01" },
       "SPM_CD": { "value": "05" },
       "CP_CD": { "value": "*" },
@@ -315,8 +315,8 @@
       "REG_DNT": { "value": "CUR_YYMMDDHHIISS" }
     },
     {
-      "PTN_CD": { "value": "${PTN_CD}" },
-      "PTN_CPID": { "value": "no_cert_cpid" },
+      "PTN_CD": { "value": "${NO_CERT_PTN_CD}" },
+      "PTN_CPID": { "value": "${NO_CERT_CPID}" },
       "PM_CD": { "value": "01" },
       "SPM_CD": { "value": "05" },
       "CP_CD": { "value": "*" },
@@ -339,8 +339,8 @@
       "REG_DNT": { "value": "CUR_YYMMDDHHIISS" }
     },
     {
-      "PTN_CD": { "value": "${PTN_CD}" },
-      "PTN_CPID": { "value": "no_cert_cpid" },
+      "PTN_CD": { "value": "${NO_CERT_PTN_CD}" },
+      "PTN_CPID": { "value": "${NO_CERT_CPID}" },
       "PM_CD": { "value": "01" },
       "SPM_CD": { "value": "05" },
       "CP_CD": { "value": "*" },
@@ -363,8 +363,8 @@
       "REG_DNT": { "value": "CUR_YYMMDDHHIISS" }
     },
     {
-      "PTN_CD": { "value": "${PTN_CD}" },
-      "PTN_CPID": { "value": "offline_cpid" },
+      "PTN_CD": { "value": "${OFFLINE_PTN_CD}" },
+      "PTN_CPID": { "value": "${OFFLINE_CPID}" },
       "PM_CD": { "value": "01" },
       "SPM_CD": { "value": "03" },
       "CP_CD": { "value": "*" },
@@ -387,8 +387,8 @@
       "REG_DNT": { "value": "CUR_YYMMDDHHIISS" }
     },
     {
-      "PTN_CD": { "value": "${PTN_CD}" },
-      "PTN_CPID": { "value": "offline_cpid" },
+      "PTN_CD": { "value": "${OFFLINE_PTN_CD}" },
+      "PTN_CPID": { "value": "${OFFLINE_CPID}" },
       "PM_CD": { "value": "01" },
       "SPM_CD": { "value": "03" },
       "CP_CD": { "value": "*" },
@@ -411,8 +411,8 @@
       "REG_DNT": { "value": "CUR_YYMMDDHHIISS" }
     },
     {
-      "PTN_CD": { "value": "${PTN_CD}" },
-      "PTN_CPID": { "value": "offline_cpid" },
+      "PTN_CD": { "value": "${OFFLINE_PTN_CD}" },
+      "PTN_CPID": { "value": "${OFFLINE_CPID}" },
       "PM_CD": { "value": "01" },
       "SPM_CD": { "value": "03" },
       "CP_CD": { "value": "*" },
@@ -435,8 +435,8 @@
       "REG_DNT": { "value": "CUR_YYMMDDHHIISS" }
     },
     {
-      "PTN_CD": { "value": "${PTN_CD}" },
-      "PTN_CPID": { "value": "offline_cpid" },
+      "PTN_CD": { "value": "${OFFLINE_PTN_CD}" },
+      "PTN_CPID": { "value": "${OFFLINE_CPID}" },
       "PM_CD": { "value": "01" },
       "SPM_CD": { "value": "03" },
       "CP_CD": { "value": "*" },
@@ -459,8 +459,8 @@
       "REG_DNT": { "value": "CUR_YYMMDDHHIISS" }
     },
     {
-      "PTN_CD": { "value": "${PTN_CD}" },
-      "PTN_CPID": { "value": "offline_cpid" },
+      "PTN_CD": { "value": "${OFFLINE_PTN_CD}" },
+      "PTN_CPID": { "value": "${OFFLINE_CPID}" },
       "PM_CD": { "value": "01" },
       "SPM_CD": { "value": "03" },
       "CP_CD": { "value": "*" },

@@ -35,9 +35,30 @@ public class InitDataAssembler {
 
 
             CpidMap cpidMap = new CpidMap();
-            cpidMap.setPtnCd(environment.getProperty(String.format("cpids[%d].ptnCd", index)));
-            cpidMap.setKeyType(environment.getProperty(String.format("cpids[%d].keyType", index)));
-            cpidMap.setKey(environment.getProperty(String.format("cpids[%d].key", index)));
+
+            //인증
+            cpidMap.setCertPtnCd(prop("cpids[%d].cert.ptnCd", index));
+            cpidMap.setCertCpid(prop( "cpids[%d].cert.cpid", index));
+            cpidMap.setCertKeyType(prop( "cpids[%d].cert.keyType", index));
+            cpidMap.setCertKey(prop( "cpids[%d].cert.key", index));
+
+            //구인증
+            cpidMap.setOldCertPtnCd(prop("cpids[%d].old.cert.ptnCd", index));
+            cpidMap.setOldCertCpid(prop( "cpids[%d].old.cert.cpid", index));
+            cpidMap.setOldCertKeyType(prop( "cpids[%d].old.cert.keyType", index));
+            cpidMap.setOldCertKey(prop( "cpids[%d].old.cert.key", index));
+
+            //비인증
+            cpidMap.setNoCertPtnCd(prop( "cpids[%d].no.cert.ptnCd", index));
+            cpidMap.setNoCertCpid(prop( "cpids[%d].no.cert.cpid", index));
+            cpidMap.setNoCertKeyType(prop( "cpids[%d].no.cert.keyType", index));
+            cpidMap.setNoCertKey(prop( "cpids[%d].no.cert.key", index));
+
+            //오프라인
+            cpidMap.setOfflinePtnCd(prop( "cpids[%d].offline.ptnCd", index));
+            cpidMap.setOfflineCpid(prop( "cpids[%d].offline.cpid", index));
+            cpidMap.setOfflineKeyType(prop( "cpids[%d].offline.keyType", index));
+            cpidMap.setOfflineKey(prop( "cpids[%d].offline.key", index));
 
             midInitData.setCpidMap(cpidMap);
             initData.addCpidList(cpidMap);
@@ -76,5 +97,8 @@ public class InitDataAssembler {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+    private String prop(String key, int index){
+        return environment.getProperty(String.format(key, index));
     }
 }
