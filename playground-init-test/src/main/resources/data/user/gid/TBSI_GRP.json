@@ -1,10 +1,10 @@
 {
-  "division" : "user",
+  "division" : "gid",
   "table": "TBSI_GRP",
   "rows": [
     {
       "GID": {
-        "value": "wzonTest0g"
+        "value": "${GID}"
       },
       "G_NM": {
         "value": "위지온테스트그룹1"

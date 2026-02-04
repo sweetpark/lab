@@ -1,12 +1,12 @@
 {
-  "division" : "user",
+  "division" : "gid",
   "table": "TBAD_RULE_USR",
   "rows": [
     {
-      "UID": { "value": "wzonTest0g" },
+      "UID": { "value": "${GID}" },
       "RULE_ID": { "value": "DFT" },
       "REG_DT": { "value": "YESTER_YYMMDD" },
-      "WORKER": { "value": "admin" }
+      "WORKER": { "value": "TEST" }
     }
   ]
 }

@@ -24,7 +24,7 @@
       },
       "PW": {
         "value": "wiezon1!",
-        "crypto" : "PW"
+        "crypto" : "PASSWORD"
       },
       "ID_USE_ST_CD": {
         "value": "0"

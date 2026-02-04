@@ -12,8 +12,8 @@
       "NOTI_TRG_CD": { "value": "00" },
       "REG_DT": { "value": "CUR_YYMMDD" },
       "WORKER": { "value": "TEST" },
-      "FR_DT": { "value": "20260126" },
-      "TO_DT": { "value": "20260126" }
+      "FR_DT": { "value": "CUR_YYMMDD" },
+      "TO_DT": { "value": "CUR_YYMMDD" }
     }
   ]
 }

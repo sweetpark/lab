@@ -4,7 +4,7 @@
   "rows": [
     {
       "MID": { "value": "${MID}" },
-      "MKEY": { "value": "${MID}", "crypto" : "PW" },
+      "MKEY": { "value": "${MID}", "crypto" : "PASSWORD" },
       "USRID": { "value": "admin" },
       "CREATE_DT": { "value": "YESTER_YYMMDDHHIISS" },
       "WORKER": { "value": "TEST" },
