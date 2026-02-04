@@ -2,6 +2,7 @@ package com.example.playground.wiezon.service;
 
 import com.example.playground.wiezon.dto.MetaData;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.stereotype.Service;
 
 import javax.sql.DataSource;
@@ -13,30 +14,27 @@ import java.util.stream.Collectors;
 @Service
 public class DBProcessService {
 
-    @Autowired
-    DataSource dataSource;
 
-    public void save(MetaData metaData){
+    private final DataSource dataSource;
 
-        try(Connection con = dataSource.getConnection()){
-            try{
-                con.setAutoCommit(false);
-
-                dbInsert(metaData,con);
-                con.commit();
-            }catch(Exception e){
-                con.rollback();
-                throw new RuntimeException("DB Insert 실패", e);
-            }
-        }catch(Exception e){
-            throw new RuntimeException("DB Connection 실패",e);
-        }
-
-
-
+    public DBProcessService(DataSource dataSource) {
+        this.dataSource = dataSource;
     }
 
-    private static void dbInsert(MetaData metaData, Connection con) {
+    public void save(MetaData metaData){
+        
+        // 1. Connection 연결
+        Connection con = DataSourceUtils.getConnection(dataSource);
+        try {
+            // 2. insert
+            dbInsert(metaData, con);
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void dbInsert(MetaData metaData, Connection con) {
         String table = metaData.getTable();
 
         for(Map<String, Map<String,Object>> row : metaData.getRows()){
@@ -49,9 +47,13 @@ public class DBProcessService {
                 values.add(map.get("value"));
             });
 
-            String sql = "INSERT INTO " + table + " (" + String.join(", ", columns) + ") VALUES ("
-                    + values.stream().map(map -> "?").collect(Collectors.joining(", ")) +")";
+            String sql = "INSERT INTO " + table + " ("
+                    + columns.stream().map(this::escapeColumn).collect(Collectors.joining(", "))
+                    + ") VALUES ("
+                    + values.stream().map(map -> "?").collect(Collectors.joining(", "))
+                    +")";
 
+            System.out.println("[ SQL ] >>> \n "  + sql);
 
             try(PreparedStatement pstmt = con.prepareStatement(sql)){
 
@@ -65,6 +67,11 @@ public class DBProcessService {
             }
 
         }
+    }
+
+
+    private String escapeColumn(String column){
+        return "`" + column + "`";
     }
 
 }
