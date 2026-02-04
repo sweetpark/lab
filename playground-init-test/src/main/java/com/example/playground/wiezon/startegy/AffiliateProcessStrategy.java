@@ -49,28 +49,37 @@ public class AffiliateProcessStrategy implements MetaDataProcessStrategy{
 
         for(CpidMap cpidMap : propertiesData.getCpidList() ){
 
-            //CPID properties 값 load
-            String ptnCd = cpidMap.getPtnCd();
-            String keyType = cpidMap.getKeyType();
-            String key = cpidMap.getKey();
-
             // template 에서 해당 값 바꿔치기
             List<Map<String, Map<String, Object>>> newRows = template.getRows().stream()
                     .map(templateRow -> {
 
                         Map<String, Map<String, Object>> deepRow = createNewRow(templateRow);
 
-                        if (isTemplateMatched(deepRow, "PTN_CD", "${PTN_CD}")) {
-                            deepRow.put("PTN_CD", Map.of("value", ptnCd));
-                        }
+                        //FIXME) cpid가 없는경우 처리 로직 추가 필요
 
-                        if(isTemplateMatched(deepRow, "KEY_TYPE", "${KEY_TYPE}")
-                                && isTemplateMatched(deepRow, "KEY", "${KEY}"))
-                        {
-                            deepRow.put("KEY_TYPE", Map.of("value", Objects.requireNonNull(keyType)));
-                            deepRow.put("KEY", Map.of("value", Objects.requireNonNull(key)));
-                        }
+                        // Cert
+                        replace(deepRow, "PTN_CD", "${CERT_PTN_CD}", cpidMap.getCertPtnCd());
+                        replace(deepRow, "PTN_CPID", "${CERTIFICATION_CPID}", cpidMap.getCertCpid());
+                        replace(deepRow, "KEY_TYPE", "${CERT_KEY_TYPE}", cpidMap.getCertKeyType());
+                        replace(deepRow, "DATA", "${CERT_KEY}", cpidMap.getCertKey());
 
+                        // Old Cert
+                        replace(deepRow, "PTN_CD", "${OLD_PTN_CD}", cpidMap.getOldCertPtnCd());
+                        replace(deepRow, "PTN_CPID", "${OLD_CERT_CPID}", cpidMap.getOldCertCpid());
+                        replace(deepRow, "KEY_TYPE", "${OLD_KEY_TYPE}", cpidMap.getOldCertKeyType());
+                        replace(deepRow, "DATA", "${OLD_KEY}", cpidMap.getOldCertKey());
+
+                        // No Cert
+                        replace(deepRow, "PTN_CD", "${NO_CERT_PTN_CD}", cpidMap.getNoCertPtnCd());
+                        replace(deepRow, "PTN_CPID", "${NO_CERT_CPID}", cpidMap.getNoCertCpid());
+                        replace(deepRow, "KEY_TYPE", "${NO_CERT_KEY_TYPE}", cpidMap.getNoCertKeyType());
+                        replace(deepRow, "DATA", "${NO_CERT_KEY}", cpidMap.getNoCertKey());
+
+                        // Offline
+                        replace(deepRow, "PTN_CD", "${OFFLINE_PTN_CD}", cpidMap.getOfflinePtnCd());
+                        replace(deepRow, "PTN_CPID", "${OFFLINE_CPID}", cpidMap.getOfflineCpid());
+                        replace(deepRow, "KEY_TYPE", "${OFFLINE_KEY_TYPE}", cpidMap.getOfflineKeyType());
+                        replace(deepRow, "DATA", "${OFFLINE_KEY}", cpidMap.getOfflineKey());
 
                         return deepRow;
                     })
@@ -82,5 +91,11 @@ public class AffiliateProcessStrategy implements MetaDataProcessStrategy{
 
 
         return resultList;
+    }
+
+    private void replace(Map<String, Map<String, Object>> row, String col, String template, String value) {
+        if (isTemplateMatched(row, col, template)) {
+            row.put(col, Map.of("value", value == null ? "" : value));
+        }
     }
 }

@@ -281,8 +281,8 @@ public class InitTest {
 
         InitData initData = assembler.assemble();
 
-        Assertions.assertEquals(2, initData.getCpidList().size());
-        Assertions.assertEquals(2, initData.getMidList().size());
+        Assertions.assertEquals(1, initData.getCpidList().size());
+        Assertions.assertEquals(1, initData.getMidList().size());
         initData.getCpidList().forEach(System.out::println);
         initData.getMidList().forEach(System.out::println);
     }
