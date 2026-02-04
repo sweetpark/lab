@@ -14,6 +14,7 @@ import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
@@ -24,16 +25,18 @@ import java.util.function.Consumer;
 public class ToolRunner implements ApplicationRunner {
 
 
+    private final ResourcePatternResolver resolver;
+    private final FileReadService fileReadService;
+    private final InitDataAssembler assembler;
+    private final List<MetaDataProcessStrategy> strategies;
 
-    @Autowired
-    private ResourcePatternResolver resolver;
+    public ToolRunner(ResourcePatternResolver resolver, FileReadService fileReadService, InitDataAssembler assembler, List<MetaDataProcessStrategy> strategies) {
+        this.resolver = resolver;
+        this.fileReadService = fileReadService;
+        this.assembler = assembler;
+        this.strategies = strategies;
+    }
 
-    @Autowired
-    private FileReadService fileReadService;
-    @Autowired
-    private InitDataAssembler assembler;
-    @Autowired
-    private List<MetaDataProcessStrategy> strategies;
 
     @Transactional
     @Override
@@ -53,12 +56,12 @@ public class ToolRunner implements ApplicationRunner {
                     MetaData metaData = fileReadService.parseJson(is);
 
 
-                    // 2. 전략 선택 & 실행
+                    // 2. 패턴별 실행
                     strategies.stream()
                             .filter(s -> s.supports(metaData))
                             .findFirst()
                             .orElseThrow(() ->
-                                    new IllegalStateException("처리 전략이 없습니다.")
+                                    new IllegalStateException("처리 패턴이 없습니다.")
                             )
                             .process(metaData, propertiesData);
 
