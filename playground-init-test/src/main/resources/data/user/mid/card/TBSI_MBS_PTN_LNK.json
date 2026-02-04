@@ -3,46 +3,60 @@
   "table": "TBSI_MBS_PTN_LNK",
   "rows": [
     {
-      "MID": { "value": "wzonTest0m" },
-      "CO_NO": { "value": "1232332124" },
-      "PTN_CD": { "value": "13" },
-      "PTN_CPID": { "value": "old_cert_cpid" },
+      "MID": { "value": "${MID}" },
+      "CO_NO": { "value": "${CO_NO}" },
+      "PTN_CD": { "value": "${CERT_PTN_CD}" },
+      "PTN_CPID": { "value": "${CERTIFICATION_CPID}" },
       "EZP_AUTH_CD": { "value": null },
-      "FR_DT": { "value": "CUR_YYMMDD" },
+      "FR_DT": { "value": "YESTER_YYMMDD" },
+      "TO_DT": { "value": "99999999" },
+      "PM_CD": { "value": "01" },
+      "SPM_CD": { "value": "01" },
+      "REG_DT": { "value": "YESTER_YYMMDD" },
+      "WORKER": { "value": "TEST" },
+      "REG_DNT": { "value": "YESTER_YYMMDDHHIISS" }
+    },
+    {
+      "MID": { "value": "${MID}" },
+      "CO_NO": { "value": "${CO_NO}" },
+      "PTN_CD": { "value": "${OLD_PTN_CD}" },
+      "PTN_CPID": { "value": "${OLD_CERT_CPID}" },
+      "EZP_AUTH_CD": { "value": null },
+      "FR_DT": { "value": "YESTER_YYMMDD" },
       "TO_DT": { "value": "99999999" },
       "PM_CD": { "value": "01" },
       "SPM_CD": { "value": "02" },
-      "REG_DT": { "value": "CUR_YYMMDD" },
-      "WORKER": { "value": "admin" },
-      "REG_DNT": { "value": "CUR_YYMMDDHHIISS" }
+      "REG_DT": { "value": "YESTER_YYMMDD" },
+      "WORKER": { "value": "TEST" },
+      "REG_DNT": { "value": "YESTER_YYMMDDHHIISS" }
     },
     {
-      "MID": { "value": "wzonTest0m" },
-      "CO_NO": { "value": "1232332124" },
-      "PTN_CD": { "value": "13" },
-      "PTN_CPID": { "value": "offline_cpid" },
+      "MID": { "value": "${MID}" },
+      "CO_NO": { "value": "${CO_NO}" },
+      "PTN_CD": { "value": "${OFFLINE_PTN_CD}" },
+      "PTN_CPID": { "value": "${OFFLINE_CPID}" },
       "EZP_AUTH_CD": { "value": null },
-      "FR_DT": { "value": "CUR_YYMMDD" },
+      "FR_DT": { "value": "YESTER_YYMMDD" },
       "TO_DT": { "value": "99999999" },
       "PM_CD": { "value": "01" },
       "SPM_CD": { "value": "03" },
-      "REG_DT": { "value": "CUR_YYMMDD" },
-      "WORKER": { "value": "admin" },
-      "REG_DNT": { "value": "CUR_YYMMDDHHIISS" }
+      "REG_DT": { "value": "YESTER_YYMMDD" },
+      "WORKER": { "value": "TEST" },
+      "REG_DNT": { "value": "YESTER_YYMMDDHHIISS" }
     },
     {
       "MID": { "value": "wzonTest0m" },
       "CO_NO": { "value": "1232332124" },
-      "PTN_CD": { "value": "13" },
-      "PTN_CPID": { "value": "no_cert_cpid" },
+      "PTN_CD": { "value": "${NO_CERT_PTN_CD}" },
+      "PTN_CPID": { "value": "${NO_CERT_CPID}" },
       "EZP_AUTH_CD": { "value": null },
-      "FR_DT": { "value": "CUR_YYMMDD" },
+      "FR_DT": { "value": "YESTER_YYMMDD" },
       "TO_DT": { "value": "99999999" },
       "PM_CD": { "value": "01" },
       "SPM_CD": { "value": "05" },
-      "REG_DT": { "value": "CUR_YYMMDD" },
-      "WORKER": { "value": "admin" },
-      "REG_DNT": { "value": "CUR_YYMMDDHHIISS" }
+      "REG_DT": { "value": "YESTER_YYMMDD" },
+      "WORKER": { "value": "TEST" },
+      "REG_DNT": { "value": "YESTER_YYMMDDHHIISS" }
     }
   ]
 }

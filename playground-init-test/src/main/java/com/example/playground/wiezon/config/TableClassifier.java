@@ -13,7 +13,7 @@ public class TableClassifier {
     }
 
     public boolean isMidRelated(MetaData metaData) {
-        return metaData.getDivision().equalsIgnoreCase("USER");
+        return metaData.getDivision().equalsIgnoreCase("MID");
     }
 
     public boolean isContractRelated(MetaData metaData) {

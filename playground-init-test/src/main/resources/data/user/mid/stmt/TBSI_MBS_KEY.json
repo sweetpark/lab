@@ -3,12 +3,12 @@
   "table": "TBSI_MBS_KEY",
   "rows": [
     {
-      "MID": { "value": "wzonTest0m" },
-      "MKEY": { "value": "mvOOENfGR4AWFDKGdEn1aHN/GVbyGTcsNEUShVx1ZNEHc8VTv7MXy5297QPkHJt5hXCCz62rDmfOgMNGSvil4Q==" },
+      "MID": { "value": "${MID}" },
+      "MKEY": { "value": "${MID}", "crypto" : "PW" },
       "USRID": { "value": "admin" },
-      "CREATE_DT": { "value": "CUR_YYMMDDHHIISS" },
-      "WORKER": { "value": "admin" },
-      "REG_DNT": { "value": "CUR_YYMMDDHHIISS" }
+      "CREATE_DT": { "value": "YESTER_YYMMDDHHIISS" },
+      "WORKER": { "value": "TEST" },
+      "REG_DNT": { "value": "YESTER_YYMMDDHHIISS" }
     }
   ]
 }

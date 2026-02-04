@@ -3,37 +3,48 @@
   "table": "TBSI_STMT_CYCLE",
   "rows": [
     {
-      "MID": { "value": "wzonTest0m" },
+      "MID": { "value": "${MID}" },
+      "PM_CD": { "value": "01" },
+      "SPM_CD": { "value": "01" },
+      "FR_DT": { "value": "YESTER_YYMMDD" },
+      "TO_DT": { "value": "99999999" },
+      "REG_DT": { "value": "YESTER_YYMMDD" },
+      "STMT_TYPE": { "value": "0" },
+      "STMT_CYCLE_CD": { "value": "D1" },
+      "WORKER": { "value": "TEST" }
+    },
+    {
+      "MID": { "value": "${MID}" },
       "PM_CD": { "value": "01" },
       "SPM_CD": { "value": "02" },
-      "FR_DT": { "value": "20260126" },
+      "FR_DT": { "value": "YESTER_YYMMDD" },
       "TO_DT": { "value": "99999999" },
-      "REG_DT": { "value": "CUR_YYMMDD" },
+      "REG_DT": { "value": "YESTER_YYMMDD" },
       "STMT_TYPE": { "value": "0" },
       "STMT_CYCLE_CD": { "value": "D1" },
-      "WORKER": { "value": "admin" }
+      "WORKER": { "value": "TEST" }
     },
     {
-      "MID": { "value": "wzonTest0m" },
+      "MID": { "value": "${MID}" },
       "PM_CD": { "value": "01" },
       "SPM_CD": { "value": "03" },
-      "FR_DT": { "value": "20260126" },
+      "FR_DT": { "value": "YESTER_YYMMDD" },
       "TO_DT": { "value": "99999999" },
-      "REG_DT": { "value": "CUR_YYMMDD" },
+      "REG_DT": { "value": "YESTER_YYMMDD" },
       "STMT_TYPE": { "value": "0" },
       "STMT_CYCLE_CD": { "value": "D1" },
-      "WORKER": { "value": "admin" }
+      "WORKER": { "value": "TEST" }
     },
     {
-      "MID": { "value": "wzonTest0m" },
+      "MID": { "value": "${MID}" },
       "PM_CD": { "value": "01" },
       "SPM_CD": { "value": "05" },
-      "FR_DT": { "value": "20260126" },
+      "FR_DT": { "value": "YESTER_YYMMDD" },
       "TO_DT": { "value": "99999999" },
-      "REG_DT": { "value": "CUR_YYMMDD" },
+      "REG_DT": { "value": "YESTER_YYMMDD" },
       "STMT_TYPE": { "value": "0" },
       "STMT_CYCLE_CD": { "value": "D1" },
-      "WORKER": { "value": "admin" }
+      "WORKER": { "value": "TEST" }
     }
   ]
 }

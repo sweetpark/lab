@@ -3,10 +3,10 @@
   "table": "TBSI_MBS_PTN_LNK",
   "rows": [
     {
-      "MID": { "value": "wzonTest0m" },
-      "CO_NO": { "value": "1232332124" },
-      "PTN_CD": { "value": "DOZN" },
-      "PTN_CPID": { "value": "NPIER" },
+      "MID": { "value": "${MID}" },
+      "CO_NO": { "value": "${CO_NO}" },
+      "PTN_CD": { "value": "${현금영수증}DOZN" }, // 현금영수증 넣기
+      "PTN_CPID": { "value": "${현금영수증_CPID}NPIER" }, // 현금영수증 넣기
       "FR_DT": { "value": "CUR_YYMMDD" },
       "TO_DT": { "value": "99999999" },
       "PM_CD": { "value": "04" },

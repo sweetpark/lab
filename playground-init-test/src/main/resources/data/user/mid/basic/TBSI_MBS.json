@@ -4,13 +4,13 @@
   "rows": [
     {
       "MID": {
-        "value": "wzonTest0m"
+        "value": "${MID}"
       },
       "SIGN_NM": {
         "value": "위지온테스트매장1"
       },
       "CO_NO": {
-        "value": "1232332124"
+        "value": "${CO_NO}"
       },
       "CO_NM": {
         "value": "위지온테스트"
@@ -37,56 +37,56 @@
         "value": "01099999999"
       },
       "REP_NM": {
-        "value": "위지온대표1 * 2명",
+        "value": "위지온대표1 외 2명",
         "crypto": "ENC_HASH"
       },
       "CONT_EMP_NM": {
-        "value": "위*온",
+        "value": "위지온",
         "crypto": "ENC_HASH"
       },
       "CONT_EMP_TEL": {
         "value": "01099999999"
       },
       "CONT_EMP_HP": {
-        "value": "010****9999",
+        "value": "01099999999",
         "crypto": "ENC_HASH"
       },
       "CONT_EMP_EMAIL": {
-        "value": "wy****@wiezon.com",
+        "value": "wypark@wiezon.com",
         "crypto": "ENC_HASH"
       },
       "STMT_EMP_NM": {
-        "value": "위지*2",
+        "value": "위지온2",
         "crypto": "ENC_HASH"
       },
       "STMT_EMP_TEL": {
         "value": "01099999999"
       },
       "STMT_EMP_HP": {
-        "value": "010****9999",
+        "value": "01099999999",
         "crypto": "ENC_HASH"
       },
       "STMT_EMP_EMAIL": {
-        "value": "wy****@wiezon.com",
+        "value": "wypark@wiezon.com",
         "crypto": "ENC_HASH"
       },
       "TECH_EMP_NM": {
-        "value": "위지*3",
+        "value": "위지온3",
         "crypto": "ENC_HASH"
       },
       "TECH_EMP_TEL": {
         "value": "01099999999"
       },
       "TECH_EMP_HP": {
-        "value": "010****9999",
+        "value": "01099999999",
         "crypto": "ENC_HASH"
       },
       "TECH_EMP_EMAIL": {
-        "value": "wy****@wiezon.com",
+        "value": "wypark@wiezon.com",
         "crypto": "ENC_HASH"
       },
       "EMAIL": {
-        "value": "wy****@wiezon.com",
+        "value": "wypark@wiezon.com",
         "crypto": "ENC_HASH"
       },
       "CONT_EMP_NO": {
@@ -99,7 +99,7 @@
         "value": "1"
       },
       "CONT_DT": {
-        "value": "20260126"
+        "value": "YESTER_YYMMDD"
       },
       "BS_KIND_CD": {
         "value": "9999:0000"
@@ -108,7 +108,7 @@
         "value": "0001"
       },
       "WORKER": {
-        "value": "admin"
+        "value": "TEST"
       },
       "ACNT_RISK_GRADE": {
         "value": null
@@ -129,10 +129,10 @@
         "value": ""
       },
       "REG_DT": {
-        "value": "CUR_YYMMDD"
+        "value": "YESTER_YYMMDD"
       },
       "REG_DNT": {
-        "value": "CUR_YYMMDDHHIISS"
+        "value": "YESTER_YYMMDDHHIISS"
       },
       "POST_NO": {
         "value": "08391"
