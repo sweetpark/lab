@@ -4,9 +4,11 @@ import com.example.playground.wiezon.dto.InitData;
 import com.example.playground.wiezon.dto.MetaData;
 import com.example.playground.wiezon.service.DBProcessService;
 import com.example.playground.wiezon.service.FileReadService;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 
+@Order(100)
 @Component
 public class DefaultProcessStrategy implements MetaDataProcessStrategy{
 
