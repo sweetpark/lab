@@ -16,6 +16,14 @@ public class TableClassifier {
         return metaData.getDivision().equalsIgnoreCase("MID");
     }
 
+    public boolean isGidRelated(MetaData metaData){
+        return metaData.getDivision().equalsIgnoreCase("GID");
+    }
+
+    public boolean isVidRelated(MetaData metaData){
+        return metaData.getDivision().equalsIgnoreCase("VID");
+    }
+
     public boolean isContractRelated(MetaData metaData) {
         return metaData.getDivision().equalsIgnoreCase("CONTRACT");
     }
