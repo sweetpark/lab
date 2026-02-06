@@ -5,6 +5,7 @@ import com.example.playground.wiezon.dto.InitData;
 import com.example.playground.wiezon.dto.MidInitData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
+import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.stereotype.Service;
 
 import javax.sql.DataSource;
@@ -16,10 +17,15 @@ import java.sql.SQLException;
 @Service
 public class InitDataAssembler {
 
-    @Autowired
-    DataSource dataSource;
-    @Autowired
-    Environment environment;
+
+    private final DataSource dataSource;
+    private final Environment environment;
+
+    public InitDataAssembler(DataSource dataSource, Environment environment) {
+        this.dataSource = dataSource;
+        this.environment = environment;
+    }
+
 
     public InitData assemble(){
         InitData initData = new InitData();
@@ -31,6 +37,8 @@ public class InitDataAssembler {
             MidInitData midInitData = new MidInitData();
             midInitData.setMid(String.format(environment.getProperty("mid") + "%03d" + 'm', index));
             midInitData.setCono(getCoNo(dataSource));
+            midInitData.setGid(environment.getProperty("gid"));
+            midInitData.setL1Vid(environment.getProperty("l1_vid"));
 
 
             CpidMap cpidMap = new CpidMap();
@@ -69,7 +77,10 @@ public class InitDataAssembler {
         return initData;
     }
 
-    private static String getCoNo(DataSource dataSource) {
+    private String getCoNo(DataSource dataSource) {
+
+        Connection con = DataSourceUtils.getConnection(dataSource);
+
         String sql =
                 "SELECT tmma.CO_NO " +
                         "FROM TBSI_MS_MBS_ALL tmma " +
@@ -79,8 +90,7 @@ public class InitDataAssembler {
                         "ORDER BY tmma.TO_DT DESC " +
                         "LIMIT 1";
 
-        try(Connection connection = dataSource.getConnection();
-            PreparedStatement pstmt = connection.prepareStatement(sql)) {
+        try(PreparedStatement pstmt = con.prepareStatement(sql)) {
 
             pstmt.setString(1, "A1");
 
