@@ -6,6 +6,7 @@ import com.example.playground.wiezon.dto.InitData;
 import com.example.playground.wiezon.dto.MetaData;
 import com.example.playground.wiezon.service.DBProcessService;
 import com.example.playground.wiezon.service.FileReadService;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
@@ -13,7 +14,7 @@ import java.util.stream.Collectors;
 
 import static com.example.playground.wiezon.util.CommonUtil.createNewRow;
 
-
+@Order(1)
 @Component
 public class AffiliateProcessStrategy implements MetaDataProcessStrategy{
 
