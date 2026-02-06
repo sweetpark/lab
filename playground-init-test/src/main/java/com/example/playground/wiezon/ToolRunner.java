@@ -54,8 +54,6 @@ public class ToolRunner implements ApplicationRunner {
 
                     // 1. file read
                     MetaData metaData = fileReadService.parseJson(is);
-
-
                     // 2. 패턴별 실행
                     strategies.stream()
                             .filter(s -> s.supports(metaData))
@@ -73,6 +71,7 @@ public class ToolRunner implements ApplicationRunner {
         });
 
 
+        throw new RuntimeException("정상종료 - 트랜잭션 강제");
 
     }
 }
