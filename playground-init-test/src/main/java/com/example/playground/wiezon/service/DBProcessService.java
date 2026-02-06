@@ -53,7 +53,7 @@ public class DBProcessService {
                     + values.stream().map(map -> "?").collect(Collectors.joining(", "))
                     +")";
 
-            System.out.println("[ SQL ] >>> \n "  + sql);
+            System.out.println("[ SQL ] >>>\n" + renderSql(sql, values));
 
             try(PreparedStatement pstmt = con.prepareStatement(sql)){
 
@@ -72,6 +72,30 @@ public class DBProcessService {
 
     private String escapeColumn(String column){
         return "`" + column + "`";
+    }
+
+    private String renderSql(String sql, List<Object> params) {
+        StringBuilder sb = new StringBuilder();
+        int paramIndex = 0;
+
+        for (int i = 0; i < sql.length(); i++) {
+            char c = sql.charAt(i);
+
+            if (c == '?' && paramIndex < params.size()) {
+                Object value = params.get(paramIndex++);
+
+                if (value == null) {
+                    sb.append("NULL");
+                } else if (value instanceof Number) {
+                    sb.append(value);
+                } else {
+                    sb.append("'").append(value.toString().replace("'", "''")).append("'");
+                }
+            } else {
+                sb.append(c);
+            }
+        }
+        return sb.toString();
     }
 
 }
