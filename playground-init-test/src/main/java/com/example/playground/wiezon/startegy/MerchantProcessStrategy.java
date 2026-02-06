@@ -6,6 +6,7 @@ import com.example.playground.wiezon.dto.MetaData;
 import com.example.playground.wiezon.dto.MidInitData;
 import com.example.playground.wiezon.service.DBProcessService;
 import com.example.playground.wiezon.service.FileReadService;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -13,7 +14,9 @@ import java.util.List;
 import java.util.Map;
 
 import static com.example.playground.wiezon.util.CommonUtil.createNewRow;
+import static com.example.playground.wiezon.util.CommonUtil.valueMap;
 
+@Order(5)
 @Component
 public class MerchantProcessStrategy implements MetaDataProcessStrategy{
 
@@ -59,12 +62,26 @@ public class MerchantProcessStrategy implements MetaDataProcessStrategy{
                         replace(deepRow, "MID", "${MID}", midInitData.getMid());
                         replace(deepRow, "CO_NO", "${CO_NO}", midInitData.getCono());
 
+                        if(isTemplateMatched(deepRow,"VID", "${VID}")){
+                            deepRow.put("VID", valueMap(midInitData.getL1Vid()));
+                        }
+
+                        if(isTemplateMatched(deepRow,"L1_VID", "${VID}")){
+                            deepRow.put("L1_VID", valueMap(midInitData.getL1Vid()));
+                        }
+
+                        if(isTemplateMatched(deepRow,"GID", "${GID}")){
+                            deepRow.put("GID", valueMap(midInitData.getGid()));
+                        }
+
+
+
                         // Cert
                         replace(deepRow, "PTN_CD", "${CERT_PTN_CD}", midInitData.getCpidMap().getCertPtnCd());
                         replace(deepRow, "PTN_CPID", "${CERTIFICATION_CPID}", midInitData.getCpidMap().getCertCpid());
 
                         // Old Cert
-                        replace(deepRow, "PTN_CD", "${OLD_PTN_CD}", midInitData.getCpidMap().getOldCertPtnCd());
+                        replace(deepRow, "OLD_PTN_CD", "${OLD_PTN_CD}", midInitData.getCpidMap().getOldCertPtnCd());
                         replace(deepRow, "PTN_CPID", "${OLD_CERT_CPID}", midInitData.getCpidMap().getOldCertCpid());
 
                         // No Cert
@@ -74,6 +91,24 @@ public class MerchantProcessStrategy implements MetaDataProcessStrategy{
                         // Offline
                         replace(deepRow, "PTN_CD", "${OFFLINE_PTN_CD}", midInitData.getCpidMap().getOfflinePtnCd());
                         replace(deepRow, "PTN_CPID", "${OFFLINE_CPID}", midInitData.getCpidMap().getOfflineCpid());
+
+
+                        // Cert
+                        replace(deepRow, "APP_VAN1_CD", "${CERT_PTN_CD}", midInitData.getCpidMap().getCertPtnCd());
+                        replace(deepRow, "ACQ_VAN_CD", "${CERT_PTN_CD}", midInitData.getCpidMap().getCertPtnCd());
+
+                        // Old Cert
+                        replace(deepRow, "APP_VAN1_CD", "${OLD_PTN_CD}", midInitData.getCpidMap().getOldCertPtnCd());
+                        replace(deepRow, "ACQ_VAN_CD", "${OLD_PTN_CD}", midInitData.getCpidMap().getOldCertPtnCd());
+
+                        // No Cert
+                        replace(deepRow, "APP_VAN1_CD", "${NO_CERT_PTN_CD}", midInitData.getCpidMap().getNoCertPtnCd());
+                        replace(deepRow, "ACQ_VAN_CD", "${NO_CERT_PTN_CD}", midInitData.getCpidMap().getNoCertPtnCd());
+
+                        // Offline
+                        replace(deepRow, "APP_VAN1_CD", "${OFFLINE_PTN_CD}", midInitData.getCpidMap().getOfflinePtnCd());
+                        replace(deepRow, "ACQ_VAN_CD", "${OFFLINE_PTN_CD}", midInitData.getCpidMap().getOfflinePtnCd());
+
 
                         return deepRow;
                     }).toList();
