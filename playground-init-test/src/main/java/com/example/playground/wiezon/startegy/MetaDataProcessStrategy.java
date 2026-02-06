@@ -7,7 +7,7 @@ import java.util.Map;
 
 public interface MetaDataProcessStrategy {
     boolean supports(MetaData metaData);
-    void process(MetaData metaData, InitData propertiesData);
+    void process(MetaData template, InitData propertiesData);
 
     default boolean isTemplateMatched(Map<String, Map<String, Object>> row, String colKey, String templateStr) {
         if (!row.containsKey(colKey) || row.get(colKey) == null) return false;
