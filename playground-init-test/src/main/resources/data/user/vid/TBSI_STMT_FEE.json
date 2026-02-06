@@ -1,9 +1,9 @@
 {
-  "division" : "user",
+  "division" : "vid",
   "table": "TBSI_STMT_FEE",
   "rows": [
     {
-      "ID": { "value": "wzonTest0a" },
+      "ID": { "value": "${VID}" },
       "ID_CD": { "value": "3" },
       "PM_CD": { "value": "01" },
       "SPM_CD": { "value": "01" },
@@ -22,7 +22,7 @@
       "ETC_FEE": { "value": "0" }
     },
     {
-      "ID": { "value": "wzonTest0a" },
+      "ID": { "value": "${VID}" },
       "ID_CD": { "value": "3" },
       "PM_CD": { "value": "01" },
       "SPM_CD": { "value": "01" },
@@ -41,7 +41,7 @@
       "ETC_FEE": { "value": "0" }
     },
     {
-      "ID": { "value": "wzonTest0a" },
+      "ID": { "value": "${VID}" },
       "ID_CD": { "value": "3" },
       "PM_CD": { "value": "01" },
       "SPM_CD": { "value": "01" },
@@ -60,7 +60,7 @@
       "ETC_FEE": { "value": "0" }
     },
     {
-      "ID": { "value": "wzonTest0a" },
+      "ID": { "value": "${VID}" },
       "ID_CD": { "value": "3" },
       "PM_CD": { "value": "01" },
       "SPM_CD": { "value": "01" },
@@ -79,7 +79,7 @@
       "ETC_FEE": { "value": "0" }
     },
     {
-      "ID": { "value": "wzonTest0a" },
+      "ID": { "value": "${VID}" },
       "ID_CD": { "value": "3" },
       "PM_CD": { "value": "01" },
       "SPM_CD": { "value": "01" },
@@ -98,7 +98,7 @@
       "ETC_FEE": { "value": "0" }
     },
     {
-      "ID": { "value": "wzonTest0a" },
+      "ID": { "value": "${VID}" },
       "ID_CD": { "value": "3" },
       "PM_CD": { "value": "61" },
       "SPM_CD": { "value": "01" },

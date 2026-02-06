@@ -1,13 +1,13 @@
 {
-  "division" : "user",
+  "division" : "vid",
   "table": "TBSI_USR",
   "rows": [
     {
       "UID": {
-        "value": "wzonTest0a"
+        "value": "${VID}"
       },
       "VID": {
-        "value": "wzonTest0a"
+        "value": "${VID}"
       },
       "USR_TYPE": {
         "value": "3"

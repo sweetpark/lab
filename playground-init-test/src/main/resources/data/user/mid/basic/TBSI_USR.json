@@ -10,10 +10,10 @@
         "value": "${MID}"
       },
       "GID": {
-        "value": "wzonTest0g"
+        "value": "${GID}"
       },
       "VID": {
-        "value": "wzonTest0a"
+        "value": "${VID}"
       },
       "USR_TYPE": {
         "value": "1"

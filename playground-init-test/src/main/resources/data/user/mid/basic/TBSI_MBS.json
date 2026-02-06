@@ -16,10 +16,10 @@
         "value": "위지온테스트"
       },
       "GID": {
-        "value": "wzonTest0g"
+        "value": "${GID}"
       },
       "VID": {
-        "value": "wzonTest0a"
+        "value": "${VID}"
       },
       "MBS_GRADE": {
         "value": "A"
@@ -114,7 +114,7 @@
         "value": null
       },
       "L1_VID": {
-        "value": "wzonTest0a"
+        "value": "${VID}"
       },
       "L2_VID": {
         "value": ""

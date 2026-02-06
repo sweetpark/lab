@@ -5,14 +5,14 @@
     {
       "MID": { "value": "${MID}" },
       "CO_NO": { "value": "${CO_NO}" },
-      "PTN_CD": { "value": "${현금영수증}DOZN" }, // 현금영수증 넣기
-      "PTN_CPID": { "value": "${현금영수증_CPID}NPIER" }, // 현금영수증 넣기
+      "PTN_CD": { "value": "DOZN" },
+      "PTN_CPID": { "value": "NPIER" },
       "FR_DT": { "value": "CUR_YYMMDD" },
       "TO_DT": { "value": "99999999" },
       "PM_CD": { "value": "04" },
       "SPM_CD": { "value": "01" },
       "REG_DT": { "value": "CUR_YYMMDD" },
-      "WORKER": { "value": "admin" }
+      "WORKER": { "value": "TEST" }
     }
   ]
 }

@@ -1,9 +1,9 @@
 {
-  "division" : "user",
+  "division" : "vid",
   "table": "TBAD_RULE_USR",
   "rows": [
     {
-      "UID": { "value": "wzonTest0a" },
+      "UID": { "value": "${VID}" },
       "RULE_ID": { "value": "SL1" },
       "REG_DT": { "value": "YESTER_YYMMDD" },
       "WORKER": { "value": "TEST" }

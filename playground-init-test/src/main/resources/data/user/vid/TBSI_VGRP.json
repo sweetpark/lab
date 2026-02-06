@@ -1,10 +1,10 @@
 {
-  "division" : "user",
+  "division" : "vid",
   "table": "TBSI_VGRP",
   "rows": [
     {
       "VID": {
-        "value": "wzonTest0a"
+        "value": "${VID}"
       },
       "VGRP_NM": {
         "value": "위지온영업점1"
@@ -65,7 +65,7 @@
         "value": "3"
       },
       "L1_VID": {
-        "value": "wzonTest0a"
+        "value": "${VID}"
       },
       "L2_VID": {
         "value": ""
