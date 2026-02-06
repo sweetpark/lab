@@ -8,6 +8,8 @@ import lombok.Setter;
 public class MidInitData {
     String mid;
     String cono;
+    String gid;
+    String l1Vid;
     CpidMap cpidMap;
 
     @Override

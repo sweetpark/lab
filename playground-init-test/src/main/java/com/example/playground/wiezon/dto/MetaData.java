@@ -19,7 +19,8 @@ public class MetaData {
                     "TBSI_CHG_HIST","TSBI_MBS_SVC","TBSI_STMT_CYCLE","TBIS_STMT_FEE",
                     "TBSI_MBS_KEY", "TBSI_STMT_SVC",
                     "TBSI_ADDSVC_FEE",
-                    "TBSI_MBS_MEMO"
+                    "TBSI_MBS_MEMO",
+                    "TBSI_VGRP"
             );
 
 
@@ -39,6 +40,12 @@ public class MetaData {
     }
 
     public MetaData(String table, List<Map<String, Map<String,Object>>> rows){
+        this.table = table;
+        this.rows = rows;
+    }
+
+    public MetaData(String division, String table, List<Map<String, Map<String,Object>>> rows){
+        this.division = division;
         this.table = table;
         this.rows = rows;
     }
