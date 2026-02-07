@@ -6,27 +6,18 @@ import com.example.playground.wiezon.dto.MetaData;
 import com.example.playground.wiezon.dto.VariableContext;
 import com.example.playground.wiezon.service.DBProcessService;
 import com.example.playground.wiezon.service.FileReadService;
-import com.example.playground.wiezon.util.DataVariableResolver;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-import java.util.Map;
-
-import static com.example.playground.wiezon.util.CommonUtil.createNewRow;
-
 @Order(4)
 @Component
-public class VirtualProcessStrategy implements MetaDataProcessStrategy{
+public class VirtualProcessStrategy extends AbstractMetaDataProcessStrategy {
 
     private final TableClassifier classifier;
-    private final FileReadService fileReadService;
-    private final DBProcessService dbProcessService;
 
     public VirtualProcessStrategy(TableClassifier classifier, FileReadService fileReadService, DBProcessService dbProcessService) {
+        super(fileReadService, dbProcessService);
         this.classifier = classifier;
-        this.fileReadService = fileReadService;
-        this.dbProcessService = dbProcessService;
     }
 
     @Override
@@ -36,18 +27,6 @@ public class VirtualProcessStrategy implements MetaDataProcessStrategy{
 
     @Override
     public void process(MetaData template, InitData propertiesData) {
-        Map<String, String> variables = VariableContext.getContextMap(propertiesData.getMidList().getFirst());
-
-        List<Map<String, Map<String,Object>>> newRows = template.getRows().stream()
-                .map( templateRow -> {
-                    Map<String, Map<String, Object>> deepRow = createNewRow(templateRow);
-                    DataVariableResolver.replace(deepRow, variables);
-                    return deepRow;
-                }).toList();
-
-        MetaData newMetaData = new MetaData(template.getTable(), newRows);
-
-        fileReadService.dataPreProcess(newMetaData);
-        dbProcessService.save(newMetaData);
+        transformAndSave(template, VariableContext.getContextMap(propertiesData.getMidList().getFirst()));
     }
 }
