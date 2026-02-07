@@ -3,7 +3,6 @@ package com.example.playground.wiezon.service;
 import com.example.playground.wiezon.dto.CpidMap;
 import com.example.playground.wiezon.dto.InitData;
 import com.example.playground.wiezon.dto.MidInitData;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.stereotype.Service;
@@ -14,6 +13,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * 초기화에 필요한 기본 데이터(InitData)를 조립하는 서비스입니다.
+ * <p>
+ * Environment 프로퍼티와 DB 조회를 통해 MID, CPID 설정 등의 데이터를 수집하여 {@link InitData} 객체를 생성합니다.
+ */
 @Service
 public class InitDataAssembler {
 
@@ -27,6 +31,11 @@ public class InitDataAssembler {
     }
 
 
+    /**
+     * 초기화 데이터를 수집 및 조립합니다.
+     *
+     * @return 조립된 {@link InitData} 객체
+     */
     public InitData assemble(){
         InitData initData = new InitData();
 

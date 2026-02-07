@@ -10,6 +10,11 @@ import com.example.playground.wiezon.service.FileReadService;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+/**
+ * 가맹점(Merchant/MID) 관련 데이터를 처리하는 전략 클래스입니다.
+ * <p>
+ * 설정된 모든 MID 목록({@link InitData#getMidList()})을 순회하며 데이터를 생성합니다.
+ */
 @Order(5)
 @Component
 public class MerchantProcessStrategy extends AbstractMetaDataProcessStrategy {

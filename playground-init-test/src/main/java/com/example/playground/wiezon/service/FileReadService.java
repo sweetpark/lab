@@ -14,10 +14,16 @@ import java.util.Map;
 
 import static com.example.playground.wiezon.util.CommonUtil.valueMap;
 
+/**
+ * JSON 파일을 읽어 파싱하고, 데이터 전처리(날짜 변환, 암호화)를 담당하는 서비스입니다.
+ */
 @Service
 public class FileReadService {
 
 
+    /**
+     * InputStream에서 JSON 데이터를 읽어 {@link MetaData} 객체로 파싱합니다.
+     */
     public MetaData parseJson(InputStream inputStream){
         try(BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
             Gson gson = new Gson();
@@ -28,6 +34,9 @@ public class FileReadService {
         }
     }
 
+    /**
+     * 메타데이터의 각 행에 대해 전처리를 수행합니다. (날짜 치환, 암호화 등)
+     */
     public void dataPreProcess(MetaData metaData){
         preprocessMetaData(metaData,LocalDateTime.now());
     }
@@ -45,6 +54,10 @@ public class FileReadService {
 
         row.putAll(additionalData);
     }
+
+    /**
+     * 암호화가 필요한 값에 대해 암호화 처리를 수행하고, 추가적인 컬럼(ENC, HASH 등)을 생성합니다.
+     */
     private static void chgEncValue(Map.Entry<String, Map<String, Object>> entry, Map<String, Map<String, Object>> additionalData) {
         if(entry.getValue().get("crypto") != null){
             CryptoType cryptoType = CryptoType.from(entry.getValue().get("crypto"));
@@ -58,6 +71,10 @@ public class FileReadService {
             }
         }
     }
+
+    /**
+     * 날짜 플레이스홀더(CUR_YYMMDD 등)를 실제 날짜 값으로 치환합니다.
+     */
     private static void chgDateValue(Map.Entry<String, Map<String, Object>> entry, LocalDateTime now) {
         if(entry.getValue().get("value") != null){
             switch (entry.getValue().get("value").toString()){

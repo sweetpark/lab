@@ -9,6 +9,9 @@ import com.example.playground.wiezon.service.FileReadService;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+/**
+ * 그룹(GID) 관련 데이터를 처리하는 전략 클래스입니다.
+ */
 @Order(3)
 @Component
 public class GroupProcessStrategy extends AbstractMetaDataProcessStrategy {

@@ -1,7 +1,6 @@
 package com.example.playground.wiezon.service;
 
 import com.example.playground.wiezon.dto.MetaData;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +10,9 @@ import java.sql.PreparedStatement;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * 전처리가 완료된 메타데이터를 DB에 저장하는 서비스입니다.
+ */
 @Service
 public class DBProcessService {
 
@@ -21,6 +23,9 @@ public class DBProcessService {
         this.dataSource = dataSource;
     }
 
+    /**
+     * 메타데이터를 받아 DB Insert를 수행합니다.
+     */
     public void save(MetaData metaData){
         
         // 1. Connection 연결

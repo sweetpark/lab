@@ -4,6 +4,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * JSON 파일에서 파싱된 테이블 데이터를 담는 DTO 클래스입니다.
+ * division: 데이터 분류 (MID, GID, CONTRACT 등)<br>
+ * table: 대상 DB 테이블명<br>
+ * rows: 실제 데이터 행 리스트
+ */
 public class MetaData {
 
     private String division;

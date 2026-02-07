@@ -3,8 +3,19 @@ package com.example.playground.wiezon.dto;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 초기화 데이터 객체({@link MidInitData}, {@link CpidMap})를
+ * 변수 치환에 사용할 수 있는 Map&lt;String, String&gt; 형태로 변환해주는 컨텍스트 클래스입니다.
+ */
 public class VariableContext {
 
+    /**
+     * MidInitData 객체로부터 변수 맵을 추출합니다.
+     * MID, CO_NO, GID, VID 및 하위 CpidMap의 모든 정보를 포함합니다.
+     *
+     * @param midInitData 소스 데이터 객체
+     * @return 치환용 변수 맵
+     */
     public static Map<String, String> getContextMap(MidInitData midInitData) {
         Map<String, String> variables = new HashMap<>();
 
@@ -22,6 +33,12 @@ public class VariableContext {
         return variables;
     }
 
+    /**
+     * CpidMap 객체로부터 CPID 관련 변수 맵을 추출합니다.
+     *
+     * @param cpid 소스 데이터 객체
+     * @return 치환용 변수 맵
+     */
     public static Map<String, String> getContextMap(CpidMap cpid) {
         Map<String, String> variables = new HashMap<>();
         if (cpid == null) return variables;
