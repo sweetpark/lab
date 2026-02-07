@@ -3,8 +3,10 @@ package com.example.playground.wiezon.startegy;
 import com.example.playground.wiezon.config.TableClassifier;
 import com.example.playground.wiezon.dto.InitData;
 import com.example.playground.wiezon.dto.MetaData;
+import com.example.playground.wiezon.dto.VariableContext;
 import com.example.playground.wiezon.service.DBProcessService;
 import com.example.playground.wiezon.service.FileReadService;
+import com.example.playground.wiezon.util.DataVariableResolver;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
@@ -12,7 +14,6 @@ import java.util.List;
 import java.util.Map;
 
 import static com.example.playground.wiezon.util.CommonUtil.createNewRow;
-import static com.example.playground.wiezon.util.CommonUtil.valueMap;
 
 @Order(2)
 @Component
@@ -35,19 +36,12 @@ public class ContractProcessStrategy implements MetaDataProcessStrategy{
 
     @Override
     public void process(MetaData metaData, InitData propertiesData) {
+        Map<String, String> variables = VariableContext.getContextMap(propertiesData.getMidList().getFirst());
 
         List<Map<String, Map<String, Object>>> newRows = metaData.getRows().stream().map(
                 templateRow -> {
                     Map<String, Map<String, Object>> deepRow = createNewRow(templateRow);
-
-                    if (isTemplateMatched(deepRow, "CO_NO", "${CO_NO}")){
-                        deepRow.put("CO_NO", valueMap(propertiesData.getMidList().getFirst().getCono()));
-                    }
-
-                    if(isTemplateMatched(deepRow, "ID", "${CO_NO}")){
-                        deepRow.put("ID", valueMap(propertiesData.getMidList().getFirst().getCono()));
-                    }
-
+                    DataVariableResolver.replace(deepRow, variables);
                     return deepRow;
                 }).toList();
 
