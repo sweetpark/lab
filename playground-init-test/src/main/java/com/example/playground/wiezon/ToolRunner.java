@@ -52,28 +52,26 @@ public class ToolRunner implements ApplicationRunner {
 
         Resource[] resources = resolver.getResources("classpath:/data/**/*.json");
 
-        Arrays.stream(resources).forEach(new Consumer<Resource>() {
-            @Override
-            public void accept(Resource resource) {
-                try(InputStream is = resource.getInputStream()){
-                    // 0. properties load
-                    InitData propertiesData = assembler.assemble();
+        Arrays.stream(resources).forEach(resource -> {
 
-                    // 1. file read
-                    MetaData metaData = fileReadService.parseJson(is);
-                    // 2. 패턴별 실행
-                    strategies.stream()
-                            .filter(s -> s.supports(metaData))
-                            .findFirst()
-                            .orElseThrow(() ->
-                                    new IllegalStateException("처리 패턴이 없습니다.")
-                            )
-                            .process(metaData, propertiesData);
+            try(InputStream is = resource.getInputStream()){
+                // 0. properties load
+                InitData propertiesData = assembler.assemble();
+
+                // 1. file read
+                MetaData metaData = fileReadService.parseJson(is);
+                // 2. 패턴별 실행
+                strategies.stream()
+                        .filter(s -> s.supports(metaData))
+                        .findFirst()
+                        .orElseThrow(() ->
+                                new IllegalStateException("처리 패턴이 없습니다.")
+                        )
+                        .process(metaData, propertiesData);
 
 
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
         });
 

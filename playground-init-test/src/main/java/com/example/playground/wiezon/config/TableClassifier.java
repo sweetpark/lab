@@ -3,7 +3,6 @@ package com.example.playground.wiezon.config;
 import com.example.playground.wiezon.dto.MetaData;
 import org.springframework.stereotype.Component;
 
-import java.util.Set;
 
 /**
  * 메타데이터(테이블)가 어떤 종류의 데이터인지(MID, GID, CONTRACT 등)를 분류해주는 클래스입니다.

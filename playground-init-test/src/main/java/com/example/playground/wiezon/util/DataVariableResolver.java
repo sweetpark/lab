@@ -21,9 +21,7 @@ public class DataVariableResolver {
     public static void replace(Map<String, Map<String, Object>> row, Map<String, String> variables) {
         if (variables == null || variables.isEmpty()) {
             row.keySet().forEach(
-                    key -> {
-                        System.out.println(row.get(key).toString() + " 변환 할 수 없습니다. ");
-                    }
+                    key -> System.out.println(row.get(key).toString() + " 변환 할 수 없습니다. ")
             );
             throw new RuntimeException("변환 오류");
         }
