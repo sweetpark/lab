@@ -3,7 +3,6 @@ package com.example.playground.wiezon.startegy;
 import com.example.playground.wiezon.dto.InitData;
 import com.example.playground.wiezon.dto.MetaData;
 
-import java.util.Map;
 
 /**
  * 메타데이터 처리를 위한 전략 인터페이스입니다.
