@@ -1,0 +1,31 @@
+{
+  "division": "mid",
+  "table": "TBSI_PTN_CPID",
+  "rows": [
+    {
+      "PTN_CD": { "value": "${CRCT_PTN_CD}" },
+      "PTN_CPID": { "value": "${CRCT_CPID}" },
+      "PTN_TYPE": { "value": "00" },
+      "PM_CD": { "value": "04" },
+      "SPM_CD": { "value": "01" },
+      "SVC_TYPE" : {"value" :  "00"},
+      "CP_CD" : {"value" :  "00"},
+      "ONCE_LIMIT" : {"value" :  "0"},
+      "DPST_CYCLE" : {"value" :  "1"},
+      "ONOFF_CD": { "value": "1" },
+      "KEY_TYPE": { "value": "${CRCT_KEY_TYPE}" },
+      "DELIMITER": { "value": "____TEST____" },
+      "DESC": { "value": null },
+      "DATA": { "value": "${CRCT_KEY}" },
+      "FR_DT": { "value": "YESTER_YYMMDD" },
+      "TO_DT": { "value": "99999999" },
+      "DPST_IN_TYPE": { "value": "01" },
+      "DPST_CALC_TYPE": { "value": "01" },
+      "MM_DPST_CYCLE_CD": { "value": "C125" },
+      "MEMO": { "value": "현금영수증 CPID" },
+      "REG_DT": { "value": "YESTER_YYMMDD" },
+      "WORKER": { "value": "TEST" },
+      "REG_DNT": { "value": "YESTER_YYMMDDHHIISS" }
+    }
+  ]
+}

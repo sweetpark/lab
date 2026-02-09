@@ -48,6 +48,10 @@ public class InitDataAssembler {
             midInitData.setCono(getCoNo(dataSource));
             midInitData.setGid(environment.getProperty("gid"));
             midInitData.setL1Vid(environment.getProperty("l1_vid"));
+            midInitData.setCrctPtnCd(environment.getProperty("crct.ptnCd"));
+            midInitData.setCrctCpid(environment.getProperty("crct.cpid"));
+            midInitData.setCrctKeyType(environment.getProperty("crct.keyType"));
+            midInitData.setCrctKey(environment.getProperty("crct.key"));
 
 
             CpidMap cpidMap = new CpidMap();

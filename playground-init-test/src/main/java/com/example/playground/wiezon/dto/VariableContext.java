@@ -26,6 +26,10 @@ public class VariableContext {
         variables.put("${CO_NO}", midInitData.getCono());
         variables.put("${GID}", midInitData.getGid());
         variables.put("${VID}", midInitData.getL1Vid());
+        variables.put("${CRCT_PTN_CD}", midInitData.getCrctPtnCd());
+        variables.put("${CRCT_CPID}", midInitData.getCrctCpid());
+        variables.put("${CRCT_KEY_TYPE}", midInitData.getCrctKeyType());
+        variables.put("${CRCT_KEY}", midInitData.getCrctKey());
 
         // CpidMap 관련
         variables.putAll(getContextMap(midInitData.getCpidMap()));

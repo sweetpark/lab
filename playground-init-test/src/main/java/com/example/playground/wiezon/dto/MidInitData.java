@@ -10,6 +10,13 @@ public class MidInitData {
     String cono;
     String gid;
     String l1Vid;
+    
+    //현금영수증
+    String crctPtnCd;
+    String crctCpid;
+    String crctKeyType;
+    String crctKey;
+
     CpidMap cpidMap;
 
     @Override
@@ -17,6 +24,12 @@ public class MidInitData {
         return "InitData{" +
                 "mid='" + mid + '\'' +
                 ", cono='" + cono + '\'' +
+                ", gid='" + gid + '\'' +
+                ", l1Vid='" + l1Vid + '\'' +
+                ", crctPtnCd='" + crctPtnCd + '\'' +
+                ", crctCpid='" + crctCpid + '\'' +
+                ", crctKeyType='" + crctKeyType + '\'' +
+                ", crctKey='" + crctKey + '\'' +
                 ", cpidMap=" + cpidMap +
                 '}';
     }

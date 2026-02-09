@@ -5,13 +5,13 @@
     {
       "MID": { "value": "${MID}" },
       "CO_NO": { "value": "${CO_NO}" },
-      "PTN_CD": { "value": "DOZN" },
-      "PTN_CPID": { "value": "NPIER" },
-      "FR_DT": { "value": "CUR_YYMMDD" },
+      "PTN_CD": { "value": "${CRCT_PTN_CD}" },
+      "PTN_CPID": { "value": "${CRCT_CPID}" },
+      "FR_DT": { "value": "YESTER_YYMMDD" },
       "TO_DT": { "value": "99999999" },
       "PM_CD": { "value": "04" },
       "SPM_CD": { "value": "01" },
-      "REG_DT": { "value": "CUR_YYMMDD" },
+      "REG_DT": { "value": "YESTER_YYMMDD" },
       "WORKER": { "value": "TEST" }
     }
   ]
