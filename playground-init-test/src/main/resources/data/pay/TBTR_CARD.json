@@ -1,0 +1,527 @@
+{
+  "division": "pay",
+  "table": "TBTR_CARD",
+  "rows": [
+    {
+      "TID": {
+        "value": "${payData.tid1}"
+      },
+      "TR_DT": {
+        "value": "YESTER_YYMMDD"
+      },
+      "TRX_ST_CD": {
+        "value": "0"
+      },
+      "APP_CARD_CD": {
+        "value": "02"
+      },
+      "APP_NO": {
+        "value": "${APP_NO1}"
+      },
+      "CARD_NO": {
+        "value": "1234123412341234",
+        "crypto": "ENC_HASH"
+      },
+      "EXPIRE_YYMM": {
+        "value": ""
+      },
+      "QUOTA_MON": {
+        "value": "00"
+      },
+      "MBS_NO": {
+        "value": "${MID}"
+      },
+      "MBS_TYPE_CD": {
+        "value": "1"
+      },
+      "NOINT_FLG": {
+        "value": "0"
+      },
+      "NOINT_EVNT_FLG": {
+        "value": "0"
+      },
+      "ACQ_CARD_CD": {
+        "value": "02"
+      },
+      "VAN_CD": {
+        "value": "${VAN_CD}"
+      },
+      "CHKCARD_FLG": {
+        "value": "1"
+      },
+      "CARD_TYPE_CD": {
+        "value": "01"
+      },
+      "EDI_NO": {
+        "value": "${payData.tid1}"
+      },
+      "NOINT_EVNT_TYPE": {
+        "value": "0"
+      },
+      "POINT_FLG": {
+        "value": "0"
+      },
+      "AUTH_TYPE_CD": {
+        "value": "02"
+      },
+      "MATCH_TYPE": {
+        "value": "0"
+      },
+      "VAN_FLG": {
+        "value": "0"
+      },
+      "EZP_AUTH_CD": {
+        "value": "00"
+      },
+      "MAIN_PG_MID": {
+        "value": "${MID}"
+      },
+      "PTN_CPID": {
+        "value": "${MID}"
+      },
+      "CRYPT_FLG": {
+        "value": "1"
+      },
+      "WORKER": {
+        "value": "TEST"
+      },
+      "REG_DNT": {
+        "value": "YESTER_YYMMDDHHIISS"
+      }
+    },
+    {
+      "TID": {
+        "value": "${payData.tid1P1}"
+      },
+      "TR_DT": {
+        "value": "YESTER_YYMMDD"
+      },
+      "TRX_ST_CD": {
+        "value": "2"
+      },
+      "APP_CARD_CD": {
+        "value": "02"
+      },
+      "APP_NO": {
+        "value": "${APP_NO1}"
+      },
+      "CARD_NO": {
+        "value": "1234123412341234",
+        "crypto" : "ENC_HASH"
+      },
+      "EXPIRE_YYMM": {
+        "value": ""
+      },
+      "QUOTA_MON": {
+        "value": "00"
+      },
+      "MBS_NO": {
+        "value": "${MID}"
+      },
+      "MBS_TYPE_CD": {
+        "value": "1"
+      },
+      "NOINT_FLG": {
+        "value": "0"
+      },
+      "NOINT_EVNT_FLG": {
+        "value": "0"
+      },
+      "ACQ_CARD_CD": {
+        "value": "02"
+      },
+      "VAN_CD": {
+        "value": "${VAN_CD}"
+      },
+      "CHKCARD_FLG": {
+        "value": "1"
+      },
+      "CARD_TYPE_CD": {
+        "value": "01"
+      },
+      "EDI_NO": {
+        "value": "${payData.tid1P1}"
+      },
+      "NOINT_EVNT_TYPE": {
+        "value": "0"
+      },
+      "POINT_FLG": {
+        "value": "0"
+      },
+      "AUTH_TYPE_CD": {
+        "value": "02"
+      },
+      "MATCH_TYPE": {
+        "value": "0"
+      },
+      "VAN_FLG": {
+        "value": "0"
+      },
+      "EZP_AUTH_CD": {
+        "value": "00"
+      },
+      "MAIN_PG_MID": {
+        "value": "${MID}"
+      },
+      "PTN_CPID": {
+        "value": "${MID}"
+      },
+      "CRYPT_FLG": {
+        "value": "1"
+      },
+      "WORKER": {
+        "value": "TEST"
+      },
+      "REG_DNT": {
+        "value": "YESTER_YYMMDDHHIISS"
+      }
+    },
+    {
+      "TID": {
+        "value": "${payData.tid1P2}"
+      },
+      "TR_DT": {
+        "value": "YESTER_YYMMDD"
+      },
+      "TRX_ST_CD": {
+        "value": "2"
+      },
+      "APP_CARD_CD": {
+        "value": "02"
+      },
+      "APP_NO": {
+        "value": "${APP_NO1}"
+      },
+      "CARD_NO": {
+        "value": "1234123412341234",
+        "crypto" : "ENC_HASH"
+      },
+      "EXPIRE_YYMM": {
+        "value": ""
+      },
+      "QUOTA_MON": {
+        "value": "00"
+      },
+      "MBS_NO": {
+        "value": "${MID}"
+      },
+      "MBS_TYPE_CD": {
+        "value": "1"
+      },
+      "NOINT_FLG": {
+        "value": "0"
+      },
+      "NOINT_EVNT_FLG": {
+        "value": "0"
+      },
+      "ACQ_CARD_CD": {
+        "value": "02"
+      },
+      "VAN_CD": {
+        "value": "${VAN_CD}"
+      },
+      "CHKCARD_FLG": {
+        "value": "1"
+      },
+      "CARD_TYPE_CD": {
+        "value": "01"
+      },
+      "EDI_NO": {
+        "value": "${payData.tid1P2}"
+      },
+      "NOINT_EVNT_TYPE": {
+        "value": "0"
+      },
+      "POINT_FLG": {
+        "value": "0"
+      },
+      "AUTH_TYPE_CD": {
+        "value": "02"
+      },
+      "MATCH_TYPE": {
+        "value": "0"
+      },
+      "VAN_FLG": {
+        "value": "0"
+      },
+      "EZP_AUTH_CD": {
+        "value": "00"
+      },
+      "MAIN_PG_MID": {
+        "value": "${MID}"
+      },
+      "PTN_CPID": {
+        "value": "${MID}"
+      },
+      "CRYPT_FLG": {
+        "value": "1"
+      },
+      "WORKER": {
+        "value": "TEST"
+      },
+      "REG_DNT": {
+        "value": "YESTER_YYMMDDHHIISS"
+      }
+    },
+    {
+      "TID": {
+        "value": "${payData.tid1P3}"
+      },
+      "TR_DT": {
+        "value": "YESTER_YYMMDD"
+      },
+      "TRX_ST_CD": {
+        "value": "2"
+      },
+      "APP_CARD_CD": {
+        "value": "02"
+      },
+      "APP_NO": {
+        "value": "${APP_NO1}"
+      },
+      "CARD_NO": {
+        "value": "1234123412341234",
+        "crypto" : "ENC_HASH"
+      },
+      "EXPIRE_YYMM": {
+        "value": ""
+      },
+      "QUOTA_MON": {
+        "value": "00"
+      },
+      "MBS_NO": {
+        "value": "${MID}"
+      },
+      "MBS_TYPE_CD": {
+        "value": "1"
+      },
+      "NOINT_FLG": {
+        "value": "0"
+      },
+      "NOINT_EVNT_FLG": {
+        "value": "0"
+      },
+      "ACQ_CARD_CD": {
+        "value": "02"
+      },
+      "VAN_CD": {
+        "value": "${VAN_CD}"
+      },
+      "CHKCARD_FLG": {
+        "value": "1"
+      },
+      "CARD_TYPE_CD": {
+        "value": "01"
+      },
+      "EDI_NO": {
+        "value": "${payData.tid1P3}"
+      },
+      "NOINT_EVNT_TYPE": {
+        "value": "0"
+      },
+      "POINT_FLG": {
+        "value": "0"
+      },
+      "AUTH_TYPE_CD": {
+        "value": "02"
+      },
+      "MATCH_TYPE": {
+        "value": "0"
+      },
+      "VAN_FLG": {
+        "value": "0"
+      },
+      "EZP_AUTH_CD": {
+        "value": "00"
+      },
+      "MAIN_PG_MID": {
+        "value": "${MID}"
+      },
+      "PTN_CPID": {
+        "value": "${MID}"
+      },
+      "CRYPT_FLG": {
+        "value": "1"
+      },
+      "WORKER": {
+        "value": "TEST"
+      },
+      "REG_DNT": {
+        "value": "YESTER_YYMMDDHHIISS"
+      }
+    },
+    {
+      "TID": {
+        "value": "${payData.tid2}"
+      },
+      "TR_DT": {
+        "value": "YESTER_YYMMDD"
+      },
+      "TRX_ST_CD": {
+        "value": "0"
+      },
+      "APP_CARD_CD": {
+        "value": "02"
+      },
+      "APP_NO": {
+        "value": "${APP_NO2}"
+      },
+      "CARD_NO": {
+        "value": "1234123412341234",
+        "crypto" : "ENC_HASH"
+      },
+      "EXPIRE_YYMM": {
+        "value": ""
+      },
+      "QUOTA_MON": {
+        "value": "00"
+      },
+      "MBS_NO": {
+        "value": "${MID}"
+      },
+      "MBS_TYPE_CD": {
+        "value": "1"
+      },
+      "NOINT_FLG": {
+        "value": "0"
+      },
+      "NOINT_EVNT_FLG": {
+        "value": "0"
+      },
+      "ACQ_CARD_CD": {
+        "value": "02"
+      },
+      "VAN_CD": {
+        "value": "${VAN_CD}"
+      },
+      "CHKCARD_FLG": {
+        "value": "1"
+      },
+      "CARD_TYPE_CD": {
+        "value": "01"
+      },
+      "EDI_NO": {
+        "value": "${payData.tid2}"
+      },
+      "NOINT_EVNT_TYPE": {
+        "value": "0"
+      },
+      "POINT_FLG": {
+        "value": "0"
+      },
+      "AUTH_TYPE_CD": {
+        "value": "02"
+      },
+      "MATCH_TYPE": {
+        "value": "0"
+      },
+      "VAN_FLG": {
+        "value": "0"
+      },
+      "EZP_AUTH_CD": {
+        "value": "00"
+      },
+      "MAIN_PG_MID": {
+        "value": "${MID}"
+      },
+      "PTN_CPID": {
+        "value": "${MID}"
+      },
+      "CRYPT_FLG": {
+        "value": "1"
+      },
+      "WORKER": {
+        "value": "TEST"
+      },
+      "REG_DNT": {
+        "value": "YESTER_YYMMDDHHIISS"
+      }
+    },
+    {
+      "TID": {
+        "value": "${payData.tid2}"
+      },
+      "TR_DT": {
+        "value": "YESTER_YYMMDD"
+      },
+      "TRX_ST_CD": {
+        "value": "1"
+      },
+      "APP_CARD_CD": {
+        "value": "02"
+      },
+      "APP_NO": {
+        "value": "${APP_NO3}"
+      },
+      "CARD_NO": {
+        "value": "1234123412341234"
+      },
+      "EXPIRE_YYMM": {
+        "value": ""
+      },
+      "QUOTA_MON": {
+        "value": "00"
+      },
+      "MBS_NO": {
+        "value": "${MID}"
+      },
+      "MBS_TYPE_CD": {
+        "value": "1"
+      },
+      "NOINT_FLG": {
+        "value": "0"
+      },
+      "NOINT_EVNT_FLG": {
+        "value": "0"
+      },
+      "ACQ_CARD_CD": {
+        "value": "02"
+      },
+      "VAN_CD": {
+        "value": "${VAN_CD}"
+      },
+      "CHKCARD_FLG": {
+        "value": "1"
+      },
+      "CARD_TYPE_CD": {
+        "value": "01"
+      },
+      "EDI_NO": {
+        "value": "${payData.tid2}"
+      },
+      "NOINT_EVNT_TYPE": {
+        "value": "0"
+      },
+      "POINT_FLG": {
+        "value": "0"
+      },
+      "AUTH_TYPE_CD": {
+        "value": "02"
+      },
+      "MATCH_TYPE": {
+        "value": "0"
+      },
+      "VAN_FLG": {
+        "value": "0"
+      },
+      "EZP_AUTH_CD": {
+        "value": "00"
+      },
+      "MAIN_PG_MID": {
+        "value": "${MID}"
+      },
+      "PTN_CPID": {
+        "value": "${MID}"
+      },
+      "CRYPT_FLG": {
+        "value": "1"
+      },
+      "WORKER": {
+        "value": "TEST"
+      },
+      "REG_DNT": {
+        "value": "YESTER_YYMMDDHHIISS"
+      }
+    }
+  ]
+}

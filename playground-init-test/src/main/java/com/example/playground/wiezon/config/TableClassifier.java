@@ -31,4 +31,6 @@ public class TableClassifier {
     public boolean isContractRelated(MetaData metaData) {
         return metaData.getDivision().equalsIgnoreCase("CONTRACT");
     }
+
+    public boolean isPayRelated(MetaData metaData) { return metaData.getDivision().equalsIgnoreCase("PAY"); }
 }

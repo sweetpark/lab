@@ -73,4 +73,33 @@ public class VariableContext {
 
         return variables;
     }
+
+
+    /**
+     * PayData 객체로부터 payData 관련 변수 맵을 추출합니다.
+     *
+     * @param payData 소스 데이터 객체
+     * @return 치환용 변수 맵
+     */
+    public static Map<String, String> getContextMap(PayData payData, String ptnCd){
+        Map<String, String> variables = new HashMap<>();
+        if (payData == null) return variables;
+        variables.put("${payData.pmCd}", payData.getPmCd());
+        variables.put("${payData.spmCd}", payData.getSpmCd());
+
+        // 승인 &  부분취소
+        variables.put("${payData.tid1}", payData.getTid1());
+        variables.put("${payData.tid1P1}", payData.getTid1P1());
+        variables.put("${payData.tid1P2}", payData.getTid1P2());
+        variables.put("${payData.tid1P3}", payData.getTid1P3());
+        variables.put("${APP_NO1}", payData.getAppNo1());
+
+        // 승인 & 전취소
+        variables.put("${payData.tid2}", payData.getTid2());
+        variables.put("${APP_NO2}", payData.getAppNo2());
+        variables.put("${APP_NO3}", payData.getAppNo3());
+
+        variables.put("${VAN_CD}", ptnCd);
+        return variables;
+    }
 }

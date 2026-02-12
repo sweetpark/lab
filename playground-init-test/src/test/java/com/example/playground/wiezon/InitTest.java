@@ -4,7 +4,7 @@ package com.example.playground.wiezon;
 import com.example.playground.wiezon.dto.InitData;
 import com.example.playground.wiezon.dto.MetaData;
 import com.example.playground.wiezon.service.InitDataAssembler;
-import com.example.playground.wiezon.util.CryptoType;
+import com.example.playground.wiezon._enum.CryptoType;
 import com.example.playground.wiezon.util.EncUtil;
 import com.google.gson.Gson;
 import kms.wiezon.com.crypt.CryptUtils;
@@ -277,7 +277,7 @@ public class InitTest {
 
     @Test
     @DisplayName("초기 데이터 셋팅")
-    void initData(){
+    void initData() throws SQLException {
 
         InitData initData = assembler.assemble();
 

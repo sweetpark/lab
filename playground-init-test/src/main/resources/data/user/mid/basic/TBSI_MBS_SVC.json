@@ -6,7 +6,8 @@
       "MID": { "value": "${MID}" },
       "PM_CD": { "value": "04" },
       "SPM_CD": { "value": "01" },
-      "USE_FLG": { "value": "1" }
+      "USE_FLG": { "value": "1" },
+      "WORKER" : {"value" : "TEST"}
     }
   ]
 }

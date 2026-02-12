@@ -3,6 +3,8 @@ package com.example.playground.wiezon.dto;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Setter
 @Getter
 public class MidInitData {
@@ -18,6 +20,7 @@ public class MidInitData {
     String crctKey;
 
     CpidMap cpidMap;
+    List<PayData> payDataList;
 
     @Override
     public String toString() {
@@ -31,6 +34,7 @@ public class MidInitData {
                 ", crctKeyType='" + crctKeyType + '\'' +
                 ", crctKey='" + crctKey + '\'' +
                 ", cpidMap=" + cpidMap +
+                ", payDataList=" + payDataList +
                 '}';
     }
 

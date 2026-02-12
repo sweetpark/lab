@@ -26,7 +26,10 @@ public class MetaData {
                     "TBSI_MBS_KEY", "TBSI_STMT_SVC",
                     "TBSI_ADDSVC_FEE",
                     "TBSI_MBS_MEMO",
-                    "TBSI_VGRP"
+                    "TBSI_VGRP",
+                    "TBTR_CARD",
+                    "TBTR_MSTR",
+                    "TBTR_HIST"
             );
 
 

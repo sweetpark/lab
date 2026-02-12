@@ -1,8 +1,13 @@
 package com.example.playground.wiezon.service;
 
+import com.example.playground.wiezon.ToolRunner;
 import com.example.playground.wiezon.dto.CpidMap;
 import com.example.playground.wiezon.dto.InitData;
 import com.example.playground.wiezon.dto.MidInitData;
+import com.example.playground.wiezon.dto.PayData;
+import com.example.playground.wiezon._enum.PaymentDetailType;
+import com.example.playground.wiezon._enum.PaymentMethod;
+import org.checkerframework.checker.nullness.qual.NonNull;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.stereotype.Service;
@@ -12,11 +17,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * 초기화에 필요한 기본 데이터(InitData)를 조립하는 서비스입니다.
- * <p>
- * Environment 프로퍼티와 DB 조회를 통해 MID, CPID 설정 등의 데이터를 수집하여 {@link InitData} 객체를 생성합니다.
  */
 @Service
 public class InitDataAssembler {
@@ -24,6 +33,7 @@ public class InitDataAssembler {
 
     private final DataSource dataSource;
     private final Environment environment;
+    private final Set<String> sessionTids = new HashSet<>();
 
     public InitDataAssembler(DataSource dataSource, Environment environment) {
         this.dataSource = dataSource;
@@ -36,7 +46,8 @@ public class InitDataAssembler {
      *
      * @return 조립된 {@link InitData} 객체
      */
-    public InitData assemble(){
+    public InitData assemble() throws SQLException {
+        sessionTids.clear();
         InitData initData = new InitData();
 
         //mid 하나당, cpid 한 종류
@@ -81,6 +92,7 @@ public class InitDataAssembler {
             cpidMap.setOfflineKey(prop("cpids[%d].offline.key", index));
 
             midInitData.setCpidMap(cpidMap);
+            midInitData.setPayDataList(createPayData(midInitData));
             initData.addCpidList(cpidMap);
 
             initData.addMidList(midInitData);
@@ -89,6 +101,7 @@ public class InitDataAssembler {
 
         return initData;
     }
+
 
     private String getCoNo(DataSource dataSource) {
 
@@ -139,5 +152,82 @@ public class InitDataAssembler {
             }
         }
         return flag;
+    }
+    private List<PayData> createPayData(MidInitData midInitData) throws SQLException {
+
+        List<PayData> result = new ArrayList<>();
+
+        //FIXME) 결제 날짜 지정 필요
+
+        // 오늘
+        int day = 0;
+        // 100개 거래 내역 정보 저장
+        for(int i = 0; i < 100; i ++){
+            if(i > 50) day = 1;
+            PayData payData = new PayData();
+            payData.setPmCd(PaymentMethod.CREDIT_CARD.getCode());
+            payData.setSpmCd(PaymentDetailType.CARD_AUTH.getDetailCode());
+            payData.setTid1(createTid(PaymentMethod.CREDIT_CARD.getCode(), PaymentDetailType.CARD_AUTH.getDetailCode(), midInitData, day));
+            payData.setTid2(createTid(PaymentMethod.CREDIT_CARD.getCode(), PaymentDetailType.CARD_AUTH.getDetailCode(), midInitData, day));
+            payData.setTid1P1(createTid(PaymentMethod.CREDIT_CARD.getCode(), PaymentDetailType.CARD_AUTH.getDetailCode(), midInitData, day));
+            payData.setTid1P2(createTid(PaymentMethod.CREDIT_CARD.getCode(), PaymentDetailType.CARD_AUTH.getDetailCode(), midInitData, day));
+            payData.setTid1P3(createTid(PaymentMethod.CREDIT_CARD.getCode(), PaymentDetailType.CARD_AUTH.getDetailCode(), midInitData, day));
+            payData.setAppNo1(String.format("%08d",ToolRunner.app_no++));
+            payData.setAppNo2(String.format("%08d",ToolRunner.app_no++));
+            payData.setAppNo3(String.format("%08d",ToolRunner.app_no++));
+
+            result.add(payData);
+        }
+
+        return result;
+    }
+    private @NonNull String createTid(String pmCD, String spmCD, MidInitData midInitData, int day) throws SQLException {
+        int sequence = 0;
+
+        while (sequence < 1000) {
+            StringBuilder sb = new StringBuilder();
+            String mid = midInitData.getMid();
+
+            // 전날 날짜 기준 TID 생성
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyMMddHHmmssSSSSSS");
+            String date = formatter.format(LocalDateTime.now().minusDays(day));
+
+            sb.append(mid);
+            sb.append(pmCD);
+            sb.append(spmCD);
+            sb.append(date, 0, 6);
+
+            // SUBSTR(cur_time, 7, 9) → HHmmssSSS (9자리) 사용
+            int timeTail = Integer.parseInt(date.substring(6, 15));
+
+            // LOWER(HEX(CAST(... AS UNSIGNED)))
+            String hex = Integer.toHexString(timeTail).toLowerCase();
+
+            sb.append(String.format("%7s", hex).replace(' ', '0'));
+            sb.append(String.format("%03d", sequence));
+
+
+            String tid = sb.toString();
+
+            if (!sessionTids.contains(tid) && !checkExistTID(tid)) {
+                sessionTids.add(tid);
+                return tid;
+            }
+
+            sequence++;
+        }
+
+        throw new IllegalStateException("TID 생성 실패 - sequence 초과");
+    }
+    private boolean checkExistTID(String tid) throws SQLException {
+        Connection con = DataSourceUtils.getConnection(dataSource);
+
+        String sql = "SELECT 1 FROM TBTR_MSTR WHERE TID = ? LIMIT 1";
+        try(PreparedStatement pstmt = con.prepareStatement(sql)){
+            pstmt.setString(1, tid);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                return rs.next();
+            }
+        }
     }
 }

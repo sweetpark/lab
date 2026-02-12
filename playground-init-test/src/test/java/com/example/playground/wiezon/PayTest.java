@@ -4,6 +4,8 @@ import com.example.playground.wiezon.dto.InitData;
 import com.example.playground.wiezon.service.InitDataAssembler;
 import kms.wiezon.com.crypt.CryptUtils;
 import net.bytebuddy.asm.Advice;
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.test.context.ActiveProfiles;
 
 import javax.sql.DataSource;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -54,9 +57,16 @@ public class PayTest {
      */
     @Test
     @DisplayName("tid 만들기")
-    void genTid(){
+    void genTid() throws SQLException {
         InitData initData = assembler.assemble();
 
+        StringBuilder sb = getTid(initData);
+        System.out.println(sb);
+        Assertions.assertEquals(30, sb.toString().length());
+
+    }
+
+    private static @NonNull StringBuilder getTid(InitData initData) {
         String mid = initData.getMidList().getFirst().getMid();
         String pmCd = "01";
         String spmCd = "01";
@@ -79,9 +89,6 @@ public class PayTest {
 
         sb.append(String.format("%7s", hex).replace(' ', '0'));
         sb.append(String.format("%03d", sequence));
-
-
-        System.out.println(sb);
-
+        return sb;
     }
 }

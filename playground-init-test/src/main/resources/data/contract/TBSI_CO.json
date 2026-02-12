@@ -59,7 +59,8 @@
       "CO_REG_NO": { "value": "1231231231", "crypto" : "ENC_HASH" },
       "COBS_KIND_CD": { "value": "J:62:62010" },
       "TAX_EMAIL": { "value": "wypark@wiezon.com" },
-      "CO_GRADE": { "value": "A" }
+      "CO_GRADE": { "value": "A" },
+      "WORKER" : { "value" :  "TEST"}
     }
   ]
 }

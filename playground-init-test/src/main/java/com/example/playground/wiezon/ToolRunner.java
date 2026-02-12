@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.SQLException;
 import java.util.*;
 
 /**
@@ -35,6 +36,7 @@ public class ToolRunner implements ApplicationRunner {
     private final FileReadService fileReadService;
     private final InitDataAssembler assembler;
     private final List<MetaDataProcessStrategy> strategies;
+    public static long app_no = 0;
 
     public ToolRunner(ResourcePatternResolver resolver, FileReadService fileReadService, InitDataAssembler assembler, List<MetaDataProcessStrategy> strategies) {
         this.resolver = resolver;
@@ -69,13 +71,10 @@ public class ToolRunner implements ApplicationRunner {
                         .process(metaData, propertiesData);
 
 
-            } catch (IOException e) {
+            } catch (IOException | SQLException e) {
                 throw new RuntimeException(e);
             }
         });
-
-
-        throw new RuntimeException("정상종료 - 트랜잭션 강제");
 
     }
 }

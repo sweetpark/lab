@@ -1,7 +1,7 @@
 package com.example.playground.wiezon.service;
 
 import com.example.playground.wiezon.dto.MetaData;
-import com.example.playground.wiezon.util.CryptoType;
+import com.example.playground.wiezon._enum.CryptoType;
 import com.example.playground.wiezon.util.EncUtil;
 import com.google.gson.Gson;
 import org.springframework.stereotype.Service;
@@ -80,8 +80,10 @@ public class FileReadService {
             switch (entry.getValue().get("value").toString()){
                 case "CUR_YYMMDD" -> entry.setValue(valueMap(now.format(DateTimeFormatter.ofPattern("yyyyMMdd"))));
                 case "CUR_YYMMDDHHIISS" -> entry.setValue(valueMap(now.format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"))));
+                case "CUR_HHIISS" -> entry.setValue(valueMap(now.format(DateTimeFormatter.ofPattern("HHmmss"))));
                 case "YESTER_YYMMDD" -> entry.setValue(valueMap(now.minusDays(1).format(DateTimeFormatter.ofPattern("yyyyMMdd"))));
                 case "YESTER_YYMMDDHHIISS" -> entry.setValue(valueMap(now.minusDays(1).format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"))));
+                case "YESTER_HHIISS" -> entry.setValue(valueMap(now.minusDays(1).format(DateTimeFormatter.ofPattern("HHmmss"))));
             }
         }
     }
