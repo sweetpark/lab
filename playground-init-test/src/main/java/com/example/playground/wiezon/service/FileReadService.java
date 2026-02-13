@@ -67,7 +67,8 @@ public class FileReadService {
                     additionalData.putIfAbsent(entry.getKey() + "_HASH" , valueMap(EncUtil.createHash(entry.getValue().get("value").toString())));
                 }
                 case CryptoType.OTP -> entry.setValue(valueMap(EncUtil.createEncOtp()));
-                case CryptoType.PASSWORD -> entry.setValue(valueMap(EncUtil.createEnc(entry.getValue().get("value").toString())));
+                case CryptoType.PASSWORD -> entry.setValue(valueMap(EncUtil.Base64EncodedMD5(entry.getValue().get("value").toString())));
+                case CryptoType.ENC_BASE64 -> entry.setValue(valueMap(EncUtil.Base64EncodedMD5(EncUtil.makeRandomPw())));
             }
         }
     }

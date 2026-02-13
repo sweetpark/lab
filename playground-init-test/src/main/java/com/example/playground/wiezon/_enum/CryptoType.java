@@ -1,7 +1,7 @@
 package com.example.playground.wiezon._enum;
 
 public enum CryptoType {
-    NONE,ENC_HASH, OTP, PASSWORD;
+    NONE,ENC_HASH, OTP, PASSWORD, ENC_BASE64;
 
 
     public static CryptoType from(Object value) {

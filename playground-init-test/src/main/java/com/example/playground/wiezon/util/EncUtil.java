@@ -57,7 +57,7 @@ public class EncUtil {
         }
     }
 
-    private static String Base64EncodedMD5(String password){
+    public static String Base64EncodedMD5(String password){
         try{
             MessageDigest md = MessageDigest.getInstance("SHA-256");
 
@@ -88,7 +88,7 @@ public class EncUtil {
         }
     }
 
-    private static String makeRandomPw(){
+    public static String makeRandomPw(){
         // 패스워드에 사용될 문자 배열
         char pwCollection[] = new char[] {
                 '1','2','3','4','5','6','7','8','9','0',
