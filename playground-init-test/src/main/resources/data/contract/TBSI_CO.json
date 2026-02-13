@@ -36,7 +36,7 @@
       "RADDR_NO1": { "value": "서울 구로구 도림천로 477" },
       "RADDR_NO2": { "value": "1번출구" },
       "RPOST_NO": { "value": "08391" },
-      "CONT_NM": { "value": "위*온", "crypto" : "ENC_HASH" },
+      "CONT_NM": { "value": "위지온", "crypto" : "ENC_HASH" },
       "CONT_TEL": { "value": "01099999999" },
       "CONT_HP": { "value": "01099999999", "crypto" : "ENC_HASH" },
       "CONT_EMAIL": { "value": "wypark@wiezon.com", "crypto" : "ENC_HASH" },

@@ -48,15 +48,15 @@ public class InitDataAssembler {
      */
     public InitData assemble() throws SQLException {
         sessionTids.clear();
+        String co_no = getCoNo(dataSource);
         InitData initData = new InitData();
-
         //mid 하나당, cpid 한 종류
         int index = 0;
         while (existsCpidsIndex(environment, index)) {
 
             MidInitData midInitData = new MidInitData();
             midInitData.setMid(String.format(environment.getProperty("mid") + "%03d" + 'm', index));
-            midInitData.setCono(getCoNo(dataSource));
+            midInitData.setCono(co_no);
             midInitData.setGid(environment.getProperty("gid"));
             midInitData.setL1Vid(environment.getProperty("l1_vid"));
             midInitData.setCrctPtnCd(environment.getProperty("crct.ptnCd"));
@@ -106,19 +106,23 @@ public class InitDataAssembler {
     private String getCoNo(DataSource dataSource) {
 
         Connection con = DataSourceUtils.getConnection(dataSource);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+        String now = LocalDateTime.now().format(formatter);
 
         String sql =
                 "SELECT tmma.CO_NO " +
-                        "FROM TBSI_MS_MBS_ALL tmma " +
-                        "LEFT JOIN TBSI_CO tsc ON tmma.CO_NO = tsc.CO_NO " +
-                        "WHERE tmma.SM_MBS_CD = ? " +
+                        "FROM TBSI_MS_MBS tsmm " +
+                        "LEFT JOIN TBSI_CO tsc ON tsmm.CO_NO = tsc.CO_NO " +
+                        "WHERE tsmm.SM_MBS_CD = ? " +
                         "AND tsc.CO_NO IS NULL " +
-                        "ORDER BY tmma.TO_DT DESC " +
+                        "AND ? BETWEEN tsmm.FR_DT AND tsmm.TO_DT " +
+                        "ORDER BY tsmm.TO_DT DESC " +
                         "LIMIT 1";
 
         try(PreparedStatement pstmt = con.prepareStatement(sql)) {
 
             pstmt.setString(1, "A1");
+            pstmt.setString(2, now);
 
             try(ResultSet rs = pstmt.executeQuery()){
                 if(rs.next()){

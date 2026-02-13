@@ -53,11 +53,12 @@ public class ToolRunner implements ApplicationRunner {
 
         Resource[] resources = resolver.getResources("classpath:/data/**/*.json");
 
+        // 0. properties load
+        InitData propertiesData = assembler.assemble();
+
         Arrays.stream(resources).forEach(resource -> {
 
             try(InputStream is = resource.getInputStream()){
-                // 0. properties load
-                InitData propertiesData = assembler.assemble();
 
                 // 1. file read
                 MetaData metaData = fileReadService.parseJson(is);
@@ -71,7 +72,7 @@ public class ToolRunner implements ApplicationRunner {
                         .process(metaData, propertiesData);
 
 
-            } catch (IOException | SQLException e) {
+            } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         });
