@@ -76,6 +76,9 @@ public class ToolRunner implements ApplicationRunner {
                 throw new RuntimeException(e);
             }
         });
+        
+        throw new RuntimeException("정상종료 - 강제 트랜잭션 적용");
+
 
     }
 }

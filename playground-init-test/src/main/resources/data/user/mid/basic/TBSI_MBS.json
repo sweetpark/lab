@@ -15,6 +15,12 @@
       "CO_NM": {
         "value": "위지온테스트"
       },
+      "TAX_EMAIL" : {
+        "value" : "wypark@wiezon.com"
+      },
+      "CC_PART_CL": {
+        "value" : "01"
+      },
       "GID": {
         "value": "${GID}"
       },
@@ -161,6 +167,15 @@
       "ACNT_NO": {
         "value": "",
         "crypto": "ENC_HASH"
+      },
+      "SMS_PAY_FLG": {
+        "value" : "1"
+      },
+      "URL_PAY_FLG" : {
+        "value" : "1"
+      },
+      "MSG_PAY_LMT_CD" : {
+        "value" : "01"
       }
     }
   ]

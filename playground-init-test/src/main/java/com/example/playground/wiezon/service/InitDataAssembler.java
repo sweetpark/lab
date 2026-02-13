@@ -19,10 +19,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * 초기화에 필요한 기본 데이터(InitData)를 조립하는 서비스입니다.
@@ -49,6 +46,16 @@ public class InitDataAssembler {
     public InitData assemble() throws SQLException {
         sessionTids.clear();
         String co_no = getCoNo(dataSource);
+
+//        //1. mid별 달라질 설정정보
+//        List<Map<String, Object>> configList = List.of(
+//                // 그룹정산
+//                Map.of("PAY_ID_CD", "3", "AUTO_CAL_FLG", "1" ),
+//
+//                // 매장정산
+//                Map.of("PAY_ID_CD", "2", "AUTO_CAL_FLG", "0")
+//        );
+
         InitData initData = new InitData();
         //mid 하나당, cpid 한 종류
         int index = 0;
@@ -110,7 +117,7 @@ public class InitDataAssembler {
         String now = LocalDateTime.now().format(formatter);
 
         String sql =
-                "SELECT tmma.CO_NO " +
+                "SELECT tsmm.CO_NO " +
                         "FROM TBSI_MS_MBS tsmm " +
                         "LEFT JOIN TBSI_CO tsc ON tsmm.CO_NO = tsc.CO_NO " +
                         "WHERE tsmm.SM_MBS_CD = ? " +
