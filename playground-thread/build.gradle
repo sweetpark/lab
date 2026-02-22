@@ -1,0 +1,16 @@
+plugins {
+    id 'org.springframework.boot'
+    id 'io.spring.dependency-management'
+    id 'java'
+}
+
+dependencies {
+    implementation project(':core')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'org.bouncycastle:bcprov-jdk18on:1.78.1'
+    implementation 'commons-codec:commons-codec:1.17.1'
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+}
