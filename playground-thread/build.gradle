@@ -5,12 +5,24 @@ plugins {
 }
 
 dependencies {
-    implementation project(':core')
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'org.bouncycastle:bcprov-jdk18on:1.78.1'
-    implementation 'commons-codec:commons-codec:1.17.1'
-    implementation 'com.fasterxml.jackson.core:jackson-databind'
+//    implementation project(':core')
+    // Spring Boot 기본
+    implementation 'org.springframework.boot:spring-boot-starter'
 
-    implementation 'org.springframework.boot:spring-boot-starter-web'
+    // JDBC
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+
+    // MyBatis
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
+
+    // DB (예: MariaDB)
+    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+
+    // Lombok
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // 테스트
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
 }
