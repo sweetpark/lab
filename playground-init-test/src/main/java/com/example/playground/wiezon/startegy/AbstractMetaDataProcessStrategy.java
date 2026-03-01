@@ -1,6 +1,6 @@
 package com.example.playground.wiezon.startegy;
 
-import com.example.playground.wiezon.dto.MetaData;
+import com.example.playground.wiezon.context.MetaData;
 import com.example.playground.wiezon.service.DBProcessService;
 import com.example.playground.wiezon.service.FileReadService;
 import com.example.playground.wiezon.util.DataVariableResolver;

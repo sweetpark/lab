@@ -1,6 +1,6 @@
 package com.example.playground.wiezon.config;
 
-import com.example.playground.wiezon.dto.MetaData;
+import com.example.playground.wiezon.context.MetaData;
 import org.springframework.stereotype.Component;
 
 

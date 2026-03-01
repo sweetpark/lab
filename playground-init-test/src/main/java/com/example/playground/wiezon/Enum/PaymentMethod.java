@@ -1,4 +1,4 @@
-package com.example.playground.wiezon._enum;
+package com.example.playground.wiezon.Enum;
 
 public enum PaymentMethod {
     CREDIT_CARD("01", "신용카드"),

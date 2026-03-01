@@ -1,4 +1,4 @@
-package com.example.playground.wiezon._enum;
+package com.example.playground.wiezon.Enum;
 
 public enum CryptoType {
     NONE,ENC_HASH, OTP, PASSWORD, ENC_BASE64;

@@ -1,9 +1,8 @@
 package com.example.playground.wiezon;
 
-import com.example.playground.wiezon.dto.InitData;
+import com.example.playground.wiezon.context.InitData;
 import com.example.playground.wiezon.service.InitDataAssembler;
 import kms.wiezon.com.crypt.CryptUtils;
-import net.bytebuddy.asm.Advice;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -17,7 +16,6 @@ import org.springframework.test.context.ActiveProfiles;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 

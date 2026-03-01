@@ -1,7 +1,7 @@
 package com.example.playground.wiezon;
 
-import com.example.playground.wiezon.dto.InitData;
-import com.example.playground.wiezon.dto.MetaData;
+import com.example.playground.wiezon.context.InitData;
+import com.example.playground.wiezon.context.MetaData;
 import com.example.playground.wiezon.service.FileReadService;
 import com.example.playground.wiezon.service.InitDataAssembler;
 import com.example.playground.wiezon.startegy.MetaDataProcessStrategy;
@@ -13,9 +13,7 @@ import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.IOException;
 import java.io.InputStream;
-import java.sql.SQLException;
 import java.util.*;
 
 /**

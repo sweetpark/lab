@@ -1,4 +1,4 @@
-package com.example.playground.wiezon.dto;
+package com.example.playground.wiezon.context;
 
 import lombok.Getter;
 

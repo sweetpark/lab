@@ -1,7 +1,7 @@
 package com.example.playground.wiezon.startegy;
 
-import com.example.playground.wiezon.dto.InitData;
-import com.example.playground.wiezon.dto.MetaData;
+import com.example.playground.wiezon.context.InitData;
+import com.example.playground.wiezon.context.MetaData;
 
 
 /**

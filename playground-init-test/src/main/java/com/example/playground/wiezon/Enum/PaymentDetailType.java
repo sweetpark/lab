@@ -1,4 +1,4 @@
-package com.example.playground.wiezon._enum;
+package com.example.playground.wiezon.Enum;
 
 import java.util.Arrays;
 import java.util.Map;

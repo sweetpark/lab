@@ -1,6 +1,6 @@
 package com.example.playground.wiezon.service;
 
-import com.example.playground.wiezon.dto.MetaData;
+import com.example.playground.wiezon.context.MetaData;
 import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.stereotype.Service;
 

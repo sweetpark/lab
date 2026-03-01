@@ -1,10 +1,10 @@
 package com.example.playground.wiezon;
 
 
-import com.example.playground.wiezon.dto.InitData;
-import com.example.playground.wiezon.dto.MetaData;
+import com.example.playground.wiezon.context.InitData;
+import com.example.playground.wiezon.context.MetaData;
 import com.example.playground.wiezon.service.InitDataAssembler;
-import com.example.playground.wiezon._enum.CryptoType;
+import com.example.playground.wiezon.Enum.CryptoType;
 import com.example.playground.wiezon.util.EncUtil;
 import com.google.gson.Gson;
 import kms.wiezon.com.crypt.CryptUtils;

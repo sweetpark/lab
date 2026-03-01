@@ -1,7 +1,7 @@
 package com.example.playground.wiezon.service;
 
-import com.example.playground.wiezon.dto.MetaData;
-import com.example.playground.wiezon._enum.CryptoType;
+import com.example.playground.wiezon.context.MetaData;
+import com.example.playground.wiezon.Enum.CryptoType;
 import com.example.playground.wiezon.util.EncUtil;
 import com.google.gson.Gson;
 import org.springframework.stereotype.Service;
