@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class CpidMap{
+public class CpidContext {
     String certPtnCd;
     String certCpid;
     String certKeyType;
@@ -28,7 +28,7 @@ public class CpidMap{
 
     @Override
     public String toString() {
-        return "CpidMap{" +
+        return "CpidContext{" +
                 "\n  cert={" +
                 "ptnCd='" + certPtnCd + '\'' +
                 ", cpid='" + certCpid + '\'' +

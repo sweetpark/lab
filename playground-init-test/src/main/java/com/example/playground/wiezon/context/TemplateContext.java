@@ -10,7 +10,7 @@ import java.util.Set;
  * table: 대상 DB 테이블명<br>
  * rows: 실제 데이터 행 리스트
  */
-public class MetaData {
+public class TemplateContext {
 
     private String division;
     private String table;
@@ -48,12 +48,12 @@ public class MetaData {
         return this.table;
     }
 
-    public MetaData(String table, List<Map<String, Map<String,Object>>> rows){
+    public TemplateContext(String table, List<Map<String, Map<String,Object>>> rows){
         this.table = table;
         this.rows = rows;
     }
 
-    public MetaData(String division, String table, List<Map<String, Map<String,Object>>> rows){
+    public TemplateContext(String division, String table, List<Map<String, Map<String,Object>>> rows){
         this.division = division;
         this.table = table;
         this.rows = rows;

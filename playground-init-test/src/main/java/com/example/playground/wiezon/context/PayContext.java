@@ -7,7 +7,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class PayData {
+public class PayContext {
     private String pmCd;      // 결제수단 코드 (예: 01)
     private String spmCd;     // 하위 결제수단 코드 (예: 01)
 
