@@ -1,6 +1,6 @@
 package com.example.playground.wiezon.startegy;
 
-import com.example.playground.wiezon.context.MetaData;
+import com.example.playground.wiezon.context.TemplateContext;
 import com.example.playground.wiezon.service.DBProcessService;
 import com.example.playground.wiezon.service.FileReadService;
 import com.example.playground.wiezon.util.DataVariableResolver;
@@ -37,7 +37,7 @@ public abstract class AbstractMetaDataProcessStrategy implements MetaDataProcess
      * @param template  처리할 템플릿 메타데이터
      * @param variables 치환에 사용할 변수 맵 (Key: "${VAR}", Value: "ActualValue")
      */
-    protected void transformAndSave(MetaData template, Map<String, String> variables) {
+    protected void transformAndSave(TemplateContext template, Map<String, Object> variables) {
         List<Map<String, Map<String, Object>>> newRows = template.getRows().stream()
                 .map(templateRow -> {
                     Map<String, Map<String, Object>> deepRow = createNewRow(templateRow);
@@ -45,7 +45,7 @@ public abstract class AbstractMetaDataProcessStrategy implements MetaDataProcess
                     return deepRow;
                 }).toList();
 
-        MetaData processedData = new MetaData(template.getTable(), newRows);
+        TemplateContext processedData = new TemplateContext(template.getTable(), newRows);
         fileReadService.dataPreProcess(processedData);
         dbProcessService.save(processedData);
     }

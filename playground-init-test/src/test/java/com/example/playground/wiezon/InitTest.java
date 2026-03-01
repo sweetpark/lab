@@ -1,8 +1,7 @@
 package com.example.playground.wiezon;
 
 
-import com.example.playground.wiezon.context.InitData;
-import com.example.playground.wiezon.context.MetaData;
+import com.example.playground.wiezon.context.TemplateContext;
 import com.example.playground.wiezon.service.InitDataAssembler;
 import com.example.playground.wiezon.Enum.CryptoType;
 import com.example.playground.wiezon.util.EncUtil;
@@ -96,10 +95,10 @@ public class InitTest {
                 Gson gson = new Gson();
 
                 BufferedReader br = new BufferedReader(new InputStreamReader(read));
-                MetaData metaData = gson.fromJson(br, MetaData.class);
-                Assertions.assertEquals("TEST_TABLE", metaData.getTable());
-                if(!metaData.getRows().isEmpty()){
-                    Map<String, Map<String, Object>> first = metaData.getRows().getFirst();
+                TemplateContext templateContext = gson.fromJson(br, TemplateContext.class);
+                Assertions.assertEquals("TEST_TABLE", templateContext.getTable());
+                if(!templateContext.getRows().isEmpty()){
+                    Map<String, Map<String, Object>> first = templateContext.getRows().getFirst();
                     Assertions.assertEquals("data", first.get("ID").get("value"));
                 }
             }
@@ -122,12 +121,12 @@ public class InitTest {
                 Gson gson = new Gson();
 
                 // parse
-                MetaData metaData = parse(resource);
+                TemplateContext templateContext = parse(resource);
 
                 // preprocess
-                preprocessMetaData(metaData,LocalDateTime.now());
+                preprocessMetaData(templateContext,LocalDateTime.now());
 
-                String json = writeResult(gson, metaData);
+                String json = writeResult(gson, templateContext);
                 Assertions.assertFalse(json.isEmpty());
             }
         }catch(Exception e){
@@ -145,9 +144,9 @@ public class InitTest {
             con.setAutoCommit(false);
 
             for(Resource resource : resources){
-                MetaData metaData = parse(resource);
-                preprocessMetaData(metaData, LocalDateTime.now());
-                dbInsert(metaData,con);
+                TemplateContext templateContext = parse(resource);
+                preprocessMetaData(templateContext, LocalDateTime.now());
+                dbInsert(templateContext,con);
             }
 
             con.commit();
@@ -202,7 +201,7 @@ public class InitTest {
         Resource[] resources = resolver.getResources("classpath:/data/**/*.json");
 
         Arrays.stream(resources).forEach(resource -> {
-                MetaData template = parse(resource);
+                TemplateContext template = parse(resource);
                 int index = 0;
                 while(true){
                     String ptnCd = environment.getProperty(String.format("cpids[%d].ptnCd", index));
@@ -253,9 +252,9 @@ public class InitTest {
                             .collect(Collectors.toList());
 
 
-                    MetaData newMetaData = new MetaData(template.getTable(), newRows);
-                    Assertions.assertFalse(newMetaData.getRows().isEmpty());
-                    System.out.println(newMetaData.getRows());
+                    TemplateContext newTemplateContext = new TemplateContext(template.getTable(), newRows);
+                    Assertions.assertFalse(newTemplateContext.getRows().isEmpty());
+                    System.out.println(newTemplateContext.getRows());
 
                     index++;
                 }
@@ -275,17 +274,6 @@ public class InitTest {
         System.out.println("CO_NO : " + coNo);
     }
 
-    @Test
-    @DisplayName("초기 데이터 셋팅")
-    void initData() throws SQLException {
-
-        InitData initData = assembler.assemble();
-
-        Assertions.assertEquals(1, initData.getCpidList().size());
-        Assertions.assertEquals(1, initData.getMidList().size());
-        initData.getCpidList().forEach(System.out::println);
-        initData.getMidList().forEach(System.out::println);
-    }
 
     private boolean isTemplateMatched(Map<String, Map<String, Object>> row, String colKey, String templateStr) {
         if (!row.containsKey(colKey) || row.get(colKey) == null) return false;
@@ -293,10 +281,10 @@ public class InitTest {
         Object valueObj = row.get(colKey).get("value");
         return valueObj != null && valueObj.equals(templateStr);
     }
-    private static void dbInsert(MetaData metaData, Connection con) {
-        String table = metaData.getTable();
+    private static void dbInsert(TemplateContext templateContext, Connection con) {
+        String table = templateContext.getTable();
 
-        for(Map<String, Map<String,Object>> row : metaData.getRows()){
+        for(Map<String, Map<String,Object>> row : templateContext.getRows()){
             // arrayList 순서보장
             List<String> columns = new ArrayList<>();
             List<Object> values = new ArrayList<>();
@@ -323,8 +311,8 @@ public class InitTest {
 
         }
     }
-    private void preprocessMetaData(MetaData metaData, LocalDateTime now) {
-        metaData.getRows().forEach(row -> preprocessRow(row, now));
+    private void preprocessMetaData(TemplateContext templateContext, LocalDateTime now) {
+        templateContext.getRows().forEach(row -> preprocessRow(row, now));
     }
     private void preprocessRow(Map<String, Map<String, Object>> row, LocalDateTime now) {
         Map<String, Map<String, Object>> additionalData = new HashMap<>();
@@ -336,10 +324,10 @@ public class InitTest {
 
         row.putAll(additionalData);
     }
-    private MetaData parse(Resource resource){
+    private TemplateContext parse(Resource resource){
         try(BufferedReader br = new BufferedReader(new InputStreamReader(resource.getInputStream()))) {
             Gson gson = new Gson();
-            return gson.fromJson(br, MetaData.class);
+            return gson.fromJson(br, TemplateContext.class);
         }catch(Exception e){
             throw new RuntimeException("parse failed");
         }
@@ -370,8 +358,8 @@ public class InitTest {
         newDate.put("value", now);
         return newDate;
     }
-    private static @NonNull String writeResult(Gson gson, MetaData metaData) throws IOException {
-        String json = gson.toJson(metaData);
+    private static @NonNull String writeResult(Gson gson, TemplateContext templateContext) throws IOException {
+        String json = gson.toJson(templateContext);
         Path path = Path.of("./output.txt");
         Files.writeString(path,
                 json,

@@ -1,12 +1,8 @@
 package com.example.playground.wiezon;
 
-import com.example.playground.wiezon.context.InitData;
 import com.example.playground.wiezon.service.InitDataAssembler;
 import kms.wiezon.com.crypt.CryptUtils;
 import org.checkerframework.checker.nullness.qual.NonNull;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,7 +11,6 @@ import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.test.context.ActiveProfiles;
 
 import javax.sql.DataSource;
-import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -53,40 +48,7 @@ public class PayTest {
 
     END
      */
-    @Test
-    @DisplayName("tid 만들기")
-    void genTid() throws SQLException {
-        InitData initData = assembler.assemble();
 
-        StringBuilder sb = getTid(initData);
-        System.out.println(sb);
-        Assertions.assertEquals(30, sb.toString().length());
 
-    }
 
-    private static @NonNull StringBuilder getTid(InitData initData) {
-        String mid = initData.getMidList().getFirst().getMid();
-        String pmCd = "01";
-        String spmCd = "01";
-        int sequence = 0;
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyMMddHHmmssSSSSSS");
-        String now = formatter.format(LocalDateTime.now());
-
-        StringBuilder sb = new StringBuilder();
-        sb.append(mid);
-        sb.append(pmCd);
-        sb.append(spmCd);
-        sb.append(now, 0, 6);
-
-        // SUBSTR(cur_time, 7, 9) → 7~8 두 자리라고 가정
-        int timeTail = Integer.parseInt(now.substring(6, 8));
-
-        // LOWER(HEX(CAST(... AS UNSIGNED)))
-        String hex = Integer.toHexString(timeTail).toLowerCase();
-
-        sb.append(String.format("%7s", hex).replace(' ', '0'));
-        sb.append(String.format("%03d", sequence));
-        return sb;
-    }
 }

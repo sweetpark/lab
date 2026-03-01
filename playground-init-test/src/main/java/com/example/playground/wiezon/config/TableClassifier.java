@@ -1,7 +1,11 @@
 package com.example.playground.wiezon.config;
 
-import com.example.playground.wiezon.context.MetaData;
+import com.example.playground.wiezon.Enum.Division;
+import com.example.playground.wiezon.context.TemplateContext;
 import org.springframework.stereotype.Component;
+
+import java.util.HashSet;
+import java.util.Set;
 
 
 /**
@@ -12,25 +16,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class TableClassifier {
 
-    public boolean isAffiliate(MetaData metaData) {
-        return metaData.getDivision().equalsIgnoreCase("AFFILIATE");
+    private static final Set<String> BASIC_DIVISIONS = Set.of(
+            Division.MID.name(),
+            Division.GID.name(),
+            Division.VID.name(),
+            Division.AFFILIATE.name(),
+            Division.CONTRACT.name(),
+            Division.PAY.name()
+    );
+    public boolean isBasicRelated(TemplateContext templateContext) {
+        String division = templateContext.getDivision();
+        return division != null && BASIC_DIVISIONS.contains(division.toUpperCase());
     }
-
-    public boolean isMidRelated(MetaData metaData) {
-        return metaData.getDivision().equalsIgnoreCase("MID");
-    }
-
-    public boolean isGidRelated(MetaData metaData){
-        return metaData.getDivision().equalsIgnoreCase("GID");
-    }
-
-    public boolean isVidRelated(MetaData metaData){
-        return metaData.getDivision().equalsIgnoreCase("VID");
-    }
-
-    public boolean isContractRelated(MetaData metaData) {
-        return metaData.getDivision().equalsIgnoreCase("CONTRACT");
-    }
-
-    public boolean isPayRelated(MetaData metaData) { return metaData.getDivision().equalsIgnoreCase("PAY"); }
+    public boolean isSupportRelated(TemplateContext templateContext){ return templateContext.getDivision().equalsIgnoreCase("SUPPORT"); }
 }

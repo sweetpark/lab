@@ -1,6 +1,6 @@
 package com.example.playground.wiezon.service;
 
-import com.example.playground.wiezon.context.MetaData;
+import com.example.playground.wiezon.context.TemplateContext;
 import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.stereotype.Service;
 
@@ -26,23 +26,23 @@ public class DBProcessService {
     /**
      * 메타데이터를 받아 DB Insert를 수행합니다.
      */
-    public void save(MetaData metaData){
+    public void save(TemplateContext templateContext){
         
         // 1. Connection 연결
         Connection con = DataSourceUtils.getConnection(dataSource);
         try {
             // 2. insert
-            dbInsert(metaData, con);
+            dbInsert(templateContext, con);
 
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    private void dbInsert(MetaData metaData, Connection con) {
-        String table = metaData.getTable();
+    private void dbInsert(TemplateContext templateContext, Connection con) {
+        String table = templateContext.getTable();
 
-        for(Map<String, Map<String,Object>> row : metaData.getRows()){
+        for(Map<String, Map<String,Object>> row : templateContext.getRows()){
 
             List<String> columns = new ArrayList<>();
             List<Object> values = new ArrayList<>();

@@ -1,6 +1,6 @@
 package com.example.playground.wiezon.service;
 
-import com.example.playground.wiezon.context.MetaData;
+import com.example.playground.wiezon.context.TemplateContext;
 import com.example.playground.wiezon.Enum.CryptoType;
 import com.example.playground.wiezon.util.EncUtil;
 import com.google.gson.Gson;
@@ -22,12 +22,12 @@ public class FileReadService {
 
 
     /**
-     * InputStream에서 JSON 데이터를 읽어 {@link MetaData} 객체로 파싱합니다.
+     * InputStream에서 JSON 데이터를 읽어 {@link TemplateContext} 객체로 파싱합니다.
      */
-    public MetaData parseJson(InputStream inputStream){
+    public TemplateContext parseJson(InputStream inputStream){
         try(BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
             Gson gson = new Gson();
-            return gson.fromJson(br, MetaData.class);
+            return gson.fromJson(br, TemplateContext.class);
 
         } catch (IOException e) {
             throw new RuntimeException("Failed to read json file", e);
@@ -37,12 +37,12 @@ public class FileReadService {
     /**
      * 메타데이터의 각 행에 대해 전처리를 수행합니다. (날짜 치환, 암호화 등)
      */
-    public void dataPreProcess(MetaData metaData){
-        preprocessMetaData(metaData,LocalDateTime.now());
+    public void dataPreProcess(TemplateContext templateContext){
+        preprocessMetaData(templateContext,LocalDateTime.now());
     }
 
-    private void preprocessMetaData(MetaData metaData, LocalDateTime now) {
-        metaData.getRows().forEach(row -> preprocessRow(row, now));
+    private void preprocessMetaData(TemplateContext templateContext, LocalDateTime now) {
+        templateContext.getRows().forEach(row -> preprocessRow(row, now));
     }
     private void preprocessRow(Map<String, Map<String, Object>> row, LocalDateTime now) {
         Map<String, Map<String, Object>> additionalData = new HashMap<>();

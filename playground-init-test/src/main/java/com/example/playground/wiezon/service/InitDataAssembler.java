@@ -1,12 +1,10 @@
 package com.example.playground.wiezon.service;
 
 import com.example.playground.wiezon.ToolRunner;
-import com.example.playground.wiezon.context.CpidMap;
-import com.example.playground.wiezon.context.InitData;
-import com.example.playground.wiezon.context.MidInitData;
-import com.example.playground.wiezon.context.PayData;
+import com.example.playground.wiezon.context.*;
 import com.example.playground.wiezon.Enum.PaymentDetailType;
 import com.example.playground.wiezon.Enum.PaymentMethod;
+import com.example.playground.wiezon.exception.PayDataCreateException;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DataSourceUtils;
@@ -20,6 +18,9 @@ import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 /**
  * 초기화에 필요한 기본 데이터(InitData)를 조립하는 서비스입니다.
@@ -37,79 +38,123 @@ public class InitDataAssembler {
         this.environment = environment;
     }
 
+    public Stream<MidContext> streamMids(GlobalContext globalContext, List<CpidContext> cpidContexts){
+        // default) 제휴그룹 (cpid) 당 1개 mid
+        int midPerCpid = environment.getProperty("mids.per.cpid", Integer.class, 1);
 
-    /**
-     * 초기화 데이터를 수집 및 조립합니다.
-     *
-     * @return 조립된 {@link InitData} 객체
-     */
-    public InitData assemble() throws SQLException {
-        sessionTids.clear();
-        String co_no = getCoNo(dataSource);
-
-//        //1. mid별 달라질 설정정보
-//        List<Map<String, Object>> configList = List.of(
-//                // 그룹정산
-//                Map.of("PAY_ID_CD", "3", "AUTO_CAL_FLG", "1" ),
-//
-//                // 매장정산
-//                Map.of("PAY_ID_CD", "2", "AUTO_CAL_FLG", "0")
-//        );
-
-        InitData initData = new InitData();
-        //mid 하나당, cpid 한 종류
-        int index = 0;
-        while (existsCpidsIndex(environment, index)) {
-
-            MidInitData midInitData = new MidInitData();
-            midInitData.setMid(String.format(environment.getProperty("mid") + "%03d" + 'm', index));
-            midInitData.setCono(co_no);
-            midInitData.setGid(environment.getProperty("gid"));
-            midInitData.setL1Vid(environment.getProperty("l1_vid"));
-            midInitData.setCrctPtnCd(environment.getProperty("crct.ptnCd"));
-            midInitData.setCrctCpid(environment.getProperty("crct.cpid"));
-            midInitData.setCrctKeyType(environment.getProperty("crct.keyType"));
-            midInitData.setCrctKey(environment.getProperty("crct.key"));
-
-
-            CpidMap cpidMap = new CpidMap();
-
-            //인증
-            cpidMap.setCertPtnCd(prop("cpids[%d].cert.ptnCd", index));
-            cpidMap.setCertCpid(prop("cpids[%d].cert.cpid", index));
-            cpidMap.setCertKeyType(prop("cpids[%d].cert.keyType", index));
-            cpidMap.setCertKey(prop("cpids[%d].cert.key", index));
-
-            //구인증
-            cpidMap.setOldCertPtnCd(prop("cpids[%d].old.cert.ptnCd", index));
-            cpidMap.setOldCertCpid(prop("cpids[%d].old.cert.cpid", index));
-            cpidMap.setOldCertKeyType(prop("cpids[%d].old.cert.keyType", index));
-            cpidMap.setOldCertKey(prop("cpids[%d].old.cert.key", index));
-
-            //비인증
-            cpidMap.setNoCertPtnCd(prop("cpids[%d].no.cert.ptnCd", index));
-            cpidMap.setNoCertCpid(prop("cpids[%d].no.cert.cpid", index));
-            cpidMap.setNoCertKeyType(prop("cpids[%d].no.cert.keyType", index));
-            cpidMap.setNoCertKey(prop("cpids[%d].no.cert.key", index));
-
-            //오프라인
-            cpidMap.setOfflinePtnCd(prop("cpids[%d].offline.ptnCd", index));
-            cpidMap.setOfflineCpid(prop("cpids[%d].offline.cpid", index));
-            cpidMap.setOfflineKeyType(prop("cpids[%d].offline.keyType", index));
-            cpidMap.setOfflineKey(prop("cpids[%d].offline.key", index));
-
-            midInitData.setCpidMap(cpidMap);
-            midInitData.setPayDataList(createPayData(midInitData));
-            initData.addCpidList(cpidMap);
-
-            initData.addMidList(midInitData);
-            index++;
+        // mid prefix 방어로직
+        String midPrefix = environment.getProperty("mid", "sitest");
+        if(midPrefix.length() != 6){
+            midPrefix = midPrefix.substring(0, 6);
         }
+        String finalMidPrefix = midPrefix;
 
-        return initData;
+        // mid 중복 방지
+        AtomicInteger seq = new AtomicInteger(0);
+
+        return cpidContexts.stream().flatMap(cpid -> IntStream.range(0, midPerCpid).mapToObj(index -> {
+                            MidContext midData = new MidContext();
+
+                            // Global Context 설정
+                            midData.setCono(globalContext.getCono());
+                            midData.setGid(globalContext.getGid());
+                            midData.setL1Vid(globalContext.getL1Vid());
+                            midData.setCrctPtnCd(globalContext.getCrctPtnCd());
+                            midData.setCrctCpid(globalContext.getCrctCpid());
+                            midData.setCrctKeyType(globalContext.getCrctKeyType());
+                            midData.setCrctKey(globalContext.getCrctKey());
+
+                            // cpid 맵핑
+                            midData.setCpidContext(cpid);
+
+                            //mid 설정 (총 1000개까지 생성 가능)
+                            int uniqueIdx = seq.incrementAndGet();
+                            midData.setMid(String.format("%s%03dm", finalMidPrefix, uniqueIdx));
+
+                            return midData;
+                        }
+                )
+        );
+    }
+
+    public Stream<PayContext> streamPayData(MidContext midContext){
+        return IntStream.range(0,100).mapToObj(index -> {
+            try{
+                int day = (index > 50) ? 1 : 0;
+                PayContext payContext = new PayContext();
+
+                payContext.setSpmCd(PaymentDetailType.CARD_AUTH.getDetailCode());
+                payContext.setTid1(createTid(PaymentMethod.CREDIT_CARD.getCode(), PaymentDetailType.CARD_AUTH.getDetailCode(), midContext, day));
+                payContext.setTid2(createTid(PaymentMethod.CREDIT_CARD.getCode(), PaymentDetailType.CARD_AUTH.getDetailCode(), midContext, day));
+                payContext.setTid1P1(createTid(PaymentMethod.CREDIT_CARD.getCode(), PaymentDetailType.CARD_AUTH.getDetailCode(), midContext, day));
+                payContext.setTid1P2(createTid(PaymentMethod.CREDIT_CARD.getCode(), PaymentDetailType.CARD_AUTH.getDetailCode(), midContext, day));
+                payContext.setTid1P3(createTid(PaymentMethod.CREDIT_CARD.getCode(), PaymentDetailType.CARD_AUTH.getDetailCode(), midContext, day));
+                payContext.setAppNo1(String.format("%08d",ToolRunner.app_no++));
+                payContext.setAppNo2(String.format("%08d",ToolRunner.app_no++));
+                payContext.setAppNo3(String.format("%08d",ToolRunner.app_no++));
+
+                return payContext;
+            }catch(SQLException e){
+                throw new PayDataCreateException("payData create Exception! ",e);
+            }
+        });
     }
 
 
+    public GlobalContext getGlobalContext() {
+        return new GlobalContext(
+                getCoNo(dataSource),
+                environment.getProperty("gid"),
+                environment.getProperty("l1_vid"),
+                environment.getProperty("crct.ptnCd"),
+                environment.getProperty("crct.cpid"),
+                environment.getProperty("crct.keyType"),
+                environment.getProperty("crct.key")
+        );
+    }
+
+    public List<CpidContext> getBaseCpids(){
+        List<CpidContext> cpidContexts = new ArrayList<>();
+        int index = 0;
+        while (existsCpidsIndex(environment, index)) {
+
+            CpidContext cpidContext = new CpidContext();
+
+            //인증
+            cpidContext.setCertPtnCd(prop("cpids[%d].cert.ptnCd", index));
+            cpidContext.setCertCpid(prop("cpids[%d].cert.cpid", index));
+            cpidContext.setCertKeyType(prop("cpids[%d].cert.keyType", index));
+            cpidContext.setCertKey(prop("cpids[%d].cert.key", index));
+
+            //구인증
+            cpidContext.setOldCertPtnCd(prop("cpids[%d].old.cert.ptnCd", index));
+            cpidContext.setOldCertCpid(prop("cpids[%d].old.cert.cpid", index));
+            cpidContext.setOldCertKeyType(prop("cpids[%d].old.cert.keyType", index));
+            cpidContext.setOldCertKey(prop("cpids[%d].old.cert.key", index));
+
+            //비인증
+            cpidContext.setNoCertPtnCd(prop("cpids[%d].no.cert.ptnCd", index));
+            cpidContext.setNoCertCpid(prop("cpids[%d].no.cert.cpid", index));
+            cpidContext.setNoCertKeyType(prop("cpids[%d].no.cert.keyType", index));
+            cpidContext.setNoCertKey(prop("cpids[%d].no.cert.key", index));
+
+            //오프라인
+            cpidContext.setOfflinePtnCd(prop("cpids[%d].offline.ptnCd", index));
+            cpidContext.setOfflineCpid(prop("cpids[%d].offline.cpid", index));
+            cpidContext.setOfflineKeyType(prop("cpids[%d].offline.keyType", index));
+            cpidContext.setOfflineKey(prop("cpids[%d].offline.key", index));
+
+
+            cpidContexts.add(cpidContext);
+            index++;
+        }
+
+        return cpidContexts;
+    }
+
+    public void clearTids(){
+        sessionTids.clear();
+    }
     private String getCoNo(DataSource dataSource) {
 
         Connection con = DataSourceUtils.getConnection(dataSource);
@@ -164,40 +209,12 @@ public class InitDataAssembler {
         }
         return flag;
     }
-    private List<PayData> createPayData(MidInitData midInitData) throws SQLException {
-
-        List<PayData> result = new ArrayList<>();
-
-        //FIXME) 결제 날짜 지정 필요
-
-        // 오늘
-        int day = 0;
-        // 100개 거래 내역 정보 저장
-        for(int i = 0; i < 100; i ++){
-            if(i > 50) day = 1;
-            PayData payData = new PayData();
-            payData.setPmCd(PaymentMethod.CREDIT_CARD.getCode());
-            payData.setSpmCd(PaymentDetailType.CARD_AUTH.getDetailCode());
-            payData.setTid1(createTid(PaymentMethod.CREDIT_CARD.getCode(), PaymentDetailType.CARD_AUTH.getDetailCode(), midInitData, day));
-            payData.setTid2(createTid(PaymentMethod.CREDIT_CARD.getCode(), PaymentDetailType.CARD_AUTH.getDetailCode(), midInitData, day));
-            payData.setTid1P1(createTid(PaymentMethod.CREDIT_CARD.getCode(), PaymentDetailType.CARD_AUTH.getDetailCode(), midInitData, day));
-            payData.setTid1P2(createTid(PaymentMethod.CREDIT_CARD.getCode(), PaymentDetailType.CARD_AUTH.getDetailCode(), midInitData, day));
-            payData.setTid1P3(createTid(PaymentMethod.CREDIT_CARD.getCode(), PaymentDetailType.CARD_AUTH.getDetailCode(), midInitData, day));
-            payData.setAppNo1(String.format("%08d",ToolRunner.app_no++));
-            payData.setAppNo2(String.format("%08d",ToolRunner.app_no++));
-            payData.setAppNo3(String.format("%08d",ToolRunner.app_no++));
-
-            result.add(payData);
-        }
-
-        return result;
-    }
-    private @NonNull String createTid(String pmCD, String spmCD, MidInitData midInitData, int day) throws SQLException {
+    private @NonNull String createTid(String pmCD, String spmCD, MidContext midContext, int day) throws SQLException {
         int sequence = 0;
 
         while (sequence < 1000) {
             StringBuilder sb = new StringBuilder();
-            String mid = midInitData.getMid();
+            String mid = midContext.getMid();
 
             // 전날 날짜 기준 TID 생성
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyMMddHHmmssSSSSSS");

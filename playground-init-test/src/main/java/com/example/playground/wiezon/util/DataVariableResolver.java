@@ -18,7 +18,7 @@ public class DataVariableResolver {
      * @param variables 치환할 변수 맵 (key: "${VAR}", value: "actualValue")
      * @throws RuntimeException 변환할 맵이 없거나, 매칭되는 변수가 없는 경우
      */
-    public static void replace(Map<String, Map<String, Object>> row, Map<String, String> variables) {
+    public static void replace(Map<String, Map<String, Object>> row, Map<String, Object> variables) {
         if (variables == null || variables.isEmpty()) {
             row.keySet().forEach(
                     key -> System.out.println(row.get(key).toString() + " 변환 할 수 없습니다. ")
@@ -30,9 +30,9 @@ public class DataVariableResolver {
             Object valueObj = valueMap.get("value");
             if (valueObj instanceof String strValue) {
                 if (strValue.startsWith("${") && strValue.endsWith("}")) {
-                    String replacement = variables.get(strValue);
+                    Object replacement = variables.get(strValue);
                     if (replacement != null) {
-                        valueMap.put("value", replacement);
+                        valueMap.put("value", replacement.toString());
                     }else{
                         throw new RuntimeException("존재하지 않는 strValue : " + strValue);
                     }
