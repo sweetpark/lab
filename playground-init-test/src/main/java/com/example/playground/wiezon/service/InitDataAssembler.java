@@ -19,6 +19,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -124,25 +125,25 @@ public class InitDataAssembler {
             cpidContext.setCertPtnCd(prop("cpids[%d].cert.ptnCd", index));
             cpidContext.setCertCpid(prop("cpids[%d].cert.cpid", index));
             cpidContext.setCertKeyType(prop("cpids[%d].cert.keyType", index));
-            cpidContext.setCertKey(prop("cpids[%d].cert.key", index));
+            cpidContext.setCertKey(addDelimiterKey(prop("cpids[%d].cert.key", index)));
 
             //구인증
             cpidContext.setOldCertPtnCd(prop("cpids[%d].old.cert.ptnCd", index));
             cpidContext.setOldCertCpid(prop("cpids[%d].old.cert.cpid", index));
             cpidContext.setOldCertKeyType(prop("cpids[%d].old.cert.keyType", index));
-            cpidContext.setOldCertKey(prop("cpids[%d].old.cert.key", index));
+            cpidContext.setOldCertKey(addDelimiterKey(prop("cpids[%d].old.cert.key", index)));
 
             //비인증
             cpidContext.setNoCertPtnCd(prop("cpids[%d].no.cert.ptnCd", index));
             cpidContext.setNoCertCpid(prop("cpids[%d].no.cert.cpid", index));
             cpidContext.setNoCertKeyType(prop("cpids[%d].no.cert.keyType", index));
-            cpidContext.setNoCertKey(prop("cpids[%d].no.cert.key", index));
+            cpidContext.setNoCertKey(addDelimiterKey(prop("cpids[%d].no.cert.key", index)));
 
             //오프라인
             cpidContext.setOfflinePtnCd(prop("cpids[%d].offline.ptnCd", index));
             cpidContext.setOfflineCpid(prop("cpids[%d].offline.cpid", index));
             cpidContext.setOfflineKeyType(prop("cpids[%d].offline.keyType", index));
-            cpidContext.setOfflineKey(prop("cpids[%d].offline.key", index));
+            cpidContext.setOfflineKey(addDelimiterKey(prop("cpids[%d].offline.key", index)));
 
 
             cpidContexts.add(cpidContext);
@@ -191,6 +192,15 @@ public class InitDataAssembler {
     }
     private String prop(String key, int index){
         return environment.getProperty(String.format(key, index));
+    }
+    private String addDelimiterKey(String preKey){
+        if(preKey != null){
+            return Arrays.stream(preKey.split(","))
+                    .map(String::trim)
+                    .collect(Collectors.joining("____TEST____"));
+        }else{
+            return "";
+        }
     }
     private boolean existsCpidsIndex(Environment env, int index) {
         String[] keys = {
