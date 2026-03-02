@@ -52,11 +52,20 @@ public class DBProcessService {
                 values.add(map.get("value"));
             });
 
+
+            // Duplicate ignore
+            String firstColumn = escapeColumn(columns.get(0));
             String sql = "INSERT INTO " + table + " ("
-                    + columns.stream().map(this::escapeColumn).collect(Collectors.joining(", "))
+                    + columns.stream()
+                    .map(this::escapeColumn)
+                    .collect(Collectors.joining(", "))
                     + ") VALUES ("
-                    + values.stream().map(map -> "?").collect(Collectors.joining(", "))
-                    +")";
+                    + columns.stream()
+                    .map(col -> "?")
+                    .collect(Collectors.joining(", "))
+                    + ") ON DUPLICATE KEY UPDATE "
+                    + firstColumn + " = " + firstColumn;
+
 
             System.out.println("[ SQL ] >>>\n" + renderSql(sql, values));
 

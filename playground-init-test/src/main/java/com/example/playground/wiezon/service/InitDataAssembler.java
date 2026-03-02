@@ -114,6 +114,76 @@ public class InitDataAssembler {
         );
     }
 
+    /*
+     사용자님께서 말씀하신 "Property에서 식별값(PK)을 읽고 -> 그 PK로 DB를 조회하여 -> 실제 컨텍스트 객체를 완성하는 구조"가 설정 기반의 유연성과 데이터의 정확성을 모두
+  잡는 가장 정석적인 방법입니다.
+
+
+  이 구조를 Stream 기반의 OOM 방지 전략과 결합하여 InitDataAssembler에 적용하는 구체적인 구현 방식을 제안해 드립니다.
+
+
+  1. 전반적인 프로세스 흐름
+   1. `Environment`: 설정 파일(application.yml 등)에서 global.pk, cpids[0].pk 등을 읽음.
+   2. `DB Query`: 읽어온 PK를 사용해 SELECT * FROM ... WHERE PK = ? 쿼리 실행.
+   3. `Context Mapping`: DB 결과(ResultSet)를 GlobalContext, CpidContext 객체에 매핑.
+   4. `Stream Processing`: MidContext는 개수가 많을 수 있으므로, DB에서 Cursor 방식으로 읽어와 Stream으로 흘려보냄.
+
+  2. InitDataAssembler 수정 제안
+
+
+    1 @Service
+    2 public class InitDataAssembler {
+    3     private final DataSource dataSource;
+    4     private final Environment environment;
+    5
+    6     // 1. GlobalContext: 설정의 PK로 DB 조회
+    7     public GlobalContext getGlobalContext() {
+    8         String pk = environment.getProperty("global.pk"); // 설정에서 PK 로드
+    9         return findGlobalFromDb(pk); // DB 조회 후 객체 반환
+   10     }
+   11
+   12     // 2. CpidContext: 설정의 PK 리스트로 DB 조회
+   13     public List<CpidContext> getBaseCpids() {
+   14         // 설정에서 cpids[0].pk, cpids[1].pk 등을 가져옴
+   15         List<String> pks = getCpidPksFromConfig();
+   16
+   17         return pks.stream()
+   18                   .map(this::findCpidFromDb) // 각 PK별 최신 DB 상태 로드
+   19                   .collect(Collectors.toList());
+   20     }
+   21
+   22     // 3. MidContext: OOM 방지를 위해 Stream으로 반환
+   23     public Stream<MidContext> streamMids(GlobalContext global, List<CpidContext> cpids) {
+   24         // 여기서도 필요한 경우 DB에서 페이징이나 커서 방식으로 MID 정보를 가져옴
+   25         // 예: SELECT * FROM TB_MID WHERE CPID_ID IN (...)
+   26         return cpids.stream().flatMap(cpid -> {
+   27             // 특정 CPID에 속한 MID들을 DB에서 하나씩 읽어오는 Stream 반환
+   28             return fetchMidStreamByCpid(global, cpid);
+   29         });
+   30     }
+   31
+   32     // --- DB 조회 상세 로직 (JdbcTemplate 또는 직접 쿼리) ---
+   33
+   34     private GlobalContext findGlobalFromDb(String pk) {
+   35         // SELECT * FROM TB_GLOBAL WHERE ID = pk 쿼리 실행 로직
+   36         // rs.getString("CONO"), rs.getString("GID") 등을 GlobalContext에 세팅
+   37     }
+   38
+   39     private Stream<MidContext> fetchMidStreamByCpid(GlobalContext global, CpidContext cpid) {
+   40         // JdbcTemplate.queryForStream 등을 사용하여 커서를 유지하며 데이터 로드
+   41         // 각 Row를 읽을 때마다 MidContext를 생성하고 global/cpid 정보를 주입
+   42     }
+   43 }
+
+  3. 왜 이 단계(Assembler)에서 처리하는 것이 좋을까?
+
+
+   1. `ToolRunner`의 순수성: ToolRunner는 전체적인 실행 흐름(Global -> Cpid -> Mid 순서)만 관리하고, 구체적으로 데이터를 어떻게 가져오는지는 Assembler가 담당하게 됩니다.
+   2. 최신성 보장: getGlobalContext()나 findCpidFromDb()를 호출하는 시점이 run() 메서드 내부이므로, 프로그램 실행 직전의 DB 상태를 반영할 수 있습니다.
+   3. 메모리 효율: streamMids 내에서 fetchMidStreamByCpid를 통해 데이터를 하나씩 가져오면, DB에 MID가 만 개 이상 있더라도 메모리에는 한 번에 하나의 MidContext만 올라가게
+      되어 OOM으로부터 안전합니다.
+
+     */
     public List<CpidContext> getBaseCpids(){
         List<CpidContext> cpidContexts = new ArrayList<>();
         int index = 0;
