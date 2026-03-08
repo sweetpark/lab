@@ -97,12 +97,18 @@ public class VariableContext {
      * @param payContext 소스 데이터 객체
      * @return 치환용 변수 맵
      */
-    public static Map<String, Object> getContextMap(PayContext payContext, String ptnCd){
+    public static Map<String, Object> getContextMap(PayContext payContext){
         Map<String, Object> variables = new HashMap<>();
         if (payContext == null) return variables;
+        variables.put("${MID}", payContext.getMid());
+        variables.put("${GID}", payContext.getGid());
+        variables.put("${VID}", payContext.getVid());
+        variables.put("${VAN_CD}", payContext.getVanCd());
+
         variables.put("${payData.pmCd}", payContext.getPmCd());
         variables.put("${payData.spmCd}", payContext.getSpmCd());
 
+        // FIXME)  API 연동시 제거 부분
         // 승인 &  부분취소
         variables.put("${payData.tid1}", payContext.getTid1());
         variables.put("${payData.tid1P1}", payContext.getTid1P1());
@@ -115,7 +121,6 @@ public class VariableContext {
         variables.put("${APP_NO2}", payContext.getAppNo2());
         variables.put("${APP_NO3}", payContext.getAppNo3());
 
-        variables.put("${VAN_CD}", ptnCd);
         return variables;
     }
 }

@@ -8,6 +8,12 @@ import lombok.ToString;
 @Setter
 @ToString
 public class PayContext {
+    private String mid;
+    private String gid;
+    private String vid;
+    private String vanCd;
+
+
     private String pmCd;      // 결제수단 코드 (예: 01)
     private String spmCd;     // 하위 결제수단 코드 (예: 01)
 

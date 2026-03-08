@@ -6,6 +6,7 @@ import com.example.playground.wiezon.Enum.PaymentDetailType;
 import com.example.playground.wiezon.Enum.PaymentMethod;
 import com.example.playground.wiezon.exception.PayDataCreateException;
 import org.checkerframework.checker.nullness.qual.NonNull;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.stereotype.Service;
@@ -33,10 +34,15 @@ public class InitDataAssembler {
     private final DataSource dataSource;
     private final Environment environment;
     private final Set<String> sessionTids = new HashSet<>();
+    private final PayProcessService payProcessService;
 
-    public InitDataAssembler(DataSource dataSource, Environment environment) {
+    @Value("${pay.count:100}")
+    private int payCount;
+
+    public InitDataAssembler(DataSource dataSource, Environment environment, PayProcessService payProcessService) {
         this.dataSource = dataSource;
         this.environment = environment;
+        this.payProcessService = payProcessService;
     }
 
     public Stream<MidContext> streamMids(GlobalContext globalContext, List<CpidContext> cpidContexts){
@@ -78,23 +84,11 @@ public class InitDataAssembler {
         );
     }
 
-    public Stream<PayContext> streamPayData(MidContext midContext){
-        return IntStream.range(0,100).mapToObj(index -> {
+    public Stream<PayContext> streamPayData(PayBaseContext payBaseContext){
+        return IntStream.range(0,payCount).mapToObj(index -> {
             try{
-                int day = (index > 50) ? 1 : 0;
-                PayContext payContext = new PayContext();
-
-                payContext.setSpmCd(PaymentDetailType.CARD_AUTH.getDetailCode());
-                payContext.setTid1(createTid(PaymentMethod.CREDIT_CARD.getCode(), PaymentDetailType.CARD_AUTH.getDetailCode(), midContext, day));
-                payContext.setTid2(createTid(PaymentMethod.CREDIT_CARD.getCode(), PaymentDetailType.CARD_AUTH.getDetailCode(), midContext, day));
-                payContext.setTid1P1(createTid(PaymentMethod.CREDIT_CARD.getCode(), PaymentDetailType.CARD_AUTH.getDetailCode(), midContext, day));
-                payContext.setTid1P2(createTid(PaymentMethod.CREDIT_CARD.getCode(), PaymentDetailType.CARD_AUTH.getDetailCode(), midContext, day));
-                payContext.setTid1P3(createTid(PaymentMethod.CREDIT_CARD.getCode(), PaymentDetailType.CARD_AUTH.getDetailCode(), midContext, day));
-                payContext.setAppNo1(String.format("%08d",ToolRunner.app_no++));
-                payContext.setAppNo2(String.format("%08d",ToolRunner.app_no++));
-                payContext.setAppNo3(String.format("%08d",ToolRunner.app_no++));
-
-                return payContext;
+                int day = (index > payCount/2) ? 1 : 0;
+                return payProcessService.createPayContext(payBaseContext, day);
             }catch(SQLException e){
                 throw new PayDataCreateException("payData create Exception! ",e);
             }
@@ -219,53 +213,5 @@ public class InitDataAssembler {
         }
         return flag;
     }
-    private @NonNull String createTid(String pmCD, String spmCD, MidContext midContext, int day) throws SQLException {
-        int sequence = 0;
 
-        while (sequence < 1000) {
-            StringBuilder sb = new StringBuilder();
-            String mid = midContext.getMid();
-
-            // 전날 날짜 기준 TID 생성
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyMMddHHmmssSSSSSS");
-            String date = formatter.format(LocalDateTime.now().minusDays(day));
-
-            sb.append(mid);
-            sb.append(pmCD);
-            sb.append(spmCD);
-            sb.append(date, 0, 6);
-
-            // SUBSTR(cur_time, 7, 9) → HHmmssSSS (9자리) 사용
-            int timeTail = Integer.parseInt(date.substring(6, 15));
-
-            // LOWER(HEX(CAST(... AS UNSIGNED)))
-            String hex = Integer.toHexString(timeTail).toLowerCase();
-
-            sb.append(String.format("%7s", hex).replace(' ', '0'));
-            sb.append(String.format("%03d", sequence));
-
-
-            String tid = sb.toString();
-
-            if (!sessionTids.contains(tid) && !checkExistTID(tid)) {
-                sessionTids.add(tid);
-                return tid;
-            }
-
-            sequence++;
-        }
-
-        throw new IllegalStateException("TID 생성 실패 - sequence 초과");
-    }
-    private boolean checkExistTID(String tid) throws SQLException {
-        Connection con = DataSourceUtils.getConnection(dataSource);
-
-        String sql = "SELECT 1 FROM TBTR_MSTR WHERE TID = ? LIMIT 1";
-        try(PreparedStatement pstmt = con.prepareStatement(sql)){
-            pstmt.setString(1, tid);
-            try (ResultSet rs = pstmt.executeQuery()) {
-                return rs.next();
-            }
-        }
-    }
 }
