@@ -45,7 +45,7 @@ public abstract class AbstractMetaDataProcessStrategy implements MetaDataProcess
                     return deepRow;
                 }).toList();
 
-        TemplateContext processedData = new TemplateContext(template.getTable(), newRows);
+        TemplateContext processedData = new TemplateContext(template.getDivision(), template.getTable(), newRows);
         fileReadService.dataPreProcess(processedData);
         dbProcessService.save(processedData);
     }

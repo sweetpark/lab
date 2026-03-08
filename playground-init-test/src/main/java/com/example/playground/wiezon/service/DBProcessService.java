@@ -1,5 +1,6 @@
 package com.example.playground.wiezon.service;
 
+import com.example.playground.wiezon.Enum.Division;
 import com.example.playground.wiezon.context.TemplateContext;
 import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,12 @@ import java.util.stream.Collectors;
 @Service
 public class DBProcessService {
 
-
+    private final Set<String> ignoreDivision = Set.of(
+            Division.GID.name(),
+            Division.VID.name(),
+            Division.AFFILIATE.name(),
+            Division.SUPPORT.name()
+    );
     private final DataSource dataSource;
 
     public DBProcessService(DataSource dataSource) {
@@ -52,11 +58,19 @@ public class DBProcessService {
                 values.add(map.get("value"));
             });
 
+            String ignoreSql = "INSERT IGNORE INTO " + table + " ("
+                    + columns.stream().map(this::escapeColumn).collect(Collectors.joining(", "))
+                    + ") VALUES ("
+                    + values.stream().map(v -> "?").collect(Collectors.joining(", "))
+                    +")";
+
             String sql = "INSERT INTO " + table + " ("
                     + columns.stream().map(this::escapeColumn).collect(Collectors.joining(", "))
                     + ") VALUES ("
                     + values.stream().map(map -> "?").collect(Collectors.joining(", "))
                     +")";
+
+            sql = ignoreDivision.contains(templateContext.getDivision()) ? ignoreSql : sql;
 
             System.out.println("[ SQL ] >>>\n" + renderSql(sql, values));
 

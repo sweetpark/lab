@@ -67,4 +67,12 @@ public class TemplateContext {
         return ALLOWED_TABLES.contains(this.table);
     }
 
+    @Override
+    public String toString() {
+        return "TemplateContext{" +
+                "division='" + division + '\'' +
+                ", table='" + table + '\'' +
+                '}';
+    }
+
 }
