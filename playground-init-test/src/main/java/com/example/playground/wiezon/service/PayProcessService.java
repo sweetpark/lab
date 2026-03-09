@@ -39,11 +39,11 @@ public class PayProcessService {
 
         payContext.setPmCd(PaymentDetailType.CARD_AUTH.getGroupCode());
         payContext.setSpmCd(PaymentDetailType.CARD_AUTH.getDetailCode());
-        payContext.setTid1(createTid(PaymentMethod.CREDIT_CARD.getCode(), PaymentDetailType.CARD_AUTH.getDetailCode(), midContext, day));
-        payContext.setTid2(createTid(PaymentMethod.CREDIT_CARD.getCode(), PaymentDetailType.CARD_AUTH.getDetailCode(), midContext, day));
-        payContext.setTid1P1(createTid(PaymentMethod.CREDIT_CARD.getCode(), PaymentDetailType.CARD_AUTH.getDetailCode(), midContext, day));
-        payContext.setTid1P2(createTid(PaymentMethod.CREDIT_CARD.getCode(), PaymentDetailType.CARD_AUTH.getDetailCode(), midContext, day));
-        payContext.setTid1P3(createTid(PaymentMethod.CREDIT_CARD.getCode(), PaymentDetailType.CARD_AUTH.getDetailCode(), midContext, day));
+        payContext.setTid1(createTid(PaymentMethod.CREDIT_CARD.getCode(), PaymentDetailType.CARD_AUTH.getDetailCode(), payBaseContext.getMid(), day));
+        payContext.setTid2(createTid(PaymentMethod.CREDIT_CARD.getCode(), PaymentDetailType.CARD_AUTH.getDetailCode(), payBaseContext.getMid(), day));
+        payContext.setTid1P1(createTid(PaymentMethod.CREDIT_CARD.getCode(), PaymentDetailType.CARD_AUTH.getDetailCode(), payBaseContext.getMid(), day));
+        payContext.setTid1P2(createTid(PaymentMethod.CREDIT_CARD.getCode(), PaymentDetailType.CARD_AUTH.getDetailCode(), payBaseContext.getMid(), day));
+        payContext.setTid1P3(createTid(PaymentMethod.CREDIT_CARD.getCode(), PaymentDetailType.CARD_AUTH.getDetailCode(), payBaseContext.getMid(), day));
         payContext.setAppNo1(String.format("%08d", ToolRunner.app_no++));
         payContext.setAppNo2(String.format("%08d",ToolRunner.app_no++));
         payContext.setAppNo3(String.format("%08d",ToolRunner.app_no++));
@@ -52,12 +52,11 @@ public class PayProcessService {
     }
 
 
-    private @NonNull String createTid(String pmCD, String spmCD, MidContext midContext, int day) throws SQLException {
+    private @NonNull String createTid(String pmCD, String spmCD, String mid, int day) throws SQLException {
         int sequence = 0;
 
         while (sequence < 1000) {
             StringBuilder sb = new StringBuilder();
-            String mid = midContext.getMid();
 
             // 전날 날짜 기준 TID 생성
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyMMddHHmmssSSSSSS");
