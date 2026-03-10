@@ -57,7 +57,7 @@ public class ToolRunner implements ApplicationRunner {
 
         TemplateRegistry registry = templateRegistry.loadAll();
 
-        GlobalContext globalContext = assembler.getGlobalContext();
+        GlobalContext globalContext = assembler.getGlobalContext(mode);
         List<CpidContext> cpids = assembler.getBaseCpids();
 
         if(mode.equalsIgnoreCase("FULL")){

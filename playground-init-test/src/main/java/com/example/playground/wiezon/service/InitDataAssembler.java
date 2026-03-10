@@ -96,9 +96,9 @@ public class InitDataAssembler {
     }
 
 
-    public GlobalContext getGlobalContext() {
+    public GlobalContext getGlobalContext(String mode) {
         return new GlobalContext(
-                getCoNo(dataSource),
+                mode.equals("PAY") ? "0000000000" : getCoNo(dataSource),
                 environment.getProperty("gid"),
                 environment.getProperty("l1_vid"),
                 environment.getProperty("crct.ptnCd"),
