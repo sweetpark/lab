@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+
+    <property name="CONSOLE_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %magenta([%thread]) %highlight([%-3level]) %logger{5} - %msg %n" />
+    <property name="ROLLING_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS}  %logger{5} - %msg %n" />
+    <property name="FILE_NAME" value="C:/logs/application.log" />
+<!--    <property name="LOG_NAME_PATTERN" value="./logs/application-%d{yyyy-MM-dd-HH-mm}.%i.log" /> <!- 1 Minute &ndash;&gt;-->
+<!--    <property name="LOG_NAME_PATTERN" value="./logs/application-%d{yyyy-MM-dd-HH}.%i.log" /> <!- 1 Hour &ndash;&gt;-->
+    <property name="LOG_NAME_PATTERN" value="./logs/application-%d{yyyy-MM-dd}.%i.log" /> <!-- 1 day -->
+    <property name="MAX_FILE_SIZE" value="10MB" />
+    <property name="TOTAL_SIZE" value="30MB" />
+    <property name="MAX_HISTORY" value="30" /> <!-- 보관 파일 개수 -->
+
+    <!-- Console appender 설정 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <Pattern>${CONSOLE_PATTERN}</Pattern>
+        </encoder>
+    </appender>
+
+
+    <appender name="ROLLING_LOG_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>${ROLLING_PATTERN}</pattern>
+        </encoder>
+        <file>${FILE_NAME}</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_NAME_PATTERN}</fileNamePattern>
+            <maxHistory>${MAX_HISTORY}</maxHistory>
+            <maxFileSize>${MAX_FILE_SIZE}</maxFileSize>
+            <totalSizeCap>${TOTAL_SIZE}</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+
+
+    <!-- SQL 쿼리 로그 기록 (level 및 로그 기록 여부 지정) -->
+            <!-- JDBC 관련 로그 OFF + 로거 전파 x (상위로그 출력 x) -->
+    <logger name="jdbc" level="OFF" additive="false">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="ROLLING_LOG_FILE"/>
+    </logger>
+            <!-- SQL 로그 + 로거 전파 x (상위로그 출력 x) -->
+    <logger name="jdbc.sqlonly" level="DEBUG" additive="false" >
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="ROLLING_LOG_FILE"/>
+    </logger>
+            <!-- 쿼리 성능 측정 로그 OFF + 로거 전파 x (상위로그 출력 x) -->
+    <logger name="jdbc.sqltiming" level="OFF" additive="false" >
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="ROLLING_LOG_FILE"/>
+    </logger>
+    <logger name="org.hibernate.SQL" level="DEBUG" additive="false">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="ROLLING_LOG_FILE"/>
+    </logger>
+
+    <!-- 패키지 하위 로그 기록 (level 지정) -->
+    <logger name="com.example.application.fileInputOutput" level="INFO" additive="true" >
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="ROLLING_LOG_FILE"/>
+    </logger>
+    <logger name="com.example.application.paging" level="DEBUG" additive="false" >
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="ROLLING_LOG_FILE"/>
+    </logger>
+
+
+    <!-- 전역 로그 설정  -->
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="ROLLING_LOG_FILE"/>
+    </root>
+
+</configuration>
