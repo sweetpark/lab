@@ -108,6 +108,9 @@ public class VariableContext {
         variables.put("${payData.pmCd}", payContext.getPmCd());
         variables.put("${payData.spmCd}", payContext.getSpmCd());
 
+        variables.put("${payData.tid}", payContext.getTid());
+        variables.put("${payData.appNo}", payContext.getAppNo());
+
         // FIXME)  API 연동시 제거 부분
         // 승인 &  부분취소
         variables.put("${payData.tid1}", payContext.getTid1());

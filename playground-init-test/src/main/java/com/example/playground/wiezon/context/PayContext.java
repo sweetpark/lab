@@ -17,6 +17,10 @@ public class PayContext {
     private String pmCd;      // 결제수단 코드 (예: 01)
     private String spmCd;     // 하위 결제수단 코드 (예: 01)
 
+    // 승인
+    private String tid;
+    private String appNo;
+
     // 세트 1: 승인-부분취소 (OTID 관계)
     private String tid1;      // 원거래 승인 TID
     private String tid1P1;    // 부분취소 1

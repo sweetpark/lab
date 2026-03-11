@@ -39,6 +39,11 @@ public class PayProcessService {
 
         payContext.setPmCd(PaymentDetailType.CARD_AUTH.getGroupCode());
         payContext.setSpmCd(PaymentDetailType.CARD_AUTH.getDetailCode());
+        // 승인
+        payContext.setTid(createTid(PaymentMethod.CREDIT_CARD.getCode(), PaymentDetailType.CARD_AUTH.getDetailCode(), payBaseContext.getMid(), day));
+        payContext.setAppNo(String.format("%08d", ToolRunner.app_no++));
+
+        // [승인+ 전취소] , [승인, 부분취소]
         payContext.setTid1(createTid(PaymentMethod.CREDIT_CARD.getCode(), PaymentDetailType.CARD_AUTH.getDetailCode(), payBaseContext.getMid(), day));
         payContext.setTid2(createTid(PaymentMethod.CREDIT_CARD.getCode(), PaymentDetailType.CARD_AUTH.getDetailCode(), payBaseContext.getMid(), day));
         payContext.setTid1P1(createTid(PaymentMethod.CREDIT_CARD.getCode(), PaymentDetailType.CARD_AUTH.getDetailCode(), payBaseContext.getMid(), day));
