@@ -1,0 +1,22 @@
+{
+  "division": "affiliate",
+  "table": "TBSI_PTN_CPID",
+  "rows": [
+    {
+      "PTN_CD": { "value": "${CERT_PTN_CD}" },
+      "PTN_CPID": { "value": "${CERTIFICATION_CPID}" },
+      "PTN_TYPE": { "value": "00" },
+      "PM_CD": { "value": "01" },
+      "SPM_CD": { "value": "01" },
+      "CURRENCY_TYPE": { "value": null },
+      "KEY_TYPE": { "value": "${CERT_KEY_TYPE}" },
+      "DELIMITER": { "value": "____TEST____" },
+      "DESC": { "value": null },
+      "DATA": { "value": "${CERT_KEY}" },
+      "MEMO": { "value": "인증CPID" },
+      "REG_DT": { "value": "CUR_YYMMDD" },
+      "WORKER": { "value": "TEST" },
+      "REG_DNT": { "value": "CUR_YYMMDDHHIISS" }
+    }
+  ]
+}

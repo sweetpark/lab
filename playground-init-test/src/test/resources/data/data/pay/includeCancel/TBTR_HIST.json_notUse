@@ -1,0 +1,897 @@
+{
+  "division": "pay",
+  "table": "TBTR_HIST",
+  "rows": [
+    {
+      "TID": {
+        "value": "${payData.tid1}"
+      },
+      "MID": {
+        "value": "${MID}"
+      },
+      "GID": {
+        "value": "${GID}"
+      },
+      "VID": {
+        "value": "${VID}"
+      },
+      "PM_CD": {
+        "value": "${payData.pmCd}"
+      },
+      "SPM_CD": {
+        "value": "${payData.spmCd}"
+      },
+      "TRX_HIST_CD": {
+        "value": "11"
+      },
+      "TRX_CD": {
+        "value": "0"
+      },
+      "TRX_ST_CD": {
+        "value": "0"
+      },
+      "TR_DT": {
+        "value": "YESTER_YYMMDD"
+      },
+      "ACQ_DT": {
+        "value": "CUR_YYMMDD"
+      },
+      "IN_DT": {
+        "value": "CUR_YYMMDD"
+      },
+      "STMT_DT": {
+        "value": "CUR_YYMMDD"
+      },
+      "PTN_CD": {
+        "value": "${payData.pmCd}"
+      },
+      "CP_CD": {
+        "value": "02"
+      },
+      "CP_NO": {
+        "value": "${MID}"
+      },
+      "ORD_NO": {
+        "value": "580180928000405"
+      },
+      "ORD_NM": {
+        "value": "홍길동",
+        "crypto" : "ENC_HASH"
+      },
+      "GOODS_NM": {
+        "value": "나이스-인증-API"
+      },
+      "GOODS_AMT": {
+        "value": "1001"
+      },
+      "APP_VAN_CD": {
+        "value": "${VAN_CD}"
+      },
+      "EXCH_RATE": {
+        "value": "0.0"
+      },
+      "OVER_AMT": {
+        "value": "0"
+      },
+      "CURRENCY_TYPE": {
+        "value": "KRW"
+      },
+      "PRE_EXCH_RATE": {
+        "value": "0"
+      },
+      "ACQ_VAN_CD": {
+        "value": "${VAN_CD}"
+      },
+      "STMT_CYCLE_CD": {
+        "value": "D1"
+      },
+      "DPST_AMT": {
+        "value": "946"
+      },
+      "FEE": {
+        "value": "50"
+      },
+      "VAT": {
+        "value": "5"
+      },
+      "POINT_FEE": {
+        "value": "0"
+      },
+      "SMS_FEE": {
+        "value": "0"
+      },
+      "ORG_FEE": {
+        "value": "0"
+      },
+      "ORG_NOINT_FEE": {
+        "value": "0"
+      },
+      "ORG_POINT_FEE": {
+        "value": "0"
+      },
+      "ORG_AUTH_FEE": {
+        "value": "0"
+      },
+      "SALES_FEE": {
+        "value": "0"
+      },
+      "SALES_ORG_FEE": {
+        "value": "0"
+      },
+      "SALES_PROFIT": {
+        "value": "0"
+      },
+      "SALES_VAT": {
+        "value": "0"
+      },
+      "OTID": {
+        "value": "${payData.tid1}"
+      },
+      "CART_TYPE": {
+        "value": "0"
+      },
+      "MATCH_TYPE": {
+        "value": "0"
+      },
+      "REFUND_FEE": {
+        "value": "0"
+      },
+      "REFUND_FEE_VAT": {
+        "value": "0"
+      },
+      "CRYPT_FLG": {
+        "value": "1"
+      },
+      "WORKER": {
+        "value": "TEST"
+      },
+      "REG_DNT": {
+        "value": "YESTER_YYMMDDHHIISS"
+      }
+    },
+    {
+      "TID": {
+        "value": "${payData.tid1P1}"
+      },
+      "MID": {
+        "value": "${MID}"
+      },
+      "GID": {
+        "value": "${GID}"
+      },
+      "VID": {
+        "value": "${VID}"
+      },
+      "PM_CD": {
+        "value": "${payData.pmCd}"
+      },
+      "SPM_CD": {
+        "value": "${payData.spmCd}"
+      },
+      "TRX_HIST_CD": {
+        "value": "60"
+      },
+      "TRX_CD": {
+        "value": "0"
+      },
+      "TRX_ST_CD": {
+        "value": "2"
+      },
+      "TR_DT": {
+        "value": "YESTER_YYMMDD"
+      },
+      "ACQ_DT": {
+        "value": "CUR_YYMMDD"
+      },
+      "RET_CNT": {
+        "value": "0"
+      },
+      "REA_CNT": {
+        "value": "0"
+      },
+      "IN_DT": {
+        "value": "CUR_YYMMDD"
+      },
+      "STMT_DT": {
+        "value": "CUR_YYMMDD"
+      },
+      "PTN_CD": {
+        "value": "${payData.pmCd}"
+      },
+      "CP_CD": {
+        "value": "02"
+      },
+      "CP_NO": {
+        "value": "${MID}"
+      },
+      "ORD_NO": {
+        "value": "580180928000405"
+      },
+      "ORD_NM": {
+        "value": "홍길동",
+        "crypto" : "ENC_HASH"
+      },
+      "GOODS_NM": {
+        "value": "나이스-인증-API"
+      },
+      "GOODS_AMT": {
+        "value": "100"
+      },
+      "APP_VAN_CD": {
+        "value": "04"
+      },
+      "EXCH_RATE": {
+        "value": "0.0"
+      },
+      "OVER_AMT": {
+        "value": "0"
+      },
+      "CURRENCY_TYPE": {
+        "value": "KRW"
+      },
+      "PRE_EXCH_RATE": {
+        "value": "0"
+      },
+      "ACQ_VAN_CD": {
+        "value": "${VAN_CD}"
+      },
+      "STMT_CYCLE_CD": {
+        "value": "D1"
+      },
+      "DPST_AMT": {
+        "value": "-94"
+      },
+      "FEE": {
+        "value": "-5"
+      },
+      "VAT": {
+        "value": "-1"
+      },
+      "POINT_FEE": {
+        "value": "0"
+      },
+      "SMS_FEE": {
+        "value": "0"
+      },
+      "ORG_FEE": {
+        "value": "0"
+      },
+      "ORG_NOINT_FEE": {
+        "value": "0"
+      },
+      "ORG_POINT_FEE": {
+        "value": "0"
+      },
+      "ORG_AUTH_FEE": {
+        "value": "0"
+      },
+      "SALES_FEE": {
+        "value": "0"
+      },
+      "SALES_ORG_FEE": {
+        "value": "0"
+      },
+      "SALES_PROFIT": {
+        "value": "0"
+      },
+      "SALES_VAT": {
+        "value": "0"
+      },
+      "OTID": {
+        "value": "${payData.tid1}"
+      },
+      "CART_TYPE": {
+        "value": "0"
+      },
+      "MATCH_TYPE": {
+        "value": "0"
+      },
+      "REFUND_FEE": {
+        "value": "0"
+      },
+      "REFUND_FEE_VAT": {
+        "value": "0"
+      },
+      "CRYPT_FLG": {
+        "value": "1"
+      },
+      "WORKER": {
+        "value": "TEST"
+      },
+      "REG_DNT": {
+        "value": "YESTER_YYMMDDHHIISS"
+      }
+    },
+    {
+      "TID": {
+        "value": "${payData.tid1P2}"
+      },
+      "MID": {
+        "value": "${MID}"
+      },
+      "GID": {
+        "value": "${GID}"
+      },
+      "VID": {
+        "value": "${VID}"
+      },
+      "PM_CD": {
+        "value": "${payData.pmCd}"
+      },
+      "SPM_CD": {
+        "value": "${payData.spmCd}"
+      },
+      "TRX_HIST_CD": {
+        "value": "60"
+      },
+      "TRX_CD": {
+        "value": "0"
+      },
+      "TRX_ST_CD": {
+        "value": "2"
+      },
+      "TR_DT": {
+        "value": "YESTER_YYMMDD"
+      },
+      "ACQ_DT": {
+        "value": "CUR_YYMMDD"
+      },
+      "RET_CNT": {
+        "value": "0"
+      },
+      "REA_CNT": {
+        "value": "0"
+      },
+      "IN_DT": {
+        "value": "CUR_YYMMDD"
+      },
+      "STMT_DT": {
+        "value": "CUR_YYMMDD"
+      },
+      "PTN_CD": {
+        "value": "${payData.pmCd}"
+      },
+      "CP_CD": {
+        "value": "02"
+      },
+      "CP_NO": {
+        "value": "${MID}"
+      },
+      "ORD_NO": {
+        "value": "580180928000405"
+      },
+      "ORD_NM": {
+        "value": "홍길동",
+        "crypto" : "ENC_HASH"
+      },
+      "ORD_NM_ENC": {
+        "value": "015c88c59fd59c17ae4fbe61f366665f12"
+      },
+      "GOODS_NM": {
+        "value": "나이스-인증-API"
+      },
+      "GOODS_AMT": {
+        "value": "200"
+      },
+      "APP_VAN_CD": {
+        "value": "04"
+      },
+      "EXCH_RATE": {
+        "value": "0.0"
+      },
+      "OVER_AMT": {
+        "value": "0"
+      },
+      "CURRENCY_TYPE": {
+        "value": "KRW"
+      },
+      "PRE_EXCH_RATE": {
+        "value": "0"
+      },
+      "ACQ_VAN_CD": {
+        "value": "${VAN_CD}"
+      },
+      "STMT_CYCLE_CD": {
+        "value": "D1"
+      },
+      "DPST_AMT": {
+        "value": "-189"
+      },
+      "FEE": {
+        "value": "-10"
+      },
+      "VAT": {
+        "value": "-1"
+      },
+      "POINT_FEE": {
+        "value": "0"
+      },
+      "SMS_FEE": {
+        "value": "0"
+      },
+      "ORG_FEE": {
+        "value": "0"
+      },
+      "ORG_NOINT_FEE": {
+        "value": "0"
+      },
+      "ORG_POINT_FEE": {
+        "value": "0"
+      },
+      "ORG_AUTH_FEE": {
+        "value": "0"
+      },
+      "SALES_FEE": {
+        "value": "0"
+      },
+      "SALES_ORG_FEE": {
+        "value": "0"
+      },
+      "SALES_PROFIT": {
+        "value": "0"
+      },
+      "SALES_VAT": {
+        "value": "0"
+      },
+      "OTID": {
+        "value": "${payData.tid1}"
+      },
+      "CART_TYPE": {
+        "value": "0"
+      },
+      "MATCH_TYPE": {
+        "value": "0"
+      },
+      "REFUND_FEE": {
+        "value": "0"
+      },
+      "REFUND_FEE_VAT": {
+        "value": "0"
+      },
+      "CRYPT_FLG": {
+        "value": "1"
+      },
+      "WORKER": {
+        "value": "TEST"
+      },
+      "REG_DNT": {
+        "value": "YESTER_YYMMDDHHIISS"
+      }
+    },
+    {
+      "TID": {
+        "value": "${payData.tid1P3}"
+      },
+      "MID": {
+        "value": "${MID}"
+      },
+      "GID": {
+        "value": "${GID}"
+      },
+      "VID": {
+        "value": "${VID}"
+      },
+      "PM_CD": {
+        "value": "${payData.pmCd}"
+      },
+      "SPM_CD": {
+        "value": "${payData.spmCd}"
+      },
+      "TRX_HIST_CD": {
+        "value": "60"
+      },
+      "TRX_CD": {
+        "value": "0"
+      },
+      "TRX_ST_CD": {
+        "value": "2"
+      },
+      "TR_DT": {
+        "value": "YESTER_YYMMDD"
+      },
+      "ACQ_DT": {
+        "value": "CUR_YYMMDD"
+      },
+      "RET_CNT": {
+        "value": "0"
+      },
+      "REA_CNT": {
+        "value": "0"
+      },
+      "IN_DT": {
+        "value": "CUR_YYMMDD"
+      },
+      "STMT_DT": {
+        "value": "CUR_YYMMDD"
+      },
+      "PTN_CD": {
+        "value": "${payData.pmCd}"
+      },
+      "CP_CD": {
+        "value": "02"
+      },
+      "CP_NO": {
+        "value": "${MID}"
+      },
+      "ORD_NO": {
+        "value": "580180928000405"
+      },
+      "ORD_NM": {
+        "value": "홍길동",
+        "crypto" : "ENC_HASH"
+      },
+      "GOODS_NM": {
+        "value": "나이스-인증-API"
+      },
+      "GOODS_AMT": {
+        "value": "701"
+      },
+      "APP_VAN_CD": {
+        "value": "04"
+      },
+      "EXCH_RATE": {
+        "value": "0.0"
+      },
+      "OVER_AMT": {
+        "value": "0"
+      },
+      "CURRENCY_TYPE": {
+        "value": "KRW"
+      },
+      "PRE_EXCH_RATE": {
+        "value": "0"
+      },
+      "ACQ_VAN_CD": {
+        "value": "${VAN_CD}"
+      },
+      "STMT_CYCLE_CD": {
+        "value": "D1"
+      },
+      "DPST_AMT": {
+        "value": "-663"
+      },
+      "FEE": {
+        "value": "-35"
+      },
+      "VAT": {
+        "value": "-3"
+      },
+      "POINT_FEE": {
+        "value": "0"
+      },
+      "SMS_FEE": {
+        "value": "0"
+      },
+      "ORG_FEE": {
+        "value": "0"
+      },
+      "ORG_NOINT_FEE": {
+        "value": "0"
+      },
+      "ORG_POINT_FEE": {
+        "value": "0"
+      },
+      "ORG_AUTH_FEE": {
+        "value": "0"
+      },
+      "SALES_FEE": {
+        "value": "0"
+      },
+      "SALES_ORG_FEE": {
+        "value": "0"
+      },
+      "SALES_PROFIT": {
+        "value": "0"
+      },
+      "SALES_VAT": {
+        "value": "0"
+      },
+      "OTID": {
+        "value": "${payData.tid1}"
+      },
+      "CART_TYPE": {
+        "value": "0"
+      },
+      "MATCH_TYPE": {
+        "value": "0"
+      },
+      "REFUND_FEE": {
+        "value": "0"
+      },
+      "REFUND_FEE_VAT": {
+        "value": "0"
+      },
+      "CRYPT_FLG": {
+        "value": "1"
+      },
+      "WORKER": {
+        "value": "bld"
+      },
+      "REG_DNT": {
+        "value": "YESTER_YYMMDDHHIISS"
+      }
+    },
+    {
+      "TID": {
+        "value": "${payData.tid2}"
+      },
+      "MID": {
+        "value": "${MID}"
+      },
+      "GID": {
+        "value": "${GID}"
+      },
+      "VID": {
+        "value": "${VID}"
+      },
+      "PM_CD": {
+        "value": "${payData.pmCd}"
+      },
+      "SPM_CD": {
+        "value": "${payData.spmCd}"
+      },
+      "TRX_HIST_CD": {
+        "value": "00"
+      },
+      "TRX_CD": {
+        "value": "0"
+      },
+      "TRX_ST_CD": {
+        "value": "0"
+      },
+      "TR_DT": {
+        "value": "YESTER_YYMMDD"
+      },
+      "PTN_CD": {
+        "value": "${payData.pmCd}"
+      },
+      "CP_CD": {
+        "value": "02"
+      },
+      "CP_NO": {
+        "value": "${MID}"
+      },
+      "ORD_NO": {
+        "value": "580071104151330"
+      },
+      "ORD_NM": {
+        "value": "홍길동",
+        "crypto" : "ENC_HASH"
+      },
+      "GOODS_NM": {
+        "value": "나이스-인증-API"
+      },
+      "GOODS_AMT": {
+        "value": "1001"
+      },
+      "APP_VAN_CD": {
+        "value": "04"
+      },
+      "EXCH_RATE": {
+        "value": "0.0"
+      },
+      "OVER_AMT": {
+        "value": "0"
+      },
+      "CURRENCY_TYPE": {
+        "value": "KRW"
+      },
+      "PRE_EXCH_RATE": {
+        "value": "0"
+      },
+      "ACQ_VAN_CD": {
+        "value": "${VAN_CD}"
+      },
+      "STMT_CYCLE_CD": {
+        "value": "D1"
+      },
+      "DPST_AMT": {
+        "value": "0"
+      },
+      "FEE": {
+        "value": "0"
+      },
+      "VAT": {
+        "value": "0"
+      },
+      "POINT_FEE": {
+        "value": "0"
+      },
+      "SMS_FEE": {
+        "value": "0"
+      },
+      "ORG_FEE": {
+        "value": "0"
+      },
+      "ORG_NOINT_FEE": {
+        "value": "0"
+      },
+      "ORG_POINT_FEE": {
+        "value": "0"
+      },
+      "ORG_AUTH_FEE": {
+        "value": "0"
+      },
+      "SALES_FEE": {
+        "value": "0"
+      },
+      "SALES_ORG_FEE": {
+        "value": "0"
+      },
+      "SALES_PROFIT": {
+        "value": "0"
+      },
+      "SALES_VAT": {
+        "value": "0"
+      },
+      "OTID": {
+        "value": "${payData.tid2}"
+      },
+      "CART_TYPE": {
+        "value": "0"
+      },
+      "MATCH_TYPE": {
+        "value": "0"
+      },
+      "REFUND_FEE": {
+        "value": "0"
+      },
+      "REFUND_FEE_VAT": {
+        "value": "0"
+      },
+      "CRYPT_FLG": {
+        "value": "1"
+      },
+      "WORKER": {
+        "value": "TEST"
+      },
+      "REG_DNT": {
+        "value": "YESTER_YYMMDDHHIISS"
+      }
+    },
+    {
+      "TID": {
+        "value": "${payData.tid2}"
+      },
+      "MID": {
+        "value": "${MID}"
+      },
+      "GID": {
+        "value": "${GID}"
+      },
+      "VID": {
+        "value": "${VID}"
+      },
+      "PM_CD": {
+        "value": "${payData.pmCd}"
+      },
+      "SPM_CD": {
+        "value": "${payData.spmCd}"
+      },
+      "TRX_HIST_CD": {
+        "value": "50"
+      },
+      "TRX_CD": {
+        "value": "0"
+      },
+      "TRX_ST_CD": {
+        "value": "1"
+      },
+      "TR_DT": {
+        "value": "YESTER_YYMMDD"
+      },
+      "RET_CNT": {
+        "value": "0"
+      },
+      "REA_CNT": {
+        "value": "0"
+      },
+      "PTN_CD": {
+        "value": "${payData.pmCd}"
+      },
+      "CP_CD": {
+        "value": "02"
+      },
+      "CP_NO": {
+        "value": "${MID}"
+      },
+      "ORD_NO": {
+        "value": "580071104151330"
+      },
+      "ORD_NM": {
+        "value": "홍길동",
+        "crypto" : "ENC_HASH"
+      },
+      "GOODS_NM": {
+        "value": "나이스-인증-API"
+      },
+      "GOODS_AMT": {
+        "value": "1001"
+      },
+      "APP_VAN_CD": {
+        "value": "${VAN_CD}"
+      },
+      "EXCH_RATE": {
+        "value": "0.0"
+      },
+      "OVER_AMT": {
+        "value": "0"
+      },
+      "CURRENCY_TYPE": {
+        "value": "KRW"
+      },
+      "PRE_EXCH_RATE": {
+        "value": "0"
+      },
+      "ACQ_VAN_CD": {
+        "value": "${VAN_CD}"
+      },
+      "STMT_CYCLE_CD": {
+        "value": "D1"
+      },
+      "DPST_AMT": {
+        "value": "0"
+      },
+      "FEE": {
+        "value": "0"
+      },
+      "VAT": {
+        "value": "0"
+      },
+      "POINT_FEE": {
+        "value": "0"
+      },
+      "SMS_FEE": {
+        "value": "0"
+      },
+      "ORG_FEE": {
+        "value": "0"
+      },
+      "ORG_NOINT_FEE": {
+        "value": "0"
+      },
+      "ORG_POINT_FEE": {
+        "value": "0"
+      },
+      "ORG_AUTH_FEE": {
+        "value": "0"
+      },
+      "SALES_FEE": {
+        "value": "0"
+      },
+      "SALES_ORG_FEE": {
+        "value": "0"
+      },
+      "SALES_PROFIT": {
+        "value": "0"
+      },
+      "SALES_VAT": {
+        "value": "0"
+      },
+      "OTID": {
+        "value": "${payData.tid2}"
+      },
+      "CART_TYPE": {
+        "value": "0"
+      },
+      "MATCH_TYPE": {
+        "value": "0"
+      },
+      "REFUND_FEE": {
+        "value": "0"
+      },
+      "REFUND_FEE_VAT": {
+        "value": "0"
+      },
+      "CRYPT_FLG": {
+        "value": "1"
+      },
+      "WORKER": {
+        "value": "TEST"
+      },
+      "REG_DNT": {
+        "value": "YESTER_YYMMDDHHIISS"
+      }
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "division" : "mid",
+  "table": "TBSI_MBS_KEY",
+  "rows": [
+    {
+      "MID": { "value": "${MID}" },
+      "MKEY": { "value": "${MID}", "crypto" : "ENC_BASE64" },
+      "USRID": { "value": "admin" },
+      "CREATE_DT": { "value": "YESTER_YYMMDDHHIISS" },
+      "WORKER": { "value": "TEST" },
+      "REG_DNT": { "value": "YESTER_YYMMDDHHIISS" }
+    }
+  ]
+}

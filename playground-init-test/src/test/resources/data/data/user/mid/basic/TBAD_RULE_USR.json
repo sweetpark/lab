@@ -1,0 +1,12 @@
+{
+  "division" : "mid",
+  "table": "TBAD_RULE_USR",
+  "rows": [
+    {
+      "UID": { "value": "${MID}" },
+      "RULE_ID": { "value": "DFT" },
+      "REG_DT": { "value": "YESTER_YYMMDD" },
+      "WORKER": { "value": "TEST" }
+    }
+  ]
+}

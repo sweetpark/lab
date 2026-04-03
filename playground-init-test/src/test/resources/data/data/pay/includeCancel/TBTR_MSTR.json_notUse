@@ -1,0 +1,990 @@
+{
+  "division": "pay",
+  "table": "TBTR_MSTR",
+  "rows": [
+    {
+      "TID": {
+        "value": "${payData.tid1}"
+      },
+      "OTID": {
+        "value": "${payData.tid1}"
+      },
+      "ORD_NO": {
+        "value": "580180928000405"
+      },
+      "REQ_DT": {
+        "value": "YESTER_YYMMDD"
+      },
+      "REQ_TM": {
+        "value": "YESTER_HHIISS"
+      },
+      "TR_DT": {
+        "value": "YESTER_YYMMDD"
+      },
+      "TR_TM": {
+        "value": "YESTER_HHIISS"
+      },
+      "PM_CD": {
+        "value": "${payData.pmCd}"
+      },
+      "SPM_CD": {
+        "value": "${payData.spmCd}"
+      },
+      "MID": {
+        "value": "${MID}"
+      },
+      "GID": {
+        "value": "${GID}"
+      },
+      "VID": {
+        "value": "${VID}"
+      },
+      "TRX_ST_CD": {
+        "value": "0"
+      },
+      "TRX_CD": {
+        "value": "0"
+      },
+      "STMT_CYCLE_CD": {
+        "value": "D1"
+      },
+      "CP_CD": {
+        "value": "02"
+      },
+      "GOODS_NM": {
+        "value": "나이스-인증-API"
+      },
+      "GOODS_AMT": {
+        "value": "1001"
+      },
+      "GOODS_SPL_AMT": {
+        "value": "910"
+      },
+      "GOODS_VAT": {
+        "value": "91"
+      },
+      "GOODS_SVS_AMT": {
+        "value": "0"
+      },
+      "GOODS_TAXFREE_AMT": {
+        "value": "0"
+      },
+      "EXCH_RATE": {
+        "value": "0.0"
+      },
+      "OVER_AMT": {
+        "value": "0"
+      },
+      "CURRENCY_TYPE": {
+        "value": "KRW"
+      },
+      "PRE_EXCH_RATE": {
+        "value": "0"
+      },
+      "ORD_NM": {
+        "value": "홍길동",
+        "crypto" : "ENC_HASH"
+      },
+      "ORD_TEL": {
+        "value": "01012345678",
+        "crypto" : "ENC_HASH"
+      },
+      "ORD_HP": {
+        "value": ""
+      },
+      "ORD_EMAIL": {
+        "value": ""
+      },
+      "ORD_IP": {
+        "value": "123.123.123.123",
+        "crypto" : "ENC_HASH"
+      },
+      "MBS_USR_ID": {
+        "value": "test"
+      },
+      "RCVR_ADDR": {
+        "value": ""
+      },
+      "RCVR_NM": {
+        "value": ""
+      },
+      "RCVR_HP": {
+        "value": ""
+      },
+      "RSLT_CD": {
+        "value": "0000"
+      },
+      "PGSVR_NM": {
+        "value": "bld"
+      },
+      "PGSW_VER": {
+        "value": "3.0.0"
+      },
+      "CONN_CD": {
+        "value": "0001"
+      },
+      "CART_FLG": {
+        "value": "0"
+      },
+      "L1_VID": {
+        "value": "${VID}"
+      },
+      "L2_VID": {
+        "value": ""
+      },
+      "L3_VID": {
+        "value": ""
+      },
+      "L4_VID": {
+        "value": ""
+      },
+      "L5_VID": {
+        "value": ""
+      },
+      "CHRG_FLG": {
+        "value": "0"
+      },
+      "CRYPT_FLG": {
+        "value": "1"
+      },
+      "PTN_CD": {
+        "value": "${payData.pmCd}"
+      },
+      "WORKER": {
+        "value": "TEST"
+      },
+      "REG_DNT": {
+        "value": "YESTER_YYMMDDHHIISS"
+      }
+    },
+    {
+      "TID": {
+        "value": "${payData.tid1P1}"
+      },
+      "ORD_NO": {
+        "value": "580180928000405"
+      },
+      "REQ_DT": {
+        "value": "YESTER_YYMMDD"
+      },
+      "REQ_TM": {
+        "value": "YESTER_HHIISS"
+      },
+      "TR_DT": {
+        "value": "YESTER_YYMMDD"
+      },
+      "TR_TM": {
+        "value": "YESTER_HHIISS"
+      },
+      "APP_DT": {
+        "value": "YESTER_YYMMDD"
+      },
+      "APP_TM": {
+        "value": "YESTER_HHIISS"
+      },
+      "PM_CD": {
+        "value": "${payData.pmCd}"
+      },
+      "SPM_CD": {
+        "value": "${payData.spmCd}"
+      },
+      "MID": {
+        "value": "${MID}"
+      },
+      "GID": {
+        "value": "${GID}"
+      },
+      "VID": {
+        "value": "${VID}"
+      },
+      "TRX_ST_CD": {
+        "value": "2"
+      },
+      "TRX_CD": {
+        "value": "0"
+      },
+      "STMT_CYCLE_CD": {
+        "value": "D1"
+      },
+      "CP_CD": {
+        "value": "02"
+      },
+      "GOODS_NM": {
+        "value": "나이스-인증-API"
+      },
+      "GOODS_AMT": {
+        "value": "100"
+      },
+      "GOODS_SPL_AMT": {
+        "value": "91"
+      },
+      "GOODS_VAT": {
+        "value": "9"
+      },
+      "GOODS_SVS_AMT": {
+        "value": "0"
+      },
+      "GOODS_TAXFREE_AMT": {
+        "value": "0"
+      },
+      "EXCH_RATE": {
+        "value": "0.0"
+      },
+      "OVER_AMT": {
+        "value": "0"
+      },
+      "CURRENCY_TYPE": {
+        "value": "KRW"
+      },
+      "PRE_EXCH_RATE": {
+        "value": "0"
+      },
+      "ORD_NM": {
+        "value": "홍길동",
+        "crypto" : "ENC_HASH"
+      },
+      "ORD_TEL": {
+        "value": "01012345678",
+        "crypto" : "ENC_HASH"
+      },
+      "ORD_HP": {
+        "value": ""
+      },
+      "ORD_EMAIL": {
+        "value": ""
+      },
+      "ORD_IP": {
+        "value": "123.123.123.123",
+        "crypto" : "ENC_HASH"
+      },
+      "RCVR_ADDR": {
+        "value": ""
+      },
+      "RCVR_NM": {
+        "value": ""
+      },
+      "RCVR_HP": {
+        "value": ""
+      },
+      "CC_MSG": {
+        "value": "테스트 거래"
+      },
+      "CC_ID": {
+        "value": "kwgoo"
+      },
+      "CC_IP": {
+        "value": "10.0.1.72"
+      },
+      "RSLT_CD": {
+        "value": "0000"
+      },
+      "PGSVR_NM": {
+        "value": "bld"
+      },
+      "PGSW_VER": {
+        "value": "3.0.0"
+      },
+      "CONN_CD": {
+        "value": "0001"
+      },
+      "OTID": {
+        "value": "${payData.tid1}"
+      },
+      "CART_FLG": {
+        "value": "0"
+      },
+      "L1_VID": {
+        "value": "${VID}"
+      },
+      "L2_VID": {
+        "value": ""
+      },
+      "L3_VID": {
+        "value": ""
+      },
+      "L4_VID": {
+        "value": ""
+      },
+      "L5_VID": {
+        "value": ""
+      },
+      "CHRG_FLG": {
+        "value": "0"
+      },
+      "CRYPT_FLG": {
+        "value": "1"
+      },
+      "PTN_CD": {
+        "value": "${payData.pmCd}"
+      },
+      "WORKER": {
+        "value": "TEST"
+      },
+      "REG_DNT": {
+        "value": "YESTER_YYMMDDHHIISS"
+      },
+      "UPD_DNT": {
+        "value": "2026-01-20 11:00:24"
+      }
+    },
+    {
+      "TID": {
+        "value": "${payData.tid1P2}"
+      },
+      "ORD_NO": {
+        "value": "580180928000405"
+      },
+      "REQ_DT": {
+        "value": "YESTER_YYMMDD"
+      },
+      "REQ_TM": {
+        "value": "YESTER_HHIISS"
+      },
+      "TR_DT": {
+        "value": "YESTER_YYMMDD"
+      },
+      "TR_TM": {
+        "value": "YESTER_HHIISS"
+      },
+      "APP_DT": {
+        "value": "YESTER_YYMMDD"
+      },
+      "APP_TM": {
+        "value": "YESTER_HHIISS"
+      },
+      "PM_CD": {
+        "value": "${payData.pmCd}"
+      },
+      "SPM_CD": {
+        "value": "${payData.spmCd}"
+      },
+      "MID": {
+        "value": "${MID}"
+      },
+      "GID": {
+        "value": "${GID}"
+      },
+      "VID": {
+        "value": "${VID}"
+      },
+      "TRX_ST_CD": {
+        "value": "2"
+      },
+      "TRX_CD": {
+        "value": "0"
+      },
+      "STMT_CYCLE_CD": {
+        "value": "D1"
+      },
+      "CP_CD": {
+        "value": "02"
+      },
+      "GOODS_NM": {
+        "value": "나이스-인증-API"
+      },
+      "GOODS_AMT": {
+        "value": "200"
+      },
+      "GOODS_SPL_AMT": {
+        "value": "182"
+      },
+      "GOODS_VAT": {
+        "value": "18"
+      },
+      "GOODS_SVS_AMT": {
+        "value": "0"
+      },
+      "GOODS_TAXFREE_AMT": {
+        "value": "0"
+      },
+      "EXCH_RATE": {
+        "value": "0.0"
+      },
+      "OVER_AMT": {
+        "value": "0"
+      },
+      "CURRENCY_TYPE": {
+        "value": "KRW"
+      },
+      "PRE_EXCH_RATE": {
+        "value": "0"
+      },
+      "ORD_NM": {
+        "value": "홍길동",
+        "crypto" : "ENC_HASH"
+      },
+      "ORD_TEL": {
+        "value": "01012345678",
+        "crypto" : "ENC_HASH"
+      },
+      "ORD_HP": {
+        "value": ""
+      },
+      "ORD_EMAIL": {
+        "value": ""
+      },
+      "ORD_IP": {
+        "value": "123.123.123.123",
+        "crypto" : "ENC_HASH"
+      },
+      "RCVR_ADDR": {
+        "value": ""
+      },
+      "RCVR_NM": {
+        "value": ""
+      },
+      "RCVR_HP": {
+        "value": ""
+      },
+      "CC_MSG": {
+        "value": "테스트 거래"
+      },
+      "CC_ID": {
+        "value": "kwgoo"
+      },
+      "CC_IP": {
+        "value": "10.0.11.203"
+      },
+      "RSLT_CD": {
+        "value": "0000"
+      },
+      "PGSVR_NM": {
+        "value": "bld"
+      },
+      "PGSW_VER": {
+        "value": "3.0.0"
+      },
+      "CONN_CD": {
+        "value": "0001"
+      },
+      "OTID": {
+        "value": "${payData.tid1}"
+      },
+      "CART_FLG": {
+        "value": "0"
+      },
+      "L1_VID": {
+        "value": "${VID}"
+      },
+      "L2_VID": {
+        "value": ""
+      },
+      "L3_VID": {
+        "value": ""
+      },
+      "L4_VID": {
+        "value": ""
+      },
+      "L5_VID": {
+        "value": ""
+      },
+      "CHRG_FLG": {
+        "value": "0"
+      },
+      "CRYPT_FLG": {
+        "value": "1"
+      },
+      "PTN_CD": {
+        "value": "${payData.pmCd}"
+      },
+      "WORKER": {
+        "value": "TEST"
+      },
+      "REG_DNT": {
+        "value": "YESTER_YYMMDDHHIISS"
+      },
+      "UPD_DNT": {
+        "value": "2026-01-20 11:00:38"
+      }
+    },
+    {
+      "TID": {
+        "value": "${payData.tid1P3}"
+      },
+      "ORD_NO": {
+        "value": "580180928000405"
+      },
+      "REQ_DT": {
+        "value": "YESTER_YYMMDD"
+      },
+      "REQ_TM": {
+        "value": "YESTER_HHIISS"
+      },
+      "TR_DT": {
+        "value": "YESTER_YYMMDD"
+      },
+      "TR_TM": {
+        "value": "YESTER_HHIISS"
+      },
+      "APP_DT": {
+        "value": "YESTER_YYMMDD"
+      },
+      "APP_TM": {
+        "value": "YESTER_HHIISS"
+      },
+      "PM_CD": {
+        "value": "${payData.pmCd}"
+      },
+      "SPM_CD": {
+        "value": "${payData.spmCd}"
+      },
+      "MID": {
+        "value": "${MID}"
+      },
+      "GID": {
+        "value": "${GID}"
+      },
+      "VID": {
+        "value": "${VID}"
+      },
+      "TRX_ST_CD": {
+        "value": "2"
+      },
+      "TRX_CD": {
+        "value": "0"
+      },
+      "STMT_CYCLE_CD": {
+        "value": "D1"
+      },
+      "CP_CD": {
+        "value": "02"
+      },
+      "GOODS_NM": {
+        "value": "나이스-인증-API"
+      },
+      "GOODS_AMT": {
+        "value": "701"
+      },
+      "GOODS_SPL_AMT": {
+        "value": "637"
+      },
+      "GOODS_VAT": {
+        "value": "64"
+      },
+      "GOODS_SVS_AMT": {
+        "value": "0"
+      },
+      "GOODS_TAXFREE_AMT": {
+        "value": "0"
+      },
+      "EXCH_RATE": {
+        "value": "0.0"
+      },
+      "OVER_AMT": {
+        "value": "0"
+      },
+      "CURRENCY_TYPE": {
+        "value": "KRW"
+      },
+      "PRE_EXCH_RATE": {
+        "value": "0"
+      },
+      "ORD_NM": {
+        "value": "홍길동",
+        "crypto" : "ENC_HASH"
+      },
+      "ORD_TEL": {
+        "value": "01012345678",
+        "crypto" : "ENC_HASH"
+      },
+      "ORD_HP": {
+        "value": ""
+      },
+      "ORD_EMAIL": {
+        "value": ""
+      },
+      "ORD_IP": {
+        "value": ""
+      },
+      "RCVR_ADDR": {
+        "value": ""
+      },
+      "RCVR_NM": {
+        "value": ""
+      },
+      "RCVR_HP": {
+        "value": ""
+      },
+      "CC_MSG": {
+        "value": "테스트 거래"
+      },
+      "CC_ID": {
+        "value": "kwgoo"
+      },
+      "CC_IP": {
+        "value": "10.0.1.72"
+      },
+      "RSLT_CD": {
+        "value": "0000"
+      },
+      "PGSVR_NM": {
+        "value": "bld"
+      },
+      "PGSW_VER": {
+        "value": "3.0.0"
+      },
+      "CONN_CD": {
+        "value": "0001"
+      },
+      "OTID": {
+        "value": "${payData.tid1}"
+      },
+      "CART_FLG": {
+        "value": "0"
+      },
+      "L1_VID": {
+        "value": "${VID}"
+      },
+      "L2_VID": {
+        "value": ""
+      },
+      "L3_VID": {
+        "value": ""
+      },
+      "L4_VID": {
+        "value": ""
+      },
+      "L5_VID": {
+        "value": ""
+      },
+      "CHRG_FLG": {
+        "value": "0"
+      },
+      "CRYPT_FLG": {
+        "value": "1"
+      },
+      "PTN_CD": {
+        "value": "${payData.pmCd}"
+      },
+      "WORKER": {
+        "value": "TEST"
+      },
+      "REG_DNT": {
+        "value": "YESTER_YYMMDDHHIISS"
+      }
+    },
+    {
+      "TID": {
+        "value": "${payData.tid2}"
+      },
+      "OTID": {
+        "value": "${payData.tid2}"
+      },
+      "ORD_NO": {
+        "value": "580071104151330"
+      },
+      "REQ_DT": {
+        "value": "YESTER_YYMMDD"
+      },
+      "REQ_TM": {
+        "value": "YESTER_HHIISS"
+      },
+      "TR_DT": {
+        "value": "YESTER_YYMMDD"
+      },
+      "TR_TM": {
+        "value": "YESTER_HHIISS"
+      },
+      "PM_CD": {
+        "value": "${payData.pmCd}"
+      },
+      "SPM_CD": {
+        "value": "${payData.spmCd}"
+      },
+      "MID": {
+        "value": "${MID}"
+      },
+      "GID": {
+        "value": "${GID}"
+      },
+      "VID": {
+        "value": "${VID}"
+      },
+      "TRX_ST_CD": {
+        "value": "0"
+      },
+      "TRX_CD": {
+        "value": "0"
+      },
+      "STMT_CYCLE_CD": {
+        "value": "D1"
+      },
+      "CP_CD": {
+        "value": "02"
+      },
+      "GOODS_NM": {
+        "value": "나이스-인증-API"
+      },
+      "GOODS_AMT": {
+        "value": "1001"
+      },
+      "GOODS_SPL_AMT": {
+        "value": "910"
+      },
+      "GOODS_VAT": {
+        "value": "91"
+      },
+      "GOODS_SVS_AMT": {
+        "value": "0"
+      },
+      "GOODS_TAXFREE_AMT": {
+        "value": "0"
+      },
+      "EXCH_RATE": {
+        "value": "0.0"
+      },
+      "OVER_AMT": {
+        "value": "0"
+      },
+      "CURRENCY_TYPE": {
+        "value": "KRW"
+      },
+      "PRE_EXCH_RATE": {
+        "value": "0"
+      },
+      "ORD_NM": {
+        "value": "홍길동",
+        "crypto" : "ENC_HASH"
+      },
+      "ORD_TEL": {
+        "value": "01012345678",
+        "crypto" : "ENC_HASH"
+      },
+      "ORD_HP": {
+        "value": ""
+      },
+      "ORD_EMAIL": {
+        "value": "wypark@wiezon.com",
+        "crypto" : "ENC_HASH"
+      },
+      "ORD_IP": {
+        "value": "123.123.123.123",
+        "crypto" : "ENC_HASH"
+      },
+      "MBS_USR_ID": {
+        "value": "test"
+      },
+      "RCVR_ADDR": {
+        "value": ""
+      },
+      "RCVR_NM": {
+        "value": ""
+      },
+      "RCVR_HP": {
+        "value": ""
+      },
+      "RSLT_CD": {
+        "value": "0000"
+      },
+      "PGSVR_NM": {
+        "value": "bld"
+      },
+      "PGSW_VER": {
+        "value": "3.0.0"
+      },
+      "CONN_CD": {
+        "value": "0001"
+      },
+      "CART_FLG": {
+        "value": "0"
+      },
+      "L1_VID": {
+        "value": "${VID}"
+      },
+      "L2_VID": {
+        "value": ""
+      },
+      "L3_VID": {
+        "value": ""
+      },
+      "L4_VID": {
+        "value": ""
+      },
+      "L5_VID": {
+        "value": ""
+      },
+      "CHRG_FLG": {
+        "value": "0"
+      },
+      "CRYPT_FLG": {
+        "value": "1"
+      },
+      "PTN_CD": {
+        "value": "${payData.pmCd}"
+      },
+      "WORKER": {
+        "value": "TEST"
+      },
+      "REG_DNT": {
+        "value": "YESTER_YYMMDDHHIISS"
+      }
+    },
+    {
+      "TID": {
+        "value": "${payData.tid2}"
+      },
+      "ORD_NO": {
+        "value": "580071104151330"
+      },
+      "REQ_DT": {
+        "value": "YESTER_YYMMDD"
+      },
+      "REQ_TM": {
+        "value": "YESTER_HHIISS"
+      },
+      "TR_DT": {
+        "value": "YESTER_YYMMDD"
+      },
+      "TR_TM": {
+        "value": "YESTER_HHIISS"
+      },
+      "APP_DT": {
+        "value": "YESTER_YYMMDD"
+      },
+      "APP_TM": {
+        "value": "YESTER_HHIISS"
+      },
+      "PM_CD": {
+        "value": "${payData.pmCd}"
+      },
+      "SPM_CD": {
+        "value": "${payData.spmCd}"
+      },
+      "MID": {
+        "value": "${MID}"
+      },
+      "GID": {
+        "value": "${GID}"
+      },
+      "VID": {
+        "value": "${VID}"
+      },
+      "TRX_ST_CD": {
+        "value": "1"
+      },
+      "TRX_CD": {
+        "value": "0"
+      },
+      "STMT_CYCLE_CD": {
+        "value": "D1"
+      },
+      "CP_CD": {
+        "value": "02"
+      },
+      "GOODS_NM": {
+        "value": "나이스-인증-API"
+      },
+      "GOODS_AMT": {
+        "value": "1001"
+      },
+      "GOODS_SPL_AMT": {
+        "value": "910"
+      },
+      "GOODS_VAT": {
+        "value": "91"
+      },
+      "GOODS_SVS_AMT": {
+        "value": "0"
+      },
+      "GOODS_TAXFREE_AMT": {
+        "value": "0"
+      },
+      "EXCH_RATE": {
+        "value": "0.0"
+      },
+      "OVER_AMT": {
+        "value": "0"
+      },
+      "CURRENCY_TYPE": {
+        "value": "KRW"
+      },
+      "PRE_EXCH_RATE": {
+        "value": "0"
+      },
+      "ORD_NM": {
+        "value": "홍길동",
+        "crypto" : "ENC_HASH"
+      },
+      "ORD_TEL": {
+        "value": "01012345678",
+        "crypto" : "ENC_HASH"
+      },
+      "ORD_HP": {
+        "value": ""
+      },
+      "ORD_EMAIL": {
+        "value": "wypark@wiezon.com",
+        "crypto" : "ENC_HASH"
+      },
+      "ORD_IP": {
+        "value": ""
+      },
+      "RCVR_ADDR": {
+        "value": ""
+      },
+      "RCVR_NM": {
+        "value": ""
+      },
+      "RCVR_HP": {
+        "value": ""
+      },
+      "CC_MSG": {
+        "value": "테스트 거래"
+      },
+      "CC_ID": {
+        "value": "kwgoo"
+      },
+      "CC_IP": {
+        "value": "10.0.1.72"
+      },
+      "RSLT_CD": {
+        "value": "0000"
+      },
+      "PGSVR_NM": {
+        "value": "bld"
+      },
+      "PGSW_VER": {
+        "value": "3.0.0"
+      },
+      "CONN_CD": {
+        "value": "0001"
+      },
+      "OTID": {
+        "value": "${payData.tid2}"
+      },
+      "CART_FLG": {
+        "value": "0"
+      },
+      "L1_VID": {
+        "value": "${VID}"
+      },
+      "L2_VID": {
+        "value": ""
+      },
+      "L3_VID": {
+        "value": ""
+      },
+      "L4_VID": {
+        "value": ""
+      },
+      "L5_VID": {
+        "value": ""
+      },
+      "CHRG_FLG": {
+        "value": "0"
+      },
+      "CRYPT_FLG": {
+        "value": "1"
+      },
+      "PTN_CD": {
+        "value": "${payData.pmCd}"
+      },
+      "WORKER": {
+        "value": "TEST"
+      },
+      "REG_DNT": {
+        "value": "YESTER_YYMMDDHHIISS"
+      }
+    }
+  ]
+}

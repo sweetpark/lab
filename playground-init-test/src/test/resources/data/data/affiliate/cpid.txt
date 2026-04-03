@@ -1,0 +1,1 @@
+PTN_CPID (연동에 따라 달라짐), DATA (AID : key값 , keyType : 1 (파일경로))

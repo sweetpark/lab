@@ -1,0 +1,162 @@
+{
+  "division": "pay",
+  "table": "TBTR_MSTR",
+  "rows": [
+    {
+      "TID": {
+        "value": "${payData.tid}"
+      },
+      "OTID": {
+        "value": "${payData.tid}"
+      },
+      "ORD_NO": {
+        "value": "580071104151330"
+      },
+      "REQ_DT": {
+        "value": "YESTER_YYMMDD"
+      },
+      "REQ_TM": {
+        "value": "YESTER_HHIISS"
+      },
+      "TR_DT": {
+        "value": "YESTER_YYMMDD"
+      },
+      "TR_TM": {
+        "value": "YESTER_HHIISS"
+      },
+      "PM_CD": {
+        "value": "${payData.pmCd}"
+      },
+      "SPM_CD": {
+        "value": "${payData.spmCd}"
+      },
+      "MID": {
+        "value": "${MID}"
+      },
+      "GID": {
+        "value": "${GID}"
+      },
+      "VID": {
+        "value": "${VID}"
+      },
+      "TRX_ST_CD": {
+        "value": "0"
+      },
+      "TRX_CD": {
+        "value": "0"
+      },
+      "STMT_CYCLE_CD": {
+        "value": "D1"
+      },
+      "CP_CD": {
+        "value": "02"
+      },
+      "GOODS_NM": {
+        "value": "나이스-인증-API"
+      },
+      "GOODS_AMT": {
+        "value": "1001"
+      },
+      "GOODS_SPL_AMT": {
+        "value": "910"
+      },
+      "GOODS_VAT": {
+        "value": "91"
+      },
+      "GOODS_SVS_AMT": {
+        "value": "0"
+      },
+      "GOODS_TAXFREE_AMT": {
+        "value": "0"
+      },
+      "EXCH_RATE": {
+        "value": "0.0"
+      },
+      "OVER_AMT": {
+        "value": "0"
+      },
+      "CURRENCY_TYPE": {
+        "value": "KRW"
+      },
+      "PRE_EXCH_RATE": {
+        "value": "0"
+      },
+      "ORD_NM": {
+        "value": "홍길동",
+        "crypto" : "ENC_HASH"
+      },
+      "ORD_TEL": {
+        "value": "01012345678",
+        "crypto" : "ENC_HASH"
+      },
+      "ORD_HP": {
+        "value": ""
+      },
+      "ORD_EMAIL": {
+        "value": "wypark@wiezon.com",
+        "crypto" : "ENC_HASH"
+      },
+      "ORD_IP": {
+        "value": "123.123.123.123",
+        "crypto" : "ENC_HASH"
+      },
+      "MBS_USR_ID": {
+        "value": "test"
+      },
+      "RCVR_ADDR": {
+        "value": ""
+      },
+      "RCVR_NM": {
+        "value": ""
+      },
+      "RCVR_HP": {
+        "value": ""
+      },
+      "RSLT_CD": {
+        "value": "0000"
+      },
+      "PGSVR_NM": {
+        "value": "bld"
+      },
+      "PGSW_VER": {
+        "value": "3.0.0"
+      },
+      "CONN_CD": {
+        "value": "0001"
+      },
+      "CART_FLG": {
+        "value": "0"
+      },
+      "L1_VID": {
+        "value": "${VID}"
+      },
+      "L2_VID": {
+        "value": ""
+      },
+      "L3_VID": {
+        "value": ""
+      },
+      "L4_VID": {
+        "value": ""
+      },
+      "L5_VID": {
+        "value": ""
+      },
+      "CHRG_FLG": {
+        "value": "0"
+      },
+      "CRYPT_FLG": {
+        "value": "1"
+      },
+      "PTN_CD": {
+        "value": "${payData.pmCd}"
+      },
+      "WORKER": {
+        "value": "TEST"
+      },
+      "REG_DNT": {
+        "value": "YESTER_YYMMDDHHIISS"
+      }
+    }
+  ]
+}
