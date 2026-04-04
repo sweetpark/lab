@@ -9,12 +9,14 @@ import java.util.List;
 public class AffiliateProfile implements Profile {
     private final String ptnCd;
     private final String ptnCpid;
+    private final String keyType;
     private final String secretKey;
     private final List<CpidDetail> cpids = new ArrayList<>();
 
-    public AffiliateProfile(String ptnCd, String ptnCpid, String secretKey) {
+    public AffiliateProfile(String ptnCd, String ptnCpid, String keyType, String secretKey) {
         this.ptnCd     = ptnCd;
         this.ptnCpid   = ptnCpid;
+        this.keyType   = keyType;
         this.secretKey = secretKey;
     }
 
@@ -22,6 +24,7 @@ public class AffiliateProfile implements Profile {
         this.cpids.add(new CpidDetail(type.ptnType, type.pmCd, type.spmCd, type.memo, type.feeTypes));
     }
 
+    public String getKeyType() { return keyType; }
 
     public String getPtnCd() {
         return ptnCd;

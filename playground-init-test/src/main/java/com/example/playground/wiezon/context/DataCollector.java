@@ -15,14 +15,22 @@ public class DataCollector {
 
     /**
      * TemplateContext를 해당 division에 저장합니다.
+     * 이미 동일한 테이블이 존재할 경우 기존 행(Rows)에 새로운 행들을 합칩니다(Merge).
      */
     public void add(TemplateContext context) {
         String division = context.getDivision();
         divisionMap.putIfAbsent(division, new LinkedHashMap<>());
 
-        // 동일 Division 내에 같은 테이블이 들어올 경우 덮어쓰거나 합치는 로직 중 선택 가능
-        // 여기서는 단순 보관을 위해 put을 사용합니다.
-        divisionMap.get(division).put(context.getTable(), context);
+        Map<String, TemplateContext> tableMap = divisionMap.get(division);
+        String tableName = context.getTable();
+
+        if (tableMap.containsKey(tableName)) {
+            // 이미 테이블이 존재하면 기존의 rows 리스트에 새로운 rows를 추가하여 합칩니다.
+            tableMap.get(tableName).getRows().addAll(context.getRows());
+        } else {
+            // 처음 들어오는 테이블이면 그대로 저장합니다.
+            tableMap.put(tableName, context);
+        }
     }
 
     /**
