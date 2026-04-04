@@ -33,6 +33,7 @@ public class TemplateContext {
             );
 
 
+    public TemplateContext(){}
 
     public String getDivision(){
         if(this.division == null){

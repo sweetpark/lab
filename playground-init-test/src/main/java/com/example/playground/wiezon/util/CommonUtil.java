@@ -3,6 +3,7 @@ package com.example.playground.wiezon.util;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -38,5 +39,19 @@ public class CommonUtil {
             newRow.put(key, new HashMap<>(innerMap));
         }
         return newRow;
+    }
+
+    public static void patchValue(Map<String, Map<String, Object>> row, String colName, Object newValue) {
+        if (row.containsKey(colName)) {
+            row.get(colName).put("value", newValue);
+        }
+    }
+
+    public static Map<String, Map<String, Object>> deepCopyRow(Map<String, Map<String, Object>> original){
+        Map<String, Map<String, Object>> copy = new LinkedHashMap<>();
+        for(Map.Entry<String, Map<String, Object>> entry : original.entrySet()) {
+            copy.put(entry.getKey(), new HashMap<>(entry.getValue()));
+        }
+        return copy;
     }
 }
