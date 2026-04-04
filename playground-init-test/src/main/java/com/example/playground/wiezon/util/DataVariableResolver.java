@@ -1,6 +1,6 @@
 package com.example.playground.wiezon.util;
 
-import com.example.playground.wiezon.Enum.CryptoType;
+import com.example.playground.wiezon.Enum.oldEnum.CryptoType;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

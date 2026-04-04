@@ -1,11 +1,10 @@
 package com.example.playground.wiezon.service;
 
-import com.example.playground.wiezon.Enum.PaymentDetailType;
-import com.example.playground.wiezon.Enum.PaymentMethod;
+import com.example.playground.wiezon.Enum.oldEnum.PaymentDetailType;
+import com.example.playground.wiezon.Enum.oldEnum.PaymentMethod;
 import com.example.playground.wiezon.ToolRunner;
-import com.example.playground.wiezon.context.MidContext;
-import com.example.playground.wiezon.context.PayBaseContext;
-import com.example.playground.wiezon.context.PayContext;
+import com.example.playground.wiezon.context.oldContext.PayBaseContext;
+import com.example.playground.wiezon.context.oldContext.PayContext;
 import lombok.RequiredArgsConstructor;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.springframework.jdbc.datasource.DataSourceUtils;

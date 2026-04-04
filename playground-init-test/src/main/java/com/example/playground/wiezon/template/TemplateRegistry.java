@@ -1,6 +1,6 @@
 package com.example.playground.wiezon.template;
 
-import com.example.playground.wiezon.Enum.Division;
+import com.example.playground.wiezon.Enum.oldEnum.Division;
 import com.example.playground.wiezon.context.TemplateContext;
 import com.example.playground.wiezon.exception.FileParseException;
 import com.example.playground.wiezon.service.FileReadService;

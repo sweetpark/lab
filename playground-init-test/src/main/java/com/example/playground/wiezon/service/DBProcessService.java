@@ -1,6 +1,6 @@
 package com.example.playground.wiezon.service;
 
-import com.example.playground.wiezon.Enum.Division;
+import com.example.playground.wiezon.Enum.oldEnum.Division;
 import com.example.playground.wiezon.context.TemplateContext;
 import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.stereotype.Service;

@@ -3,7 +3,7 @@ package com.example.playground.wiezon;
 
 import com.example.playground.wiezon.context.TemplateContext;
 import com.example.playground.wiezon.service.InitDataAssembler;
-import com.example.playground.wiezon.Enum.CryptoType;
+import com.example.playground.wiezon.Enum.oldEnum.CryptoType;
 import com.example.playground.wiezon.util.EncUtil;
 import com.google.gson.Gson;
 import kms.wiezon.com.crypt.CryptUtils;

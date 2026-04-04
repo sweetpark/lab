@@ -1,10 +1,9 @@
 package com.example.playground.wiezon.config;
 
-import com.example.playground.wiezon.Enum.Division;
+import com.example.playground.wiezon.Enum.oldEnum.Division;
 import com.example.playground.wiezon.context.TemplateContext;
 import org.springframework.stereotype.Component;
 
-import java.util.HashSet;
 import java.util.Set;
 
 

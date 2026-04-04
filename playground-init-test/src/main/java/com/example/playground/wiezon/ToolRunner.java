@@ -1,8 +1,12 @@
 package com.example.playground.wiezon;
 
-import com.example.playground.wiezon.Enum.Division;
+import com.example.playground.wiezon.Enum.oldEnum.Division;
 import com.example.playground.wiezon.config.PayBaseProperties;
 import com.example.playground.wiezon.context.*;
+import com.example.playground.wiezon.context.oldContext.CpidContext;
+import com.example.playground.wiezon.context.oldContext.GlobalContext;
+import com.example.playground.wiezon.context.oldContext.PayBaseContext;
+import com.example.playground.wiezon.context.oldContext.VariableContext;
 import com.example.playground.wiezon.service.InitDataAssembler;
 import com.example.playground.wiezon.startegy.MetaDataProcessStrategy;
 import com.example.playground.wiezon.template.TemplateRegistry;
