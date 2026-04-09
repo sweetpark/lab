@@ -102,7 +102,7 @@ public class Tutorial13_RemoteChunking {
                                        PlatformTransactionManager platformTransactionManager) {
         return new StepBuilder("tutorial13_masterStep", jobRepository)
             .<Order, String>chunk(3)
-            .reader(tutorial13_orderReader(null))
+            .reader(tutorial13_orderReader(3))
             .processor(tutorial13_chunkDistributor())
             .writer(items -> {
                 System.out.println("[Master] Chunk Writer: " + items.size() + "건");
