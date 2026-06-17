@@ -1,0 +1,66 @@
+services:
+
+  # ──────────────────────────────────────────────
+  # MariaDB
+  #   - 포트 3307: 로컬에 설치된 MariaDB 3306과 충돌 방지
+  #   - 볼륨: 컨테이너 재시작 후에도 데이터 유지
+  #   - healthcheck: App이 DB가 준비된 후에 기동하도록 의존성 제어
+  # ──────────────────────────────────────────────
+  mariadb:
+    image: mariadb:11.2
+    container_name: jmeter-mariadb
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+      MARIADB_DATABASE: lab
+      MARIADB_USER: lab
+      MARIADB_PASSWORD: lab
+    ports:
+      - "3307:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: '512M'
+
+  # ──────────────────────────────────────────────
+  # playground-jmeter App
+  #   - depends_on + condition: DB healthcheck 통과 후 기동
+  #   - SPRING_DATASOURCE_URL: 컨테이너 내부에서 mariadb 서비스명으로 접근
+  #   - deploy.resources.limits: CPU/메모리 상한을 고정해 측정 일관성 확보
+  #     (JMeter 부하 테스트 결과가 PC 사양에 덜 의존하도록)
+  # ──────────────────────────────────────────────
+  app:
+    build:
+      context: ..
+      dockerfile: playground-jmeter/Dockerfile
+    container_name: jmeter-app
+    ports:
+      - "8090:8090"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mariadb://mariadb:3306/lab
+      SPRING_DATASOURCE_USERNAME: lab
+      SPRING_DATASOURCE_PASSWORD: lab
+      SPRING_JPA_HIBERNATE_DDL_AUTO: create
+    depends_on:
+      mariadb:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          # CPU 2코어, 메모리 1GB로 제한:
+          # 테스트 환경을 항상 동일하게 유지해 실행마다 재현 가능한 수치를 얻는다.
+          # 로컬 PC 스펙과 무관하게 "2코어 1GB 서버"에서의 성능을 측정하는 셈이다.
+          cpus: '2.0'
+          memory: '1G'
+
+volumes:
+  mariadb_data:
+    driver: local

@@ -1,0 +1,15 @@
+# 빌드 결과물 (Docker 빌드 컨텍스트에서 제외 → 전송 속도 향상)
+**/build/
+**/.gradle/
+**/.idea/
+**/*.iml
+**/.worktrees/
+
+# 로그 및 임시 파일
+logs/
+*.log
+*.log.*
+
+# OS 메타데이터
+.DS_Store
+Thumbs.db
