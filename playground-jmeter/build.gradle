@@ -1,0 +1,37 @@
+plugins {
+    id 'org.springframework.boot' version '3.4.4'
+    id 'io.spring.dependency-management'
+    id 'net.foragerr.jmeter' version '1.1.0-4.0'
+}
+
+// 이 모듈만 Java 21을 사용한다. 가상 스레드(Virtual Thread)는 Java 21에서 정식 출시된 기능이다.
+// 기존 모듈들은 Java 17을 유지하므로 전체 toolchain은 건드리지 않는다.
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // RowLockService, TableLockService에서 JPA를 우회해 직접 SQL을 실행하기 위해 필요
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+
+    // @NotBlank, @NotNull, @Positive 등 Bean Validation 애노테이션을 사용하기 위해 필요
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+}
+
+// JMeter 테스트 실행 설정 (net.foragerr.jmeter 플러그인 JMPluginExtension DSL)
+// testFileDir를 재지정함으로써 기본값(src/test/jmeter) 대신 프로젝트 루트의 jmeter/ 디렉토리를 사용하게 한다.
+// jmVersion으로 JMeter 바이너리 버전을 고정한다 (빌드 시 자동 다운로드됨).
+jmeter {
+    testFileDir = file('jmeter')
+    reportDir = file("$buildDir/jmeter-reports")
+    jmVersion = '5.6.3'
+    enableReports = true
+    enableExtendedReports = true
+}
