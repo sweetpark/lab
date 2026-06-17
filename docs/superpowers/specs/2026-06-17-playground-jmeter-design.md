@@ -21,6 +21,9 @@
 
 ## 2. 모듈 디렉터리 구조
 
+각 테스트 관심사(CRUD, 락, 스레드 안전성, 가상 스레드)를 최상위 패키지로 완전히 분리한다.
+패키지 간 의존은 `Product` 엔티티 한 곳(crud.entity)만 허용하며, 비즈니스 로직은 절대 공유하지 않는다.
+
 ```
 playground-jmeter/
 ├── build.gradle
@@ -28,24 +31,78 @@ playground-jmeter/
 │   └── main/
 │       ├── java/com/example/playground/jmeter/
 │       │   ├── JmeterApplication.java
+│       │   │
 │       │   ├── config/
-│       │   │   └── VirtualThreadConfig.java          # 가상 스레드 Executor 설정
-│       │   ├── controller/
-│       │   │   ├── ProductController.java            # CRUD API
-│       │   │   ├── LockController.java               # DB 락 경합 API
-│       │   │   └── ThreadController.java             # 스레드 공유자원 + 가상스레드 API
-│       │   ├── service/
-│       │   │   ├── ProductService.java
-│       │   │   ├── LockService.java
-│       │   │   └── ThreadService.java
-│       │   ├── repository/
-│       │   │   └── ProductRepository.java
-│       │   └── entity/
-│       │       └── Product.java
+│       │   │   └── VirtualThreadConfig.java              # 가상 스레드 Executor Bean 등록
+│       │   │
+│       │   ├── crud/                                     # [1] CRUD 성능 테스트
+│       │   │   ├── controller/
+│       │   │   │   └── ProductController.java
+│       │   │   ├── service/
+│       │   │   │   └── ProductService.java
+│       │   │   ├── repository/
+│       │   │   │   └── ProductRepository.java
+│       │   │   └── entity/
+│       │   │       └── Product.java                      # @Version 포함 (lock 패키지도 동일 테이블 사용)
+│       │   │
+│       │   ├── lock/                                     # [2] DB 락 경합 테스트
+│       │   │   ├── controller/
+│       │   │   │   └── LockController.java
+│       │   │   ├── service/
+│       │   │   │   ├── OptimisticLockService.java        # JPA @Version
+│       │   │   │   ├── PessimisticLockService.java       # JPA @Lock(PESSIMISTIC_WRITE)
+│       │   │   │   ├── RowLockService.java               # JDBC SELECT ... FOR UPDATE
+│       │   │   │   ├── TableLockService.java             # JDBC LOCK TABLES ... WRITE
+│       │   │   │   └── AppLockService.java               # MariaDB GET_LOCK()
+│       │   │   └── repository/
+│       │   │       └── LockProductRepository.java        # PESSIMISTIC_WRITE 전용 쿼리 정의
+│       │   │
+│       │   └── thread/
+│       │       ├── safety/                               # [3] 스레드 공유자원 테스트
+│       │       │   ├── controller/
+│       │       │   │   ├── UnsafeThreadController.java   # /api/thread/unsafe/**
+│       │       │   │   ├── SafeThreadController.java     # /api/thread/safe/**
+│       │       │   │   └── ThreadResultController.java   # /api/thread/result (카운터 조회)
+│       │       │   └── service/
+│       │       │       ├── unsafe/
+│       │       │       │   ├── UnsafeFieldService.java         # static int counter++ Race Condition
+│       │       │       │   ├── UnsafeListService.java          # 공유 ArrayList
+│       │       │       │   ├── UnsafeCheckThenActService.java  # if stock>0 → stock-- 복합 연산
+│       │       │       │   └── UnsafeSingletonFieldService.java # Bean 인스턴스 필드 공유
+│       │       │       └── safe/
+│       │       │           ├── SafeAtomicService.java          # AtomicInteger
+│       │       │           ├── SafeSynchronizedService.java    # synchronized 블록
+│       │       │           ├── SafeReentrantLockService.java   # ReentrantLock
+│       │       │           ├── SafeConcurrentMapService.java   # ConcurrentHashMap
+│       │       │           └── SafeStatelessService.java       # 무상태 서비스 (Spring 기본)
+│       │       │
+│       │       └── virtual/                              # [4] 플랫폼 스레드 vs 가상 스레드 비교
+│       │           ├── controller/
+│       │           │   └── VirtualThreadController.java  # /api/thread/platform/**, /api/thread/virtual/**
+│       │           └── service/
+│       │               ├── PlatformThreadService.java    # 일반 스레드풀 실행
+│       │               └── VirtualThreadService.java     # Thread.ofVirtual() 실행
+│       │
 │       └── resources/
 │           └── application.properties
 └── jmeter/
-    └── test-plan.jmx                                 # JMeter GUI에서 열 수 있는 테스트 계획
+    ├── test-plan.jmx                                     # JMeter GUI에서 열 수 있는 전체 테스트 계획
+    └── plans/                                            # Thread Group별 개별 .jmx 파일 (선택 실행용)
+        ├── 01-crud.jmx
+        ├── 02-lock.jmx
+        ├── 03-thread-safety.jmx
+        └── 04-virtual-thread.jmx
+```
+
+### 패키지 의존 관계
+
+```
+crud.entity.Product  ←─── lock.repository.LockProductRepository (동일 테이블 공유)
+        │
+        └── 그 외 패키지는 crud.entity 참조 없음 (완전 독립)
+
+thread.safety  ──── thread.virtual  간 의존 없음
+lock           ──── thread.*        간 의존 없음
 ```
 
 ---
