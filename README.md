@@ -1,7 +1,41 @@
+# Spring Playground
 
-# 멀티모듈 아키텍처 가이드 (Core & Playground)
+Spring Boot **Gradle 멀티모듈** 구조로 다양한 기능/기술을 독립적으로 실험해보는 학습용 저장소입니다. 각 `playground-*` 모듈은 하나의 주제(AOP, 캐시, 배치, 파일 I/O 등)를 독립적으로 검증하고, `app` 모듈에서 필요한 모듈을 조합해 단일 서버로 통합 실행합니다.
 
-이 문서는 본 프로젝트에서 사용하는 **멀티모듈 구조**와 그중에서도 **core 모듈의 역할, 그리고 단일 Application(app) 실행 전략**을 정리한 가이드입니다.
+## 모듈 구성
+
+| 모듈 | 주제 |
+|---|---|
+| `core` | 실행되지 않는 계약(인터페이스) 모듈 |
+| `app` | 여러 playground 모듈을 조합해 실행하는 통합 서버 (8089) |
+| `playground-aop` | Spring AOP 실험 |
+| `playground-batch` | Spring Batch 실험 |
+| `playground-cache` | 캐시 전략 실험 |
+| `playground-cisMockApi` | Mock API 서버 실험 |
+| `playground-crolling` | 크롤링 실험 |
+| `playground-exception` | 예외 처리 전략 실험 |
+| `playground-exteriorConfig` | 외부 설정/프로퍼티 관리 실험 |
+| `playground-fileIO` | 파일 업/다운로드 실험 |
+| `playground-init-test` | 초기화/테스트 셋업 실험 |
+| `playground-jdbc` | 순수 JDBC 실험 |
+| `playground-jmeter` | 부하 테스트(JMeter) 연동 |
+| `playground-kms` | 키 관리(암복호화) 실험 |
+| `playground-lang` | 언어/문법 실험 |
+| `playground-notiCheck` | 알림 처리 실험 |
+| `playground-paging` | 페이징 처리 실험 |
+| `playground-thread` | 멀티스레딩 실험 |
+| `playground-validation` | 유효성 검증 실험 |
+
+## 실행 방법
+
+```bash
+./gradlew :app:bootRun   # 통합 서버 (전체 모듈 조합, port 8089)
+./gradlew :playground-aop:bootRun   # 개별 모듈만 단독 실행
+```
+
+## 아키텍처 가이드 (Core & Playground)
+
+아래는 멀티모듈 구조에서 **core 모듈의 역할과 단일 Application(app) 실행 전략**을 정리한 가이드입니다.
 
 ---
 
@@ -57,7 +91,7 @@ app           ─────▶  core
 예:
 - playground-aop
 - playground-cache
-- playground-crawling
+- playground-crolling
 
 ---
 
@@ -81,7 +115,7 @@ practice
 ├── app            ← 실행 전용
 ├── playground-aop
 ├── playground-cache
-└── playground-crawling
+└── playground-crolling
 ```
 
 ---
@@ -103,7 +137,7 @@ dependencies {
     implementation project(':core')
     implementation project(':playground-aop')
     implementation project(':playground-cache')
-    implementation project(':playground-crawling')
+    implementation project(':playground-crolling')
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
 }
